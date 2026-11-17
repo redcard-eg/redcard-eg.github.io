@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ريدكارد | ديكورات وهدايا</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --red:#C8102E; --red-dark:#9E0B23; --ink:#1B1B1F; --muted:#6B6B73;
+    --bg:#FBF8F5; --card:#FFFFFF; --line:#ECE6E0; --gold:#C9A25B; --green:#1F9D55;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+
+  /* top bar */
+  .topbar{background:var(--ink);color:#fff;font-size:14px;text-align:center;padding:8px 12px}
+  .topbar b{color:#FFD7DD}
+  header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:24px}
+  .logo .card{width:22px;height:30px;background:var(--red);border-radius:4px;transform:rotate(-10deg);box-shadow:0 4px 10px rgba(200,16,46,.35)}
+  .logo span{color:var(--red)}
+  .nav-wa{display:flex;align-items:center;gap:8px;background:var(--green);color:#fff;padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px}
+
+  /* hero */
+  .hero{padding:56px 0 40px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+  .eyebrow{display:inline-block;background:#FDE8EB;color:var(--red);font-weight:700;font-size:13px;padding:4px 12px;border-radius:999px;margin-bottom:14px}
+  .hero h1{font-size:44px;line-height:1.25;font-weight:800;margin-bottom:14px}
+  .hero h1 em{font-style:normal;color:var(--red)}
+  .hero p{color:var(--muted);font-size:18px;margin-bottom:26px;max-width:480px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:#fff;border:0;font-family:inherit;font-weight:700;font-size:16px;padding:13px 26px;border-radius:12px;cursor:pointer;transition:.2s}
+  .btn:hover{background:var(--red-dark)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+  .hero-art{background:radial-gradient(circle at 50% 40%,#FFF4E0 0%,#F3E6D6 60%,#EADAC7 100%);border-radius:28px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+  .hero-badge{position:absolute;top:18px;left:18px;background:var(--red);color:#fff;font-weight:800;padding:8px 14px;border-radius:12px;font-size:15px;transform:rotate(-4deg)}
+
+  /* trust */
+  .trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:10px 0 50px}
+  .trust div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center;font-weight:700;font-size:15px}
+  .trust small{display:block;color:var(--muted);font-weight:400;font-size:13px}
+  .trust .ic{font-size:22px;color:var(--red);display:block;margin-bottom:4px}
+
+  /* products */
+  .sec-title{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}
+  .sec-title h2{font-size:30px;font-weight:800}
+  .sec-title p{color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:60px}
+  .prod{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .prod:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.07)}
+  .prod .img{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative}
+  .prod .tag{position:absolute;top:12px;right:12px;background:var(--red);color:#fff;font-size:13px;font-weight:700;padding:3px 10px;border-radius:8px}
+  .prod .img img.main{width:100%;height:100%;object-fit:cover;display:block}
+  .thumbs{display:flex;gap:6px;padding:8px 10px 0;overflow-x:auto}
+  .thumbs img{width:52px;height:52px;object-fit:cover;border-radius:8px;border:2px solid transparent;cursor:pointer;flex:0 0 auto}
+  .thumbs img.on{border-color:var(--red)}
+  details.specs{font-size:14px;border-top:1px dashed var(--line);padding-top:8px}
+  details.specs summary{cursor:pointer;font-weight:700;color:var(--red)}
+  details.specs dl{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin-top:8px}
+  details.specs dt{color:var(--muted)}
+  details.specs dd{font-weight:600}
+  .hero-art img{width:100%;height:100%;object-fit:cover}
+  .prod .body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+  .prod h3{font-size:19px;font-weight:700;line-height:1.4}
+  .prod ul{list-style:none;color:var(--muted);font-size:14px}
+  .prod ul li::before{content:"✓ ";color:var(--green);font-weight:700}
+  .price{display:flex;align-items:baseline;gap:10px;margin-top:auto;padding-top:6px}
+  .price b{font-size:26px;color:var(--red);font-weight:800}
+  .price s{color:#A9A3A0}
+  .prod .btn{width:100%}
+
+  /* how */
+  .how{background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px;margin-bottom:60px}
+  .how h2{font-size:26px;font-weight:800;margin-bottom:20px;text-align:center}
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center}
+  .steps .n{width:44px;height:44px;border-radius:50%;background:#FDE8EB;color:var(--red);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+  .steps p{color:var(--muted);font-size:15px}
+
+  footer{background:var(--ink);color:#C9C9CF;padding:30px 0;text-align:center;font-size:14px}
+  footer .logo{justify-content:center;color:#fff;margin-bottom:8px}
+
+  /* modal */
+  .ov{position:fixed;inset:0;background:rgba(20,15,15,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+  .ov.show{display:flex}
+  .modal{background:#fff;border-radius:22px;max-width:440px;width:100%;padding:24px;max-height:92vh;overflow:auto}
+  .modal h3{font-size:21px;font-weight:800;margin-bottom:4px}
+  .modal .sum{background:var(--bg);border-radius:12px;padding:10px 14px;margin:12px 0 16px;font-size:15px}
+  .modal label{display:block;font-weight:600;font-size:14px;margin:10px 0 4px}
+  .modal input,.modal select,.modal textarea{width:100%;font-family:inherit;font-size:15px;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+  .modal input:focus,.modal select:focus,.modal textarea:focus{outline:none;border-color:var(--red)}
+  .qty{display:flex;align-items:center;gap:10px}
+  .qty button{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-size:20px;cursor:pointer}
+  .qty span{font-weight:800;font-size:18px;min-width:24px;text-align:center}
+  .total{display:flex;justify-content:space-between;font-weight:800;font-size:18px;margin:16px 0 4px}
+  .total b{color:var(--red)}
+  .note{color:var(--muted);font-size:13px;margin-bottom:14px}
+  .err{color:var(--red);font-size:13px;min-height:18px}
+  .row{display:flex;gap:10px;margin-top:6px}
+  .row .btn{flex:1}
+  .done{text-align:center;display:none}
+  .done .big{font-size:44px}
+  .wa-btn{background:var(--green)}
+  .wa-btn:hover{background:#17804A}
+
+  @media (max-width:860px){
+    .hero{grid-template-columns:1fr;padding-top:32px}
+    .hero h1{font-size:32px}
+    .trust{grid-template-columns:repeat(2,1fr)}
+    .grid{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr}
+    .nav-wa .txt{display:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">🚚 توصيل لكل محافظات مصر — <b>الدفع عند الاستلام</b> — عاين قبل ما تدفع</div>
+
+<header>
+  <div class="wrap nav">
+    <a class="logo" href="#top"><i class="card"></i>ريد<span>كارد</span></a>
+    <a class="nav-wa" id="navWa" href="#" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>
+      <span class="txt">كلمنا واتساب</span>
+    </a>
+  </div>
+</header>
+
+<main id="top">
+  <section class="wrap hero">
+    <div>
+      <span class="eyebrow">✨ ديكورات وهدايا مختارة</span>
+      <h1>لمسة <em>تفرق</em> في بيتك<br>وهدية تفرّح اللي بتحبه</h1>
+      <p>منتجات ديكور وهدايا عملية بأسعار حلوة، بتوصلك لحد باب البيت، وتدفع لما تستلم.</p>
+      <a class="btn" href="#products">تسوّق دلوقتي ←</a>
+    </div>
+    <div class="hero-art">
+      <img src="img/lamp2.webp" alt="أباجورة كريستال بإضاءة دافية">
+      <div class="hero-badge">عرض هيفوتك!</div>
+      <svg viewBox="0 0 300 300" width="78%" aria-hidden="true" style="display:none">
+        <defs>
+          <radialGradient id="glow" cx="50%" cy="45%" r="50%"><stop offset="0" stop-color="#FFE6A8" stop-opacity=".95"/><stop offset="1" stop-color="#FFE6A8" stop-opacity="0"/></radialGradient>
+          <linearGradient id="crys" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#FFF3D6"/><stop offset="1" stop-color="#F4DDAE"/></linearGradient>
+        </defs>
+        <circle cx="150" cy="140" r="130" fill="url(#glow)"/>
+        <g>
+          <path d="M95 80 L135 70 L140 230 L90 230 Z" fill="url(#crys)" stroke="#E2C48A" stroke-width="2"/>
+          <path d="M95 80 L117 120 L135 70 M117 120 L90 160 M117 120 L140 170 M90 160 L115 200 L140 170 M115 200 L90 230 M115 200 L140 230" stroke="#E7CFA0" stroke-width="1.5" fill="none"/>
+          <path d="M165 70 L205 80 L210 230 L160 230 Z" fill="url(#crys)" stroke="#E2C48A" stroke-width="2"/>
+          <path d="M165 70 L183 120 L205 80 M183 120 L160 170 M183 120 L210 160 M160 170 L185 200 L210 160 M185 200 L160 230 M185 200 L210 230" stroke="#E7CFA0" stroke-width="1.5" fill="none"/>
+          <path d="M112 66 q-6 -14 4 -26 q-4 14 6 22" fill="#fff" opacity=".8"/>
+          <path d="M184 66 q-6 -14 4 -26 q-4 14 6 22" fill="#fff" opacity=".8"/>
+          <rect x="70" y="230" width="160" height="10" rx="5" fill="#CDB89E"/>
+        </g>
+      </svg>
+    </div>
+  </section>
+
+  <section class="wrap trust">
+    <div><span class="ic">💵</span>الدفع عند الاستلام<small>مفيش أي دفع مقدم</small></div>
+    <div><span class="ic">🚚</span>شحن لكل مصر<small>من 2 لـ5 أيام عمل</small></div>
+    <div><span class="ic">👀</span>عاين قبل ما تدفع<small>افتح واتأكد بنفسك</small></div>
+    <div><span class="ic">💬</span>خدمة على واتساب<small>بنرد بسرعة</small></div>
+  </section>
+
+  <section class="wrap" id="products">
+    <div class="sec-title">
+      <div><h2>منتجاتنا</h2><p>الكمية محدودة، والعرض لفترة قصيرة</p></div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section class="wrap how">
+    <h2>تطلب إزاي؟</h2>
+    <div class="steps">
+      <div><div class="n">1</div><b>اختار المنتج</b><p>اضغط "اطلب الآن" تحت المنتج اللي عاجبك</p></div>
+      <div><div class="n">2</div><b>اكتب بياناتك</b><p>الاسم والرقم والعنوان، والطلب يوصلنا على واتساب</p></div>
+      <div><div class="n">3</div><b>استلم وادفع</b><p>بنأكد معاك ونشحن، وتدفع وإنت بتستلم</p></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="logo"><i class="card"></i>ريد<span>كارد</span></div>
+    ديكورات وهدايا — توصيل لكل محافظات مصر<br>
+    واتساب: <span dir="ltr">+20 106 861 3396</span>
+  </div>
+</footer>
+
+<!-- order modal -->
+<div class="ov" id="ov" role="dialog" aria-modal="true">
+  <div class="modal">
+    <form id="form" novalidate>
+      <h3>تأكيد الطلب</h3>
+      <div class="sum" id="sum"></div>
+
+      <label>الكمية</label>
+      <div class="qty"><button type="button" id="minus">−</button><span id="q">1</span><button type="button" id="plus">+</button></div>
+
+      <label for="fName">الاسم بالكامل</label>
+      <input id="fName" autocomplete="name" placeholder="مثال: محمد أحمد">
+
+      <label for="fPhone">رقم الموبايل</label>
+      <input id="fPhone" inputmode="tel" dir="ltr" placeholder="01xxxxxxxxx">
+
+      <label for="fGov">المحافظة</label>
+      <select id="fGov"></select>
+
+      <label for="fAddr">العنوان بالتفصيل</label>
+      <textarea id="fAddr" rows="2" placeholder="المنطقة، الشارع، رقم العمارة، علامة مميزة"></textarea>
+
+      <div class="total"><span>الإجمالي</span><b id="tot"></b></div>
+      <div class="note">الدفع عند الاستلام. هنكلمك نأكد الطلب قبل الشحن.</div>
+      <div class="err" id="err"></div>
+      <div class="row">
+        <button class="btn" type="submit">تأكيد الطلب</button>
+        <button class="btn ghost" type="button" id="cancel">إلغاء</button>
+      </div>
+    </form>
+
+    <div class="done" id="done">
+      <div class="big">✅</div>
+      <h3>فاضل خطوة واحدة!</h3>
+      <p class="note">اضغط على الزرار اللي تحت عشان طلبك يوصلنا على واتساب، وهنكلمك نأكده.</p>
+      <a class="btn wa-btn" id="waLink" href="#" target="_blank" rel="noopener" style="width:100%">ابعت الطلب على واتساب</a>
+      <p class="note" style="margin-top:10px">لو الزرار مفتحش، ابعت على واتساب: <span dir="ltr">+20 106 861 3396</span></p>
+      <button class="btn ghost" type="button" id="close" style="width:100%;margin-top:6px">رجوع للمتجر</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const WA = "201068613396";
+
+const lampSVG = `<svg viewBox="0 0 200 200" width="70%"><defs><radialGradient id="g1" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#FFE3A0"/><stop offset="1" stop-color="#FFE3A0" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="95" r="90" fill="url(#g1)"/><path d="M58 50 L88 44 L92 160 L54 160 Z" fill="#FFF7E6" stroke="#E2C48A" stroke-width="2"/><path d="M58 50 L74 80 L88 44 M74 80 L54 110 M74 80 L92 115 M54 110 L72 135 L92 115" stroke="#E7CFA0" fill="none"/><path d="M112 44 L142 50 L146 160 L108 160 Z" fill="#FFF7E6" stroke="#E2C48A" stroke-width="2"/><path d="M112 44 L126 80 L142 50 M126 80 L108 115 M126 80 L146 110 M108 115 L128 135 L146 110" stroke="#E7CFA0" fill="none"/><path d="M70 40 q-5 -12 3 -22 q-3 12 5 18" fill="#fff"/><path d="M124 40 q-5 -12 3 -22 q-3 12 5 18" fill="#fff"/><rect x="40" y="160" width="120" height="8" rx="4" fill="#CDB89E"/></svg>`;
+
+const mugSVG = `<svg viewBox="0 0 200 200" width="66%"><path d="M88 34 q-6 -12 2 -22 M108 34 q-6 -12 2 -22" stroke="#C9B6A0" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="52" y="52" width="86" height="16" rx="6" fill="#C8955C"/><path d="M56 68 h78 v86 a14 14 0 0 1 -14 14 h-50 a14 14 0 0 1 -14 -14 z" fill="#EAF2F5" stroke="#B9C7CC" stroke-width="2"/><path d="M60 110 h70 v44 a10 10 0 0 1 -10 10 h-50 a10 10 0 0 1 -10 -10 z" fill="#D9B08C"/><path d="M60 110 h70 v10 h-70z" fill="#F2E3D2"/><path d="M134 88 h16 a14 14 0 0 1 14 14 v20 a14 14 0 0 1 -14 14 h-16" fill="none" stroke="#B07A45" stroke-width="10" stroke-linecap="round"/><line x1="95" y1="68" x2="95" y2="140" stroke="#9AA8AD" stroke-width="3"/><rect x="88" y="138" width="14" height="5" rx="2" fill="#9AA8AD"/></svg>`;
+
+const fanSVG = `<svg viewBox="0 0 200 200" width="70%"><path d="M50 150 A62 62 0 1 1 150 150" fill="none" stroke="#7C6CF0" stroke-width="10" stroke-linecap="round" opacity=".9"/><path d="M50 150 A62 62 0 1 1 150 150" fill="none" stroke="#C9C2FF" stroke-width="22" stroke-linecap="round" opacity=".35"/><circle cx="100" cy="102" r="40" fill="#F4F6F8" stroke="#D5DAE0" stroke-width="3"/><g fill="#B8C2CC"><ellipse cx="100" cy="84" rx="9" ry="18"/><ellipse cx="116" cy="108" rx="9" ry="18" transform="rotate(120 116 108)"/><ellipse cx="84" cy="108" rx="9" ry="18" transform="rotate(240 84 108)"/></g><circle cx="100" cy="102" r="7" fill="#8C97A3"/><rect x="70" y="160" width="60" height="10" rx="5" fill="#D5DAE0"/></svg>`;
+
+const products = [
+  {id:"lamp", name:"عرض قطعتين: أباجورة كريستال + فواحة ترطيب", price:850, old:1200, tag:"الأكثر طلبًا",
+   bg:"radial-gradient(circle at 50% 40%,#FFF4E0,#F1E2CF)", svg:lampSVG,
+   imgs:["img/lamp1.webp","img/lamp2.webp","img/lamp3.webp","img/lamp4.webp","img/lamp5.webp"],
+   feats:["إضاءة متعددة الألوان بتدّي البيت جو فخم","فواحة بتعطّر وترطّب الجو، وتشغيلها هادي","بتشتغل USB، ومناسبة لأوضة النوم والمكتب والليفينج","هدية شيك لأي مناسبة"],
+   specs:[["الكمية","قطعتين"],["الأبعاد","حوالي 18 × 10 × 10 سم"],["الوزن","حوالي 700 جم"],["اللون","متعدد الألوان"],["التشغيل","USB"],["بلد الصنع","الصين"]]},
+  {id:"mug", name:"المج الكهربائي الترند: ودّع التحريك بالملعقة!", price:449, old:599, tag:"هدية مثالية",
+   bg:"radial-gradient(circle at 50% 40%,#F4F7F8,#E2EBEE)", svg:mugSVG,
+   imgs:["img/mug1.webp","img/mug2.webp","img/mug3.webp","img/mug4.webp","img/mug5.webp","img/mug6.webp"],
+   feats:["بيقلّب أوتوماتيك بضغطة زرار واحدة","يخلط القهوة واللبن والبودرة من غير تكتيل","سعة 400 مل، بغطا ومقبض سهل الحمل","مناسب للبيت والمكتب"],
+   specs:[["السعة","400 مل"],["الخامة","زجاج متين + بلاستيك آمن"],["الأبعاد","حوالي 10 × 10 سم"],["الاستخدام","قهوة، شوكولاتة سخنة، مشروبات بودرة"],["التنظيف","سهل، من غير ما تغمر الجزء الكهربائي في المية"]]},
+  {id:"fan", name:"مروحة وأباجورة في جهاز واحد", price:599, old:799, tag:"2 في 1",
+   bg:"radial-gradient(circle at 50% 40%,#F1EFFF,#E3DFFA)", svg:fanSVG,
+   imgs:["img/fan1.webp","img/fan2.webp","img/fan3.webp","img/fan4.webp","img/fan5.webp","img/fan6.webp"],
+   feats:["هوا منعش وإضاءة LED ملونة في جهاز واحد","بتلف 180 درجة وتوجّه الهوا زي ما تحب","3 سرعات وصوتها هادي، مش هتزعجك وإنت نايم","بطارية بتتشحن USB، خفيفة وسهلة التنقل"],
+   specs:[["السرعات","3 مستويات"],["البطارية","1800 مللي أمبير، شحن USB"],["زاوية الدوران","180 درجة"],["الإضاءة","LED محيطية ملونة"],["الأبعاد","23 × 26 × 25 سم"],["الوزن","1.25 كجم"],["الجهد","5 فولت"],["الخامة","بلاستيك قوي"]]}
+];
+
+const govs = ["القاهرة","الجيزة","الإسكندرية","القليوبية","الشرقية","الدقهلية","الغربية","المنوفية","البحيرة","كفر الشيخ","دمياط","بورسعيد","الإسماعيلية","السويس","الفيوم","بني سويف","المنيا","أسيوط","سوهاج","قنا","الأقصر","أسوان","البحر الأحمر","مطروح","شمال سيناء","جنوب سيناء","الوادي الجديد"];
+
+const fmt = n => n.toLocaleString("ar-EG") + " ج.م";
+
+document.getElementById("navWa").href = "https://wa.me/" + WA + "?text=" + encodeURIComponent("السلام عليكم، عندي استفسار عن منتجات ريدكارد");
+
+const grid = document.getElementById("grid");
+products.forEach(p => {
+  const el = document.createElement("article");
+  el.className = "prod";
+  el.innerHTML = `
+    <div class="img" style="background:${p.bg}"><span class="tag">${p.tag}</span>${p.imgs ? `<img class="main" src="${p.imgs[0]}" alt="${p.name}">` : p.svg}</div>
+    ${p.imgs ? `<div class="thumbs">${p.imgs.map((s,i)=>`<img src="${s}" class="${i?'':'on'}" alt="">`).join("")}</div>` : ""}
+    <div class="body">
+      <h3>${p.name}</h3>
+      <ul>${p.feats.map(f=>`<li>${f}</li>`).join("")}</ul>
+      ${p.specs ? `<details class="specs"><summary>المواصفات</summary><dl>${p.specs.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl></details>` : ""}
+      <div class="price"><b>${fmt(p.price)}</b><s>${fmt(p.old)}</s></div>
+      <button class="btn" data-id="${p.id}">اطلب الآن</button>
+    </div>`;
+  grid.appendChild(el);
+});
+
+const sel = document.getElementById("fGov");
+sel.innerHTML = `<option value="">اختار المحافظة</option>` + govs.map(g=>`<option>${g}</option>`).join("");
+
+let cur = null, qty = 1;
+const ov = document.getElementById("ov"), form = document.getElementById("form"), done = document.getElementById("done");
+
+function render(){
+  document.getElementById("q").textContent = qty;
+  document.getElementById("sum").innerHTML = `<b>${cur.name}</b><br>${fmt(cur.price)} للقطعة`;
+  document.getElementById("tot").textContent = fmt(cur.price * qty);
+}
+function openOrder(id){
+  cur = products.find(p=>p.id===id); qty = 1;
+  form.style.display = "block"; done.style.display = "none";
+  document.getElementById("err").textContent = "";
+  render(); ov.classList.add("show");
+}
+function closeOrder(){ ov.classList.remove("show"); }
+
+grid.addEventListener("click", e => {
+  const b = e.target.closest("button[data-id]"); if(b) return openOrder(b.dataset.id);
+  const t = e.target.closest(".thumbs img");
+  if(t){ const card = t.closest(".prod"); card.querySelector("img.main").src = t.getAttribute("src");
+    card.querySelectorAll(".thumbs img").forEach(x=>x.classList.toggle("on", x===t)); }
+});
+document.getElementById("plus").onclick = () => { if(qty<10){qty++;render();} };
+document.getElementById("minus").onclick = () => { if(qty>1){qty--;render();} };
+document.getElementById("cancel").onclick = closeOrder;
+document.getElementById("close").onclick = closeOrder;
+ov.addEventListener("click", e => { if(e.target===ov) closeOrder(); });
+
+form.addEventListener("submit", e => {
+  e.preventDefault();
+  const name = fName.value.trim(), phone = fPhone.value.trim().replace(/\s/g,""), gov = fGov.value, addr = fAddr.value.trim();
+  const err = document.getElementById("err");
+  if(!name){ err.textContent = "اكتب اسمك من فضلك"; return; }
+  if(!/^(\+?20)?0?1[0125]\d{8}$/.test(phone)){ err.textContent = "رقم الموبايل مش صحيح، اكتبه كده: 01xxxxxxxxx"; return; }
+  if(!gov){ err.textContent = "اختار المحافظة"; return; }
+  if(addr.length < 6){ err.textContent = "اكتب العنوان بالتفصيل"; return; }
+  const msg = `طلب جديد من متجر ريدكارد 🛒
+المنتج: ${cur.name}
+الكمية: ${qty}
+الإجمالي: ${cur.price*qty} جنيه (الدفع عند الاستلام)
+—
+الاسم: ${name}
+الموبايل: ${phone}
+المحافظة: ${gov}
+العنوان: ${addr}`;
+  document.getElementById("waLink").href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
+  form.style.display = "none"; done.style.display = "block";
+});
+</script>
+</body>
+</html>
