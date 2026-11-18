@@ -326,7 +326,7 @@
         <a href="#products">كل المنتجات</a>
         <a href="#products" data-go="handmade">🧶 هاند ميد</a>
         <a href="#custom">لون أو مقاس خاص</a>
-        <a href="#products" data-go="home">البيت والديكور</a>
+        <a href="#products" data-go="decor">ديكور وهدايا</a>
       </div>
       <div>
         <h4>المساعدة</h4>
@@ -358,8 +358,19 @@
 
 <div class="toast" id="toast"></div>
 
+<script src="config.js"></script>
 <script src="data.js"></script>
 <script>
+/* ---------- data (from admin) ---------- */
+const RD = window.REDCARD_DATA || {categories:[], products:[]};
+const CATEGORIES = RD.categories.map(c => ({ id: c.id, name: (c.emo ? c.emo + " " : "") + c.name }));
+const PRODUCTS = RD.products.filter(p => !p.hidden && p.price > 0).map(p => ({
+  ...p, cats: p.cats || [], imgs: (p.imgs && p.imgs.length) ? p.imgs : ["img/favicon.png"], feats: p.feats || [],
+  custom: (p.cats || []).includes(CUSTOM_CATEGORY)
+}));
+/* sort: custom (handmade) first, keep admin order otherwise */
+PRODUCTS.sort((a, b) => (b.custom ? 1 : 0) - (a.custom ? 1 : 0));
+
 /* ---------- helpers ---------- */
 const $ = s => document.querySelector(s);
 const fmt = n => Number(n).toLocaleString("ar-EG") + " ج.م";
@@ -383,14 +394,14 @@ $("#yr").textContent = new Date().getFullYear();
 
 /* ---------- grid + tabs ---------- */
 let curCat = "all";
-$("#tabs").innerHTML = `<button data-cat="all" class="on">الكل</button>` + CATEGORIES.map(c => `<button data-cat="${c.id}">${c.name}</button>`).join("");
+$("#tabs").innerHTML = `<button data-cat="all" class="on">الكل</button>` + CATEGORIES.filter(c => PRODUCTS.some(p => p.cats.includes(c.id))).map(c => `<button data-cat="${c.id}">${c.name}</button>`).join("");
 function setCat(c){
   curCat = c;
   document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.cat === c));
   renderGrid();
 }
 function renderGrid(){
-  $("#grid").innerHTML = PRODUCTS.filter(p => curCat === "all" || p.cat === curCat).map(p => `
+  $("#grid").innerHTML = PRODUCTS.filter(p => curCat === "all" || p.cats.includes(curCat)).map(p => `
     <article class="prod">
       <a class="img" href="#p-${p.id}">
         <img src="${p.imgs[0]}" alt="${esc(p.name)}" loading="lazy">
@@ -447,7 +458,7 @@ function openProduct(id){
       <h2>${p.name}</h2>
       <div class="price"><b>${fmt(p.price)}</b>${p.old ? `<s>${fmt(p.old)}</s>` : ""}</div>
       <ul>${p.feats.map(f => `<li>${f}</li>`).join("")}</ul>
-      ${p.specs ? `<dl>${p.specs.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : ""}
+      ${p.specs && p.specs.length ? `<dl>${p.specs.map(([k, v]) => v ? `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>` : `<dd style="grid-column:1/-1">${esc(k)}</dd>`).join("")}</dl>` : ""}
       ${p.custom ? `<div><div class="lbl">🎨 عاوزه بلون أو مقاس تاني؟ (اختياري)</div>
         <input class="field" id="pdNote" placeholder="مثال: نفس الموديل بلون كحلي، أو أطول شوية" style="margin-top:6px">
         <div class="mini" style="margin-top:4px">الألوان والمقاسات الخاصة بتتعمل بالطلب، وهنأكد معاك السعر والمدة على واتساب.</div></div>` : ""}
