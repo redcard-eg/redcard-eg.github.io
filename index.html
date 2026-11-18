@@ -3,563 +3,588 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ريدكارد | كل اللي محتاجه في مكان واحد</title>
-<meta name="description" content="ريدكارد: منتجات مختارة بعناية بأسعار حلوة. توصيل لكل محافظات مصر، والدفع عند الاستلام، وعاين قبل ما تدفع.">
-<meta property="og:title" content="ريدكارد | كل اللي محتاجه في مكان واحد">
-<meta property="og:description" content="توصيل لكل مصر — الدفع عند الاستلام — عاين قبل ما تدفع">
-<meta property="og:image" content="https://redcard-eg.github.io/img/lamp2.webp">
+<title>ريدكارد | كروشيه هاند ميد — كوفيات وإكسسوارات شغل إيد</title>
+<meta name="description" content="ريدكارد: كوفيات وإكسسوارات كروشيه شغل إيد 100%، متاحة فورًا وبتتعمل بالألوان والمقاسات اللي تحبها. توصيل لكل مصر والدفع عند الاستلام.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ريدكارد RedCard">
+<meta property="og:title" content="ريدكارد | كروشيه هاند ميد شغل إيد 100%">
+<meta property="og:description" content="كوفيات وإكسسوارات كروشيه متاحة فورًا، وبالألوان والمقاسات اللي تحبها. توصيل لكل مصر والدفع عند الاستلام.">
+<meta property="og:image" content="https://redcard-eg.github.io/img/og.jpg">
 <meta property="og:url" content="https://redcard-eg.github.io/">
-<meta name="theme-color" content="#1B1B1F">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='3' width='16' height='24' rx='3' fill='%23C8102E' transform='rotate(-10 16 16)'/%3E%3C/svg%3E">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#C8102E">
+<link rel="icon" type="image/png" href="img/favicon.png">
+<link rel="apple-touch-icon" href="img/favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root{
-    --red:#C8102E; --red-dark:#9E0B23; --red-soft:#FDE8EB;
-    --ink:#1B1B1F; --ink-2:#26262C; --muted:#6B6B73;
-    --bg:#FBF8F5; --card:#FFFFFF; --line:#ECE6E0; --gold:#E2B969; --green:#1F9D55;
-    --shadow:0 18px 40px -18px rgba(27,27,31,.25);
-    --radius:22px;
-  }
+  :root{--red:#C8102E;--red-dark:#9E0B23;--ink:#1B1B1F;--muted:#6B6B73;--bg:#FBF8F5;--card:#fff;--line:#ECE6E0;--green:#1F9D55;--cream:#F4EEE6}
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
   body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+  .hero>*,.grid>*,.info>*,.pd>*{min-width:0}
+  body.lock{overflow:hidden}
   a{color:inherit;text-decoration:none}
-  img{max-width:100%}
-  .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
-  :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+  button{font-family:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:#fff;border:0;font-weight:700;font-size:16px;padding:12px 24px;border-radius:12px;cursor:pointer;transition:.2s}
+  .btn:hover{background:var(--red-dark)}
+  .btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--ink)}
+  .btn.wa{background:var(--green)}
+  .btn.wa:hover{background:#17804A}
+  .btn.sm{font-size:14px;padding:9px 14px;border-radius:10px}
 
-  /* ---------- top bar ---------- */
-  .topbar{background:var(--red);color:#fff;font-size:14px;font-weight:600;overflow:hidden;white-space:nowrap}
-  .topbar .track{display:inline-flex;padding:8px 0;animation:marquee 40s linear infinite}
-  .topbar span{display:inline-flex;align-items:center;gap:6px;padding-inline:24px}
-  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(50%)}}
-
-  /* ---------- header ---------- */
-  header{background:rgba(255,255,255,.88);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:25px;letter-spacing:-.3px}
-  .logo .card{width:20px;height:28px;background:linear-gradient(145deg,#E5203F,var(--red-dark));border-radius:4px;transform:rotate(-10deg);box-shadow:0 5px 12px rgba(200,16,46,.4)}
+  /* top bar + header */
+  .topbar{background:var(--ink);color:#fff;font-size:14px;text-align:center;padding:8px 12px}
+  .topbar b{color:#FFD7DD}
+  header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:66px;gap:12px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:24px}
+  .logo .card{width:22px;height:30px;background:var(--red);border-radius:4px;transform:rotate(-10deg);box-shadow:0 4px 10px rgba(200,16,46,.35)}
   .logo span{color:var(--red)}
-  .links{display:flex;gap:26px;font-weight:700;font-size:15px;color:var(--muted)}
-  .links a:hover{color:var(--red)}
-  .nav-wa{display:flex;align-items:center;gap:8px;background:var(--green);color:#fff;padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px;transition:.2s}
-  .nav-wa:hover{background:#17804A}
+  .nav-links{display:flex;gap:22px;font-weight:600;font-size:15px;color:var(--muted)}
+  .nav-links a:hover{color:var(--red)}
+  .nav-act{display:flex;gap:10px;align-items:center}
+  .cart-btn{position:relative;display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid var(--line);padding:8px 14px;border-radius:999px;font-weight:700;font-size:14px;cursor:pointer}
+  .cart-btn .count{position:absolute;top:-7px;left:-7px;background:var(--red);color:#fff;font-size:12px;min-width:22px;height:22px;border-radius:11px;display:flex;align-items:center;justify-content:center;padding:0 5px}
+  .cart-btn .count:empty{display:none}
 
-  /* ---------- buttons ---------- */
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:#fff;border:0;font-family:inherit;font-weight:800;font-size:16px;padding:13px 26px;border-radius:14px;cursor:pointer;transition:transform .15s,background .2s,box-shadow .2s;box-shadow:0 10px 22px -10px rgba(200,16,46,.7)}
-  .btn:hover{background:var(--red-dark);transform:translateY(-2px)}
-  .btn:active{transform:translateY(0)}
-  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
-  .btn.ghost:hover{border-color:var(--ink);background:transparent}
-  .btn.light{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.25);box-shadow:none}
-  .btn.light:hover{background:rgba(255,255,255,.18)}
+  /* hero */
+  .hero{padding:48px 20px 36px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+  .eyebrow{display:inline-block;background:#FDE8EB;color:var(--red);font-weight:700;font-size:13px;padding:4px 12px;border-radius:999px;margin-bottom:14px}
+  .hero h1{font-size:44px;line-height:1.25;font-weight:800;margin-bottom:14px}
+  .hero h1 em{font-style:normal;color:var(--red)}
+  .hero p{color:var(--muted);font-size:18px;margin-bottom:24px;max-width:480px}
+  .hero .cta{display:flex;gap:10px;flex-wrap:wrap}
+  .hero-art{border-radius:28px;aspect-ratio:1/1;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px}
+  .hero-art img{width:100%;height:100%;object-fit:cover;border-radius:18px}
+  .hero-art img:first-child{grid-row:span 2}
+  .hero-badge{position:absolute;top:16px;right:16px;background:var(--red);color:#fff;font-weight:800;padding:7px 14px;border-radius:12px;font-size:15px;transform:rotate(4deg)}
 
-  /* ---------- hero ---------- */
-  .hero-bg{background:
-      radial-gradient(600px 380px at 85% 10%,rgba(200,16,46,.55),transparent 70%),
-      radial-gradient(500px 360px at 10% 100%,rgba(226,185,105,.22),transparent 70%),
-      var(--ink);
-    color:#fff;position:relative;overflow:hidden}
-  .hero-bg::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:22px 22px;pointer-events:none}
-  .hero{padding:64px 20px 72px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative;z-index:1}
-  .eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#FFD7DD;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px;margin-bottom:18px}
-  .hero h1{font-size:50px;line-height:1.22;font-weight:900;margin-bottom:16px;letter-spacing:-.5px}
-  .hero h1 em{font-style:normal;background:linear-gradient(90deg,#FF4D67,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .hero p{color:#C9C9D2;font-size:18px;margin-bottom:28px;max-width:500px}
-  .hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
-  .hero-points{display:flex;gap:22px;margin-top:30px;flex-wrap:wrap;color:#DADAE2;font-size:14px;font-weight:600}
-  .hero-points span{display:flex;align-items:center;gap:6px}
-  .hero-points i{width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block}
+  /* trust */
+  .trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 48px}
+  .trust div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center;font-weight:700;font-size:15px}
+  .trust small{display:block;color:var(--muted);font-weight:400;font-size:13px}
+  .trust .ic{font-size:22px;display:block;margin-bottom:4px}
 
-  .collage{position:relative;aspect-ratio:1/1;max-width:500px;margin-inline:auto;width:100%}
-  .collage .main{position:absolute;inset:6% 4% 10% 16%;border-radius:30px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);border:4px solid rgba(255,255,255,.1)}
-  .collage img{width:100%;height:100%;object-fit:cover;display:block}
-  .collage .mini{position:absolute;width:36%;aspect-ratio:1/1;border-radius:22px;overflow:hidden;border:4px solid #fff;box-shadow:0 20px 40px -14px rgba(0,0,0,.55);animation:float 6s ease-in-out infinite}
-  .collage .m1{bottom:0;right:0;transform:rotate(6deg)}
-  .collage .m2{top:0;left:0;width:32%;transform:rotate(-7deg);animation-delay:-3s}
-  .collage .price-pill{position:absolute;left:4%;bottom:14%;background:#fff;color:var(--ink);border-radius:16px;padding:10px 16px;box-shadow:var(--shadow);font-weight:800;line-height:1.3;z-index:2}
-  .collage .price-pill small{display:block;color:var(--muted);font-weight:600;font-size:12px}
-  .collage .price-pill b{color:var(--red);font-size:20px}
-  @keyframes float{0%,100%{translate:0 0}50%{translate:0 -10px}}
+  /* products */
+  .sec-title{margin-bottom:18px}
+  .sec-title h2{font-size:30px;font-weight:800}
+  .sec-title p{color:var(--muted)}
+  .tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+  .tabs button{font-size:15px;font-weight:700;padding:9px 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer}
+  .tabs button.on{background:var(--red);border-color:var(--red);color:#fff}
+  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:56px}
+  .prod{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
+  .prod:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.07)}
+  .prod .img{aspect-ratio:1/1;position:relative;background:var(--cream);cursor:pointer;display:block}
+  .prod .img img{width:100%;height:100%;object-fit:cover;display:block}
+  .tag{position:absolute;top:12px;right:12px;background:var(--red);color:#fff;font-size:13px;font-weight:700;padding:3px 10px;border-radius:8px}
+  .disc{position:absolute;bottom:12px;left:12px;background:#fff;color:var(--red);font-size:13px;font-weight:800;padding:3px 10px;border-radius:8px}
+  .prod .body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:6px;flex:1}
+  .prod h3{font-size:18px;font-weight:700;line-height:1.4;cursor:pointer}
+  .prod ul,.pd ul{list-style:none;color:var(--muted);font-size:14px}
+  .prod ul li::before,.pd ul li::before{content:"✓ ";color:var(--green);font-weight:700}
+  .price{display:flex;align-items:baseline;gap:4px 10px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+  .price b,.price s{white-space:nowrap}
+  .price b{font-size:25px;color:var(--red);font-weight:800}
+  .price s{color:#A9A3A0}
+  .prod .acts{display:flex;gap:8px;margin-top:6px}
+  .prod .acts .btn{flex:1;padding:11px 10px;font-size:15px}
+  .custom-hint{font-size:13px;color:#7A4B00;background:#FFF4DC;border-radius:8px;padding:4px 10px;align-self:flex-start}
 
-  /* ---------- trust ---------- */
-  .trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-34px;position:relative;z-index:2}
-  .trust div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 14px;display:flex;align-items:center;gap:12px;font-weight:800;font-size:15px;box-shadow:var(--shadow)}
-  .trust .ic{width:44px;height:44px;flex:0 0 auto;border-radius:12px;background:var(--red-soft);display:flex;align-items:center;justify-content:center;font-size:21px}
-  .trust small{display:block;color:var(--muted);font-weight:500;font-size:13px}
+  /* info sections */
+  .info{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:56px}
+  .box{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px}
+  .box h2{font-size:22px;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+  .box p,.box li{color:#45454D;font-size:15px}
+  .box ul{padding-right:18px;display:grid;gap:6px}
+  .ship-table{width:100%;border-collapse:collapse;margin:8px 0 10px;font-size:15px}
+  .ship-table td{padding:9px 6px;border-bottom:1px dashed var(--line)}
+  .ship-table td:last-child{text-align:left;font-weight:800;color:var(--red);white-space:nowrap}
+  .ship-table small{display:block;color:var(--muted);font-size:12px}
+  .how{background:#fff;border:1px solid var(--line);border-radius:24px;padding:30px;margin-bottom:56px}
+  .how h2{font-size:26px;font-weight:800;margin-bottom:20px;text-align:center}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;text-align:center}
+  .steps .n{width:44px;height:44px;border-radius:50%;background:#FDE8EB;color:var(--red);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+  .steps p{color:var(--muted);font-size:14px}
+  .faq details{border-bottom:1px solid var(--line);padding:12px 0}
+  .faq summary{cursor:pointer;font-weight:700;font-size:16px;list-style:none;display:flex;justify-content:space-between;gap:10px}
+  .faq summary::after{content:"+";color:var(--red);font-size:22px;line-height:1}
+  .faq details[open] summary::after{content:"−"}
+  .faq details p{margin-top:8px;color:#45454D}
+  .about{text-align:center;max-width:720px;margin:0 auto 56px}
+  .about h2{font-size:26px;font-weight:800;margin-bottom:10px}
+  .about p{color:#45454D;font-size:16px}
 
-  /* ---------- section titles ---------- */
-  section.block{padding-top:70px}
-  .sec-title{text-align:center;margin-bottom:30px}
-  .sec-title .kick{color:var(--red);font-weight:800;font-size:14px;letter-spacing:.3px}
-  .sec-title h2{font-size:34px;font-weight:900;line-height:1.3}
-  .sec-title p{color:var(--muted);margin-top:4px}
+  footer{background:var(--ink);color:#C9C9CF;padding:34px 0 24px;font-size:14px}
+  .foot{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:26px;margin-bottom:20px}
+  .foot .logo{color:#fff;margin-bottom:8px}
+  .foot h4{color:#fff;font-size:15px;margin-bottom:8px}
+  .foot a{display:block;padding:3px 0}
+  .foot a:hover{color:#fff}
+  .copy{border-top:1px solid #33333A;padding-top:16px;text-align:center;color:#8A8A92;font-size:13px}
 
-  /* ---------- categories ---------- */
-  .cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
-  .cat{min-width:0;width:100%}
-  .cat{position:relative;border-radius:var(--radius);padding:22px 20px;min-height:150px;overflow:hidden;cursor:pointer;border:0;text-align:right;font-family:inherit;color:var(--ink);display:flex;flex-direction:column;justify-content:flex-end;transition:transform .2s,box-shadow .2s}
-  .cat:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
-  .cat .emo{position:absolute;top:14px;left:16px;font-size:46px;filter:drop-shadow(0 8px 10px rgba(0,0,0,.15));transition:transform .3s}
-  .cat:hover .emo{transform:scale(1.12) rotate(-8deg)}
-  .cat b{font-size:20px;font-weight:900}
-  .cat small{color:rgba(27,27,31,.65);font-weight:600;font-size:13px}
-  .cat .go{position:absolute;top:16px;right:18px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;font-weight:800}
-  .cat{background:linear-gradient(140deg,#FBF6F1,#EADFD3)}
-  .cat[data-cat="decor"]{background:linear-gradient(140deg,#FFF1DC,#F6D9B4)}
-  .cat[data-cat="home"]{background:linear-gradient(140deg,#EEF0FF,#D8DCFA)}
-  .cat[data-cat="kitchen"]{background:linear-gradient(140deg,#E9F7EF,#C9EBD7)}
-  .cat[data-cat="gifts"]{background:linear-gradient(140deg,#FFE6EA,#F9C3CC)}
+  .fab{position:fixed;left:18px;bottom:18px;z-index:25;width:56px;height:56px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 20px rgba(31,157,85,.4)}
 
-  /* ---------- filter chips ---------- */
-  .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;position:sticky;top:68px;z-index:10;padding:10px 0;background:linear-gradient(var(--bg) 75%,transparent)}
-  .chip{font-family:inherit;font-weight:700;font-size:15px;padding:9px 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:6px}
-  .chip:hover{border-color:var(--ink)}
-  .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
-  .chip .n{font-size:12px;background:var(--red-soft);color:var(--red);border-radius:999px;padding:0 8px;line-height:20px}
-  .chip[aria-pressed="true"] .n{background:var(--red);color:#fff}
-
-  /* ---------- products ---------- */
-  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
-  .prod{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;animation:pop .45s ease both}
-  .prod:hover{transform:translateY(-6px);box-shadow:0 26px 50px -24px rgba(27,27,31,.35)}
-  @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
-  .prod .img{aspect-ratio:1/1;position:relative;overflow:hidden;background:#F4EFEA}
-  .prod .img img.main{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s,opacity .25s}
-  .prod:hover .img img.main{transform:scale(1.05)}
-  .prod .tag{position:absolute;top:14px;right:14px;background:var(--ink);color:#fff;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;z-index:1}
-  .prod .off{position:absolute;top:14px;left:14px;background:var(--red);color:#fff;font-size:14px;font-weight:900;padding:6px 10px;border-radius:12px;z-index:1;transform:rotate(-6deg);box-shadow:0 8px 16px -6px rgba(200,16,46,.7)}
-  .thumbs{display:flex;gap:6px;padding:10px 12px 0;overflow-x:auto;scrollbar-width:none}
-  .thumbs::-webkit-scrollbar{display:none}
-  .thumbs img{width:50px;height:50px;object-fit:cover;border-radius:10px;border:2px solid transparent;cursor:pointer;flex:0 0 auto;opacity:.65;transition:.2s}
-  .thumbs img:hover{opacity:1}
-  .thumbs img.on{border-color:var(--red);opacity:1}
-  .prod .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
-  .prod .cats-line{display:flex;gap:6px;flex-wrap:wrap}
-  .prod .cats-line span{font-size:12px;font-weight:700;color:var(--muted);background:var(--bg);border:1px solid var(--line);padding:1px 10px;border-radius:999px}
-  .prod h3{font-size:19px;font-weight:800;line-height:1.45}
-  .prod ul{list-style:none;color:var(--muted);font-size:14px;display:grid;gap:3px}
-  .prod ul li{display:flex;gap:6px}
-  .prod ul li::before{content:"✓";color:var(--green);font-weight:900}
-  details.specs{font-size:14px;border-top:1px dashed var(--line);padding-top:8px}
-  details.specs summary{cursor:pointer;font-weight:800;color:var(--red);list-style:none;display:flex;justify-content:space-between}
-  details.specs summary::-webkit-details-marker{display:none}
-  details.specs summary::after{content:"+";font-size:18px;line-height:1}
-  details.specs[open] summary::after{content:"−"}
-  details.specs dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin-top:8px}
-  details.specs dt{color:var(--muted)}
-  details.specs dd{font-weight:600}
-  .price{display:flex;align-items:baseline;gap:10px;margin-top:auto;padding-top:6px}
-  .price b{font-size:28px;color:var(--red);font-weight:900}
-  .price s{color:#A9A3A0;font-size:15px}
-  .prod .btn{width:100%}
-  .empty{grid-column:1/-1;text-align:center;background:#fff;border:1.5px dashed var(--line);border-radius:24px;padding:46px 20px;color:var(--muted)}
-  .empty b{display:block;color:var(--ink);font-size:20px;margin-bottom:4px}
-
-  /* ---------- how ---------- */
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative}
-  .step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 22px;text-align:center;position:relative}
-  .step .n{width:54px;height:54px;border-radius:16px;background:linear-gradient(145deg,#E5203F,var(--red-dark));color:#fff;font-weight:900;font-size:22px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;transform:rotate(-6deg);box-shadow:0 10px 20px -8px rgba(200,16,46,.6)}
-  .step b{font-size:18px}
-  .step p{color:var(--muted);font-size:15px;margin-top:4px}
-
-  /* ---------- CTA band ---------- */
-  .cta{margin:70px auto 0;background:radial-gradient(500px 260px at 15% 0%,rgba(255,255,255,.18),transparent 70%),linear-gradient(120deg,var(--red),var(--red-dark));color:#fff;border-radius:28px;padding:40px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
-  .cta h2{font-size:28px;font-weight:900;line-height:1.3}
-  .cta p{opacity:.9}
-  .cta .btn{background:#fff;color:var(--red);box-shadow:none}
-  .cta .btn:hover{background:#FFF1F3}
-
-  footer{background:var(--ink);color:#B9B9C2;padding:40px 0 30px;text-align:center;font-size:14px;margin-top:70px}
-  footer .logo{justify-content:center;color:#fff;margin-bottom:10px}
-  footer .fl{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:12px 0 16px;font-weight:700;color:#fff}
-  footer .fl a:hover{color:#FF8FA0}
-  footer .copy{border-top:1px solid rgba(255,255,255,.08);padding-top:16px;margin-top:6px;font-size:13px;color:#8C8C96}
-
-  /* floating whatsapp */
-  .fab{position:fixed;bottom:20px;left:20px;width:58px;height:58px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -8px rgba(31,157,85,.7);z-index:40;transition:transform .2s}
-  .fab:hover{transform:scale(1.08)}
-  .fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--green);animation:ping 2.2s ease-out infinite}
-  @keyframes ping{from{transform:scale(1);opacity:.8}to{transform:scale(1.6);opacity:0}}
-
-  /* reveal on scroll */
-  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
-  .reveal.in{opacity:1;transform:none}
-
-  /* ---------- modal ---------- */
-  .ov{position:fixed;inset:0;background:rgba(20,15,15,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+  /* overlays */
+  .ov{position:fixed;inset:0;background:rgba(20,15,15,.55);display:none;z-index:50}
   .ov.show{display:flex}
-  .modal{background:#fff;border-radius:24px;max-width:450px;width:100%;padding:24px;max-height:92vh;overflow:auto;animation:pop .3s ease both}
-  .modal h3{font-size:21px;font-weight:900;margin-bottom:4px}
-  .modal .sum{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px;margin:12px 0 14px;font-size:14px;display:flex;gap:12px;align-items:center}
-  .modal .sum img{width:60px;height:60px;border-radius:10px;object-fit:cover;flex:0 0 auto}
-  .modal .sum b{font-size:15px;line-height:1.4;display:block}
-  .modal label{display:block;font-weight:700;font-size:14px;margin:10px 0 4px}
-  .modal input,.modal select,.modal textarea{width:100%;font-family:inherit;font-size:15px;padding:11px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
-  .modal input:focus,.modal select:focus,.modal textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px var(--red-soft)}
+  /* product page */
+  #pdOv{align-items:center;justify-content:center;padding:16px}
+  .pd{background:#fff;border-radius:22px;max-width:980px;width:100%;max-height:94vh;overflow:auto;display:grid;grid-template-columns:1.05fr 1fr;position:relative}
+  .pd .x{position:absolute;top:12px;left:12px;z-index:2;width:40px;height:40px;border-radius:50%;border:0;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.15);font-size:22px;cursor:pointer}
+  .pd .gal{background:var(--cream);padding:16px}
+  .pd .gal .main{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:16px;display:block}
+  .pd .thumbs{display:flex;gap:8px;margin-top:10px;overflow-x:auto}
+  .pd .thumbs img{width:64px;height:64px;object-fit:cover;border-radius:10px;border:2px solid transparent;cursor:pointer;flex:0 0 auto}
+  .pd .thumbs img.on{border-color:var(--red)}
+  .pd .info2{padding:26px 24px;display:flex;flex-direction:column;gap:10px}
+  .pd h2{font-size:24px;font-weight:800;line-height:1.35}
+  .pd .price b{font-size:30px}
+  .pd ul{font-size:15px;display:grid;gap:4px}
+  .pd dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:14px;background:var(--bg);border-radius:12px;padding:12px 14px}
+  .pd dt{color:var(--muted)}
+  .pd dd{font-weight:600}
+  .lbl{font-weight:700;font-size:14px}
   .qty{display:flex;align-items:center;gap:10px}
-  .qty button{width:40px;height:40px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font-size:20px;cursor:pointer;font-family:inherit}
-  .qty button:hover{border-color:var(--ink)}
-  .qty span{font-weight:900;font-size:18px;min-width:24px;text-align:center}
-  .total{display:flex;justify-content:space-between;font-weight:900;font-size:19px;margin:16px 0 4px}
-  .total b{color:var(--red)}
-  .note{color:var(--muted);font-size:13px;margin-bottom:14px}
-  .err{color:var(--red);font-size:13px;min-height:18px;font-weight:700}
-  .row{display:flex;gap:10px;margin-top:6px}
-  .row .btn{flex:1}
-  .done{text-align:center;display:none}
-  .done .big{font-size:48px}
-  .wa-btn{background:var(--green);box-shadow:0 10px 22px -10px rgba(31,157,85,.7)}
-  .wa-btn:hover{background:#17804A}
+  .qty button{width:36px;height:36px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-size:19px;cursor:pointer}
+  .qty span{font-weight:800;font-size:17px;min-width:22px;text-align:center}
+  .field{width:100%;font-family:inherit;font-size:15px;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
+  .field:focus{outline:none;border-color:var(--red)}
+  .pd .buy{display:flex;gap:8px;flex-wrap:wrap}
+  .pd .buy .btn{flex:1;min-width:140px}
+  .share{background:none;border:0;color:var(--muted);font-size:14px;cursor:pointer;text-decoration:underline;align-self:flex-start}
+  .mini{font-size:13px;color:var(--muted)}
 
-  @media (max-width:960px){
-    .cats{grid-template-columns:repeat(2,minmax(0,1fr))}
-    .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* cart drawer */
+  #cartOv{justify-content:flex-start}
+  .drawer{background:#fff;width:100%;max-width:430px;height:100%;display:flex;flex-direction:column;box-shadow:0 0 40px rgba(0,0,0,.2)}
+  .dh{display:flex;justify-content:space-between;align-items:center;padding:16px 18px;border-bottom:1px solid var(--line)}
+  .dh h3{font-size:20px;font-weight:800}
+  .dh button{width:38px;height:38px;border-radius:50%;border:1.5px solid var(--line);background:#fff;font-size:20px;cursor:pointer}
+  .db{flex:1;overflow:auto;padding:14px 18px}
+  .df{border-top:1px solid var(--line);padding:14px 18px;display:grid;gap:8px}
+  .line{display:grid;grid-template-columns:64px 1fr auto;gap:10px;padding:10px 0;border-bottom:1px dashed var(--line);align-items:start}
+  .line img{width:64px;height:64px;object-fit:cover;border-radius:10px}
+  .line .nm{font-weight:700;font-size:14px;line-height:1.4}
+  .line .nt{font-size:12px;color:#7A4B00}
+  .line .pr{font-weight:800;color:var(--red);font-size:15px;white-space:nowrap}
+  .line .qty button{width:28px;height:28px;font-size:16px;border-radius:8px}
+  .line .rm{background:none;border:0;color:var(--muted);font-size:12px;cursor:pointer;text-decoration:underline;margin-top:4px}
+  .empty{text-align:center;color:var(--muted);padding:40px 10px}
+  .sumrow{display:flex;justify-content:space-between;font-size:15px}
+  .sumrow.t{font-size:19px;font-weight:800}
+  .sumrow.t b{color:var(--red)}
+  .co label{display:block;font-weight:600;font-size:14px;margin:10px 0 4px}
+  .err{color:var(--red);font-size:13px;min-height:18px}
+  .done{text-align:center;padding:30px 10px}
+  .done .big{font-size:46px}
+  .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--ink);color:#fff;padding:10px 18px;border-radius:12px;font-weight:600;z-index:60;transition:.3s}
+  .toast.show{transform:translateX(-50%) translateY(0)}
+
+  @media (max-width:860px){
+    .nav-links{display:none}
+    .hero{grid-template-columns:1fr;padding-top:26px;gap:24px}
+    .pd .info2{padding:20px 18px}
+    .pd h2{font-size:20px}
+    .hero h1{font-size:31px}
     .trust{grid-template-columns:repeat(2,1fr)}
-  }
-  @media (max-width:760px){
-    .links{display:none}
-    .nav-wa .txt{display:none}
-    .hero{grid-template-columns:1fr;padding:40px 16px 64px;gap:34px;text-align:center}
-    .hero p{margin-inline:auto}
-    .hero .ctas,.hero-points{justify-content:center}
-    .hero h1{font-size:34px}
-    .wrap{padding:0 16px}
-    .grid{grid-template-columns:minmax(0,1fr)}
-    .steps{grid-template-columns:1fr}
-    .sec-title h2{font-size:27px}
-    .cat{min-height:132px;padding:16px 14px}
-    .cat .emo{font-size:30px;top:12px;left:12px}
-    .cat .go{display:none}
-    .cat b{font-size:17px}
-    .cta{padding:30px 22px;text-align:center;justify-content:center}
-    .trust div{flex-direction:column;text-align:center;gap:6px;font-size:14px}
-    .chips{gap:8px;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px}
-    .chips::-webkit-scrollbar{display:none}
-    .chip{font-size:14px;padding:8px 14px;flex:0 0 auto}
-  }
-  @media (prefers-reduced-motion:reduce){
-    *,*::before,*::after{animation:none!important;transition:none!important}
-    html{scroll-behavior:auto}
-    .reveal{opacity:1;transform:none}
+    .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+    .prod .body{padding:12px}
+    .prod h3{font-size:15px}
+    .prod ul{display:none}
+    .price b{font-size:19px}
+    .price s{font-size:13px}
+    .tag{font-size:11px;top:8px;right:8px;padding:2px 8px}
+    .disc{font-size:11px;bottom:8px;left:8px;padding:2px 8px}
+    .hero-art{aspect-ratio:4/3}
+    .hero p{font-size:16px}
+    .prod .acts{flex-direction:column}
+    .info{grid-template-columns:1fr}
+    .steps{grid-template-columns:1fr 1fr}
+    .foot{grid-template-columns:1fr}
+    #custom{grid-template-columns:1fr !important}
+    .pd{grid-template-columns:1fr}
+    .cart-btn .t{display:none}
   }
 </style>
 </head>
 <body>
 
-<div class="topbar" aria-label="مميزات المتجر">
-  <div class="track" id="track">
-    <span>🚚 توصيل لكل محافظات مصر</span><span>💵 الدفع عند الاستلام</span><span>👀 عاين قبل ما تدفع</span><span>💬 خدمة عملاء على واتساب</span><span>🔥 عروض لفترة محدودة</span>
-  </div>
-</div>
+<div class="topbar">🧶 كروشيه شغل إيد 100% — <b>متاح ألوان ومقاسات بالطلب</b> — توصيل لكل مصر والدفع عند الاستلام</div>
 
 <header>
   <div class="wrap nav">
-    <a class="logo" href="#top" aria-label="ريدكارد"><i class="card"></i>ريد<span>كارد</span></a>
-    <nav class="links">
-      <a href="#cats">الأقسام</a>
+    <a class="logo" href="#top"><i class="card"></i>ريد<span>كارد</span></a>
+    <nav class="nav-links">
       <a href="#products">المنتجات</a>
-      <a href="#how">تطلب إزاي؟</a>
+      <a href="#shipping">الشحن</a>
+      <a href="#returns">الاستبدال</a>
+      <a href="#faq">أسئلة شائعة</a>
     </nav>
-    <a class="nav-wa wa-link" href="#" target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>
-      <span class="txt">كلمنا واتساب</span>
-    </a>
+    <div class="nav-act">
+      <button class="cart-btn" id="cartBtn" aria-label="السلة">🛒 <span class="t">السلة</span><span class="count" id="cartCount"></span></button>
+    </div>
   </div>
 </header>
 
 <main id="top">
-  <div class="hero-bg">
-    <section class="wrap hero">
-      <div>
-        <span class="eyebrow">✨ متجر ريدكارد</span>
-        <h1>كل اللي محتاجه<br><em>في مكان واحد</em></h1>
-        <p>منتجات مختارة بعناية بأسعار حلوة، في أقسام كتير وبتزيد. بتوصلك لحد باب البيت، وتدفع لما تستلم.</p>
-        <div class="ctas">
-          <a class="btn" href="#products">تسوّق دلوقتي ←</a>
-          <a class="btn light" href="#cats">تصفح الأقسام</a>
-        </div>
-        <div class="hero-points">
-          <span><i></i>الدفع عند الاستلام</span>
-          <span><i></i>شحن لكل مصر</span>
-          <span><i></i>عاين قبل ما تدفع</span>
-        </div>
+  <section class="wrap hero">
+    <div>
+      <span class="eyebrow">🧶 هاند ميد · شغل إيد 100%</span>
+      <h1>كوفيات كروشيه <em>شغل إيد</em><br>دافية وبتتعمل مخصوص ليك</h1>
+      <p>قطع كروشيه متاحة فورًا، ولو عاوز لون أو مقاس مختلف نعملهولك مخصوص. بتوصلك لحد باب البيت، وتدفع لما تستلم.</p>
+      <div class="cta">
+        <a class="btn" href="#products" data-go="handmade">🧶 شوف الكوفيات ←</a>
+        <a class="btn ghost" href="#custom">اطلب لون أو مقاس خاص</a>
       </div>
-      <div class="collage" aria-hidden="true">
-        <div class="main"><img id="h0" alt=""></div>
-        <div class="mini m1"><img id="h1" alt=""></div>
-        <div class="mini m2"><img id="h2" alt=""></div>
-        <div class="price-pill"><small>عروض تبدأ من</small><b id="fromPrice"></b></div>
-      </div>
-    </section>
-  </div>
+    </div>
+    <div class="hero-art">
+      <img src="img/hm/red1.jpg" alt="كوفية كروشيه نبيتي">
+      <img src="img/hm/purple1.jpg" alt="كوفية كروشيه موف">
+      <img src="img/hm/gray2.jpg" alt="كوفية كروشيه رمادي">
+      <div class="hero-badge">✅ متاح فورًا</div>
+    </div>
+  </section>
 
   <section class="wrap trust">
-    <div><span class="ic">💵</span><span>الدفع عند الاستلام<small>مفيش أي دفع مقدم</small></span></div>
-    <div><span class="ic">🚚</span><span>شحن لكل مصر<small>من 2 لـ5 أيام عمل</small></span></div>
-    <div><span class="ic">👀</span><span>عاين قبل ما تدفع<small>افتح واتأكد بنفسك</small></span></div>
-    <div><span class="ic">💬</span><span>خدمة على واتساب<small>بنرد بسرعة</small></span></div>
+    <div><span class="ic">🧶</span>شغل إيد 100%<small>كل قطعة معمولة بإيد</small></div>
+    <div><span class="ic">🎨</span>ألوان ومقاسات بالطلب<small>نعملهالك زي ما تحب</small></div>
+    <div><span class="ic">💵</span>الدفع عند الاستلام<small>مفيش أي دفع مقدم</small></div>
+    <div><span class="ic">🚚</span>شحن لكل مصر<small id="trustTime"></small></div>
   </section>
 
-  <section class="wrap block" id="cats">
-    <div class="sec-title reveal">
-      <div class="kick">تسوّق حسب القسم</div>
-      <h2>اختار القسم اللي يناسبك</h2>
-    </div>
-    <div class="cats" id="catsGrid"></div>
-  </section>
-
-  <section class="wrap block" id="products">
-    <div class="sec-title reveal">
-      <div class="kick">🔥 عروض لفترة محدودة</div>
-      <h2>منتجاتنا</h2>
-      <p>الكمية محدودة، والعرض لفترة قصيرة</p>
-    </div>
-    <div class="chips" id="chips" role="group" aria-label="فلترة حسب القسم"></div>
+  <section class="wrap" id="products">
+    <div class="sec-title"><h2>منتجاتنا</h2><p>قطع الكروشيه متاحة فورًا. اضغط على أي منتج تشوف صوره وتفاصيله</p></div>
+    <div class="tabs" id="tabs"></div>
     <div class="grid" id="grid"></div>
   </section>
 
-  <section class="wrap block" id="how">
-    <div class="sec-title reveal">
-      <div class="kick">سهلة جدًا</div>
-      <h2>تطلب إزاي؟</h2>
+  <section class="wrap box" id="custom" style="margin-bottom:56px;display:grid;grid-template-columns:1fr auto;gap:18px;align-items:center;background:#FFF8EC;border-color:#F3DFB8">
+    <div>
+      <h2 style="font-size:24px;font-weight:800;margin-bottom:6px">🎨 عاوز لون أو مقاس مختلف؟</h2>
+      <p style="color:#45454D">أي قطعة كروشيه عندنا ينفع تتعمل بالألوان والمقاسات اللي تحبها، أو ابعتلنا صورة لموديل عاجبك ونقولك نقدر نعمله ولا لأ. ابعتلنا على واتساب ونتفق على السعر والمدة.</p>
     </div>
+    <a class="btn wa" id="customWa" href="#" target="_blank" rel="noopener">اطلب على واتساب</a>
+  </section>
+
+  <section class="wrap how">
+    <h2>تطلب إزاي؟</h2>
     <div class="steps">
-      <div class="step reveal"><div class="n">1</div><b>اختار المنتج</b><p>اضغط "اطلب الآن" تحت المنتج اللي عاجبك</p></div>
-      <div class="step reveal"><div class="n">2</div><b>اكتب بياناتك</b><p>الاسم والرقم والعنوان، والطلب يوصلنا على واتساب</p></div>
-      <div class="step reveal"><div class="n">3</div><b>استلم وادفع</b><p>بنأكد معاك ونشحن، وتدفع وإنت بتستلم</p></div>
+      <div><div class="n">1</div><b>اختار المنتجات</b><p>ضيف اللي عاجبك للسلة</p></div>
+      <div><div class="n">2</div><b>اكتب بياناتك</b><p>الاسم والرقم والعنوان</p></div>
+      <div><div class="n">3</div><b>ابعت على واتساب</b><p>الطلب بيوصلنا جاهز، ونكلمك نأكده</p></div>
+      <div><div class="n">4</div><b>عاين وادفع</b><p>افتح الشحنة قدام المندوب، وادفع لما تطمّن</p></div>
     </div>
   </section>
 
-  <section class="wrap">
-    <div class="cta reveal">
-      <div>
-        <h2>عندك سؤال قبل ما تطلب؟</h2>
-        <p>كلمنا على واتساب، وهنرد عليك ونساعدك تختار.</p>
-      </div>
-      <a class="btn wa-link" href="#" target="_blank" rel="noopener">💬 كلمنا على واتساب</a>
+  <section class="wrap info">
+    <div class="box" id="shipping">
+      <h2>🚚 الشحن والتوصيل</h2>
+      <p>بنوصّل لكل محافظات مصر خلال <b id="shipTime"></b>. مصاريف الشحن حسب المحافظة:</p>
+      <table class="ship-table" id="shipTable"></table>
+      <p class="mini">مصاريف الشحن بتتحسب مرة واحدة على الأوردر كله، مهما كان عدد المنتجات.</p>
     </div>
+    <div class="box" id="returns">
+      <h2>👀 المعاينة والاستبدال</h2>
+      <ul>
+        <li><b>من حقك تفتح الشحنة وتعاين المنتج قدام المندوب</b> قبل ما تدفع.</li>
+        <li>لو المنتج مش مطابق للصور أو المواصفات، أو فيه كسر أو عيب، <b>ترفضه وقتها</b> ومش هتدفع تمنه.</li>
+        <li>بعد ما تستلم وتدفع، <b>مفيش استرجاع ولا استبدال</b>، عشان كده عاين كويس الأول.</li>
+        <li><b>منتجات الهاند ميد المعمولة بالطلب</b> (لون أو مقاس خاص) بتتعمل مخصوص ليك، فبنأكد معاك كل التفاصيل على واتساب قبل ما نبدأ.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="wrap box faq" id="faq" style="margin-bottom:56px">
+    <h2>❓ أسئلة شائعة</h2>
+    <details><summary>بدفع إزاي؟</summary><p>الدفع كاش للمندوب وإنت بتستلم، ومفيش أي دفع مقدم.</p></details>
+    <details><summary>الأوردر بيوصل في قد إيه؟</summary><p id="faqTime"></p></details>
+    <details><summary>أقدر أطلب أكتر من منتج في نفس الأوردر؟</summary><p>أيوه، ضيف كل اللي عاوزه للسلة واطلبهم مرة واحدة، وهتدفع شحن مرة واحدة بس.</p></details>
+    <details><summary>منتجات الهاند ميد ينفع تتعمل بلون أو مقاس تاني؟</summary><p>أيوه، أغلب قطع الكروشيه ينفع تتعمل بالألوان والمقاسات اللي تحبها. اكتب طلبك في خانة "اللون أو المقاس" وإنت بتضيف المنتج، وهنأكد معاك السعر والمدة على واتساب.</p></details>
+    <details><summary>لو المنتج وصل مكسور أو مش زي الصورة؟</summary><p>افتح الشحنة قدام المندوب. لو فيه أي مشكلة، ارفضها وقتها ومش هتدفع تمنها.</p></details>
+    <details><summary>إزاي أتواصل معاكم؟</summary><p>على واتساب على طول، من الزرار الأخضر اللي في الصفحة.</p></details>
+  </section>
+
+  <section class="wrap about">
+    <h2>عن ريدكارد</h2>
+    <p>ريدكارد متجر مصري لقطع الكروشيه <b>شغل الإيد</b>: كوفيات وبندانات وإكسسوارات بتتعمل غرزة غرزة بحب. القطع المعروضة <b>متاحة فورًا</b>، ولو عاوز لون أو مقاس مختلف، نعملهولك مخصوص. وكمان بنختارلك شوية منتجات حلوة لبيتك.</p>
   </section>
 </main>
 
 <footer>
   <div class="wrap">
-    <div class="logo"><i class="card"></i>ريد<span>كارد</span></div>
-    كل اللي محتاجه في مكان واحد — توصيل لكل محافظات مصر
-    <div class="fl" id="footCats"></div>
-    واتساب: <span dir="ltr">+20 106 861 3396</span>
-    <div class="copy">© <span id="yr"></span> ريدكارد RedCard</div>
+    <div class="foot">
+      <div>
+        <div class="logo"><i class="card"></i>ريد<span>كارد</span></div>
+        <p>كروشيه شغل إيد 100%، متاح فورًا وبالطلب. توصيل لكل محافظات مصر، والدفع عند الاستلام.</p>
+      </div>
+      <div>
+        <h4>المتجر</h4>
+        <a href="#products">كل المنتجات</a>
+        <a href="#products" data-go="handmade">🧶 هاند ميد</a>
+        <a href="#custom">لون أو مقاس خاص</a>
+        <a href="#products" data-go="home">البيت والديكور</a>
+      </div>
+      <div>
+        <h4>المساعدة</h4>
+        <a href="#shipping">الشحن والتوصيل</a>
+        <a href="#returns">المعاينة والاستبدال</a>
+        <a href="#faq">أسئلة شائعة</a>
+        <a id="footWa" href="#" target="_blank" rel="noopener">واتساب: <span dir="ltr" id="waTxt"></span></a>
+      </div>
+    </div>
+    <div class="copy">© <span id="yr"></span> ريدكارد RedCard — كل الحقوق محفوظة</div>
   </div>
 </footer>
 
-<a class="fab wa-link" href="#" target="_blank" rel="noopener" aria-label="كلمنا على واتساب">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>
+<a class="fab" id="fab" href="#" target="_blank" rel="noopener" aria-label="واتساب">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>
 </a>
 
-<!-- order modal -->
-<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="mTitle">
-  <div class="modal">
-    <form id="form" novalidate>
-      <h3 id="mTitle">تأكيد الطلب</h3>
-      <div class="sum" id="sum"></div>
+<!-- product page -->
+<div class="ov" id="pdOv" role="dialog" aria-modal="true"><div class="pd" id="pd"></div></div>
 
-      <label>الكمية</label>
-      <div class="qty"><button type="button" id="minus" aria-label="أقل">−</button><span id="q">1</span><button type="button" id="plus" aria-label="أكتر">+</button></div>
-
-      <label for="fName">الاسم بالكامل</label>
-      <input id="fName" autocomplete="name" placeholder="مثال: محمد أحمد">
-
-      <label for="fPhone">رقم الموبايل</label>
-      <input id="fPhone" inputmode="tel" dir="ltr" placeholder="01xxxxxxxxx">
-
-      <label for="fGov">المحافظة</label>
-      <select id="fGov"></select>
-
-      <label for="fAddr">العنوان بالتفصيل</label>
-      <textarea id="fAddr" rows="2" placeholder="المنطقة، الشارع، رقم العمارة، علامة مميزة"></textarea>
-
-      <div class="total"><span>الإجمالي</span><b id="tot"></b></div>
-      <div class="note">الدفع عند الاستلام. هنكلمك نأكد الطلب قبل الشحن.</div>
-      <div class="err" id="err"></div>
-      <div class="row">
-        <button class="btn" type="submit">تأكيد الطلب</button>
-        <button class="btn ghost" type="button" id="cancel">إلغاء</button>
-      </div>
-    </form>
-
-    <div class="done" id="done">
-      <div class="big">✅</div>
-      <h3>فاضل خطوة واحدة!</h3>
-      <p class="note">اضغط على الزرار اللي تحت عشان طلبك يوصلنا على واتساب، وهنكلمك نأكده.</p>
-      <a class="btn wa-btn" id="waLink" href="#" target="_blank" rel="noopener" style="width:100%">ابعت الطلب على واتساب</a>
-      <p class="note" style="margin-top:10px">لو الزرار مفتحش، ابعت على واتساب: <span dir="ltr">+20 106 861 3396</span></p>
-      <button class="btn ghost" type="button" id="close" style="width:100%;margin-top:6px">رجوع للمتجر</button>
-    </div>
+<!-- cart drawer -->
+<div class="ov" id="cartOv" role="dialog" aria-modal="true">
+  <div class="drawer">
+    <div class="dh"><h3 id="dTitle">🛒 السلة</h3><button id="cartClose" aria-label="قفل">×</button></div>
+    <div class="db" id="db"></div>
+    <div class="df" id="df"></div>
   </div>
 </div>
 
-<script>document.write('<script src="data.js?t=' + Date.now() + '"><\/script>');</script>
+<div class="toast" id="toast"></div>
+
+<script src="data.js"></script>
 <script>
-const WA = "201068613396";
+/* ---------- helpers ---------- */
+const $ = s => document.querySelector(s);
+const fmt = n => Number(n).toLocaleString("ar-EG") + " ج.م";
+const byId = id => PRODUCTS.find(p => p.id === id);
+const GOVS = SHIPPING_ZONES.flatMap(z => z.govs);
+const feeFor = g => (SHIPPING_ZONES.find(z => z.govs.includes(g)) || {}).fee;
+const waLink = t => "https://wa.me/" + WA + "?text=" + encodeURIComponent(t);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function toast(t){ const el=$("#toast"); el.textContent=t; el.classList.add("show"); clearTimeout(toast.t); toast.t=setTimeout(()=>el.classList.remove("show"),2200); }
+function lock(){ document.body.classList.toggle("lock", $("#pdOv").classList.contains("show") || $("#cartOv").classList.contains("show")); }
 
-/* المنتجات والأقسام بتيجي من data.js، وبتتعدّل من صفحة الإدارة admin.html */
-const D = window.REDCARD_DATA || {categories:[], products:[]};
-const categories = D.categories || [];
-const products = (D.products || []).filter(p => !p.hidden && p.price > 0 && p.imgs && p.imgs.length)
-  .map(p => ({cats:[], feats:[], specs:[], tag:"", ...p}));
-const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+/* ---------- static bits ---------- */
+$("#trustTime").textContent = DELIVERY_TIME;
+$("#shipTime").textContent = DELIVERY_TIME;
+$("#faqTime").textContent = "الأوردر بيوصل " + DELIVERY_TIME + " من وقت تأكيد الطلب.";
+$("#shipTable").innerHTML = SHIPPING_ZONES.map(z => `<tr><td>${z.name}<small>${z.govs.join("، ")}</small></td><td>${fmt(z.fee)}</td></tr>`).join("");
+$("#waTxt").textContent = "+" + WA.slice(0,2) + " " + WA.slice(2);
+["#footWa","#fab"].forEach(s => $(s).href = waLink("السلام عليكم، عندي استفسار عن منتجات ريدكارد"));
+$("#customWa").href = waLink("السلام عليكم، عاوز أطلب قطعة كروشيه بلون أو مقاس خاص:");
+$("#yr").textContent = new Date().getFullYear();
 
-const govs = ["القاهرة","الجيزة","الإسكندرية","القليوبية","الشرقية","الدقهلية","الغربية","المنوفية","البحيرة","كفر الشيخ","دمياط","بورسعيد","الإسماعيلية","السويس","الفيوم","بني سويف","المنيا","أسيوط","سوهاج","قنا","الأقصر","أسوان","البحر الأحمر","مطروح","شمال سيناء","جنوب سيناء","الوادي الجديد"];
-
-const fmt = n => n.toLocaleString("ar-EG") + " ج.م";
-const $ = id => document.getElementById(id);
-const catName = id => (categories.find(c=>c.id===id)||{}).name || "";
-const countIn = id => id==="all" ? products.length : products.filter(p=>p.cats.includes(id)).length;
-const countTxt = n => n===0 ? "قريبًا" : n===1 ? "منتج واحد" : n===2 ? "منتجين" : n<=10 ? `${n.toLocaleString("ar-EG")} منتجات` : `${n.toLocaleString("ar-EG")} منتج`;
-
-/* روابط واتساب */
-const waGeneral = "https://wa.me/" + WA + "?text=" + encodeURIComponent("السلام عليكم، عندي استفسار عن منتجات ريدكارد");
-document.querySelectorAll(".wa-link").forEach(a => a.href = waGeneral);
-
-/* شريط فوق بيتحرك: نكرر المحتوى عشان يبان متصل */
-const track = $("track"); track.innerHTML = track.innerHTML.repeat(4);
-
-/* صور أول الصفحة: من أول 3 منتجات (الكبيرة بتاخد تاني صورة لو موجودة) */
-[0,1,2].forEach(i => {
-  const p = products[i % Math.max(products.length,1)], el = $("h"+i);
-  if(!p){ el.parentNode.style.display = "none"; return; }
-  el.src = (i===0 && p.imgs[1]) ? p.imgs[1] : p.imgs[0];
+/* ---------- grid + tabs ---------- */
+let curCat = "all";
+$("#tabs").innerHTML = `<button data-cat="all" class="on">الكل</button>` + CATEGORIES.map(c => `<button data-cat="${c.id}">${c.name}</button>`).join("");
+function setCat(c){
+  curCat = c;
+  document.querySelectorAll("#tabs button").forEach(b => b.classList.toggle("on", b.dataset.cat === c));
+  renderGrid();
+}
+function renderGrid(){
+  $("#grid").innerHTML = PRODUCTS.filter(p => curCat === "all" || p.cat === curCat).map(p => `
+    <article class="prod">
+      <a class="img" href="#p-${p.id}">
+        <img src="${p.imgs[0]}" alt="${esc(p.name)}" loading="lazy">
+        ${p.tag ? `<span class="tag">${p.tag}</span>` : ""}
+        ${p.old ? `<span class="disc">خصم ${Math.round((1 - p.price / p.old) * 100)}%</span>` : ""}
+      </a>
+      <div class="body">
+        <a href="#p-${p.id}"><h3>${p.name}</h3></a>
+        <ul>${p.feats.slice(0, 2).map(f => `<li>${f}</li>`).join("")}</ul>
+        ${p.custom ? `<span class="custom-hint">🎨 متاح ألوان ومقاسات بالطلب</span>` : ""}
+        <div class="price"><b>${fmt(p.price)}</b>${p.old ? `<s>${fmt(p.old)}</s>` : ""}</div>
+        <div class="acts">
+          <button class="btn" data-add="${p.id}">أضف للسلة</button>
+          <a class="btn ghost" href="#p-${p.id}">التفاصيل</a>
+        </div>
+      </div>
+    </article>`).join("");
+}
+$("#tabs").addEventListener("click", e => { const b = e.target.closest("button[data-cat]"); if (b) setCat(b.dataset.cat); });
+document.querySelectorAll("[data-go]").forEach(a => a.addEventListener("click", () => setCat(a.dataset.go)));
+$("#grid").addEventListener("click", e => {
+  const b = e.target.closest("[data-add]"); if (!b) return;
+  const p = byId(b.dataset.add);
+  if (p.custom) { location.hash = "p-" + p.id; return; }   // handmade: open page to choose color/size
+  addToCart(p.id, 1, ""); toast("✅ اتضاف للسلة");
 });
-if(products.length) $("fromPrice").textContent = fmt(Math.min(...products.map(p=>p.price)));
-else $("fromPrice").parentNode.style.display = "none";
-$("yr").textContent = new Date().getFullYear();
+renderGrid();
 
-/* كروت الأقسام */
-$("catsGrid").innerHTML = categories.map(c => `
-  <button class="cat reveal" data-cat="${esc(c.id)}" style="${c.color ? `background:linear-gradient(140deg,#fff,${esc(c.color)})` : ""}">
-    <span class="go">←</span><span class="emo">${esc(c.emo)}</span>
-    <b>${esc(c.name)}</b><small>${countTxt(countIn(c.id))}</small>
-  </button>`).join("");
-$("footCats").innerHTML = categories.map(c => `<a href="#products" data-cat="${esc(c.id)}">${esc(c.name)}</a>`).join("");
+/* ---------- cart (saved in this browser) ---------- */
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem("rc_cart") || "[]").filter(l => byId(l.id)); } catch (e) { cart = []; }
+function save(){ try { localStorage.setItem("rc_cart", JSON.stringify(cart)); } catch (e) {} updateCount(); }
+function updateCount(){ const n = cart.reduce((s, l) => s + l.qty, 0); $("#cartCount").textContent = n || ""; }
+function addToCart(id, qty, note){
+  const ex = cart.find(l => l.id === id && (l.note || "") === (note || ""));
+  if (ex) ex.qty = Math.min(10, ex.qty + qty); else cart.push({ id, qty, note: note || "" });
+  save();
+}
+const subtotal = () => cart.reduce((s, l) => s + byId(l.id).price * l.qty, 0);
+updateCount();
 
-/* أزرار الفلترة */
-$("chips").innerHTML = [{id:"all",name:"الكل",emo:"✨"}, ...categories].map(c =>
-  `<button class="chip" data-cat="${esc(c.id)}" aria-pressed="false">${esc(c.emo)} ${esc(c.name)} <span class="n">${countIn(c.id).toLocaleString("ar-EG")}</span></button>`).join("");
-
-const grid = $("grid");
-let activeCat = "all";
-
-function card(p){
-  const hasOff = p.old && p.old > p.price;
-  const off = hasOff ? Math.round((1 - p.price / p.old) * 100) : 0;
-  const cl = p.cats.filter(c => catName(c));
-  return `<article class="prod">
-    <div class="img">${p.tag ? `<span class="tag">${esc(p.tag)}</span>` : ""}${off > 0 ? `<span class="off">وفّر ${off.toLocaleString("ar-EG")}٪</span>` : ""}
-      <img class="main" src="${esc(p.imgs[0])}" alt="${esc(p.name)}" loading="lazy"></div>
-    ${p.imgs.length > 1 ? `<div class="thumbs">${p.imgs.map((s,i)=>`<img src="${esc(s)}" class="${i?'':'on'}" alt="" loading="lazy">`).join("")}</div>` : ""}
-    <div class="body">
-      ${cl.length ? `<div class="cats-line">${cl.map(c=>`<span>${esc(catName(c))}</span>`).join("")}</div>` : ""}
-      <h3>${esc(p.name)}</h3>
-      ${p.feats.length ? `<ul>${p.feats.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>` : ""}
-      ${p.specs.length ? `<details class="specs"><summary>المواصفات</summary><dl>${p.specs.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl></details>` : ""}
-      <div class="price"><b>${fmt(p.price)}</b>${hasOff ? `<s>${fmt(p.old)}</s>` : ""}</div>
-      <button class="btn" data-id="${esc(p.id)}">اطلب الآن</button>
+/* ---------- product page ---------- */
+function openProduct(id){
+  const p = byId(id); if (!p) return;
+  let q = 1;
+  $("#pd").innerHTML = `
+    <button class="x" data-close aria-label="قفل">×</button>
+    <div class="gal">
+      <img class="main" id="pdMain" src="${p.imgs[0]}" alt="${esc(p.name)}">
+      ${p.imgs.length > 1 ? `<div class="thumbs">${p.imgs.map((s, i) => `<img src="${s}" class="${i ? "" : "on"}" alt="">`).join("")}</div>` : ""}
     </div>
-  </article>`;
+    <div class="info2">
+      ${p.tag ? `<span class="custom-hint" style="background:#FDE8EB;color:var(--red)">${p.tag}</span>` : ""}
+      <h2>${p.name}</h2>
+      <div class="price"><b>${fmt(p.price)}</b>${p.old ? `<s>${fmt(p.old)}</s>` : ""}</div>
+      <ul>${p.feats.map(f => `<li>${f}</li>`).join("")}</ul>
+      ${p.specs ? `<dl>${p.specs.map(([k, v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl>` : ""}
+      ${p.custom ? `<div><div class="lbl">🎨 عاوزه بلون أو مقاس تاني؟ (اختياري)</div>
+        <input class="field" id="pdNote" placeholder="مثال: نفس الموديل بلون كحلي، أو أطول شوية" style="margin-top:6px">
+        <div class="mini" style="margin-top:4px">الألوان والمقاسات الخاصة بتتعمل بالطلب، وهنأكد معاك السعر والمدة على واتساب.</div></div>` : ""}
+      <div><div class="lbl">الكمية</div><div class="qty" style="margin-top:6px"><button id="pdMinus">−</button><span id="pdQ">1</span><button id="pdPlus">+</button></div></div>
+      <div class="buy">
+        <button class="btn" id="pdAdd">أضف للسلة</button>
+        <button class="btn ghost" id="pdBuy">اطلب دلوقتي</button>
+      </div>
+      <div class="mini">🚚 توصيل ${DELIVERY_TIME} · 💵 الدفع عند الاستلام · 👀 عاين قبل ما تدفع</div>
+      <button class="share" id="pdShare">🔗 انسخ لينك المنتج</button>
+    </div>`;
+  const pd = $("#pd");
+  pd.querySelectorAll(".thumbs img").forEach(t => t.onclick = () => { $("#pdMain").src = t.getAttribute("src"); pd.querySelectorAll(".thumbs img").forEach(x => x.classList.toggle("on", x === t)); });
+  $("#pdMinus").onclick = () => { if (q > 1) $("#pdQ").textContent = --q; };
+  $("#pdPlus").onclick = () => { if (q < 10) $("#pdQ").textContent = ++q; };
+  const note = () => (p.custom && $("#pdNote").value.trim()) || "";
+  $("#pdAdd").onclick = () => { addToCart(p.id, q, note()); toast("✅ اتضاف للسلة"); closeOverlays(); };
+  $("#pdBuy").onclick = () => { addToCart(p.id, q, note()); location.hash = "cart"; };
+  $("#pdShare").onclick = async () => {
+    const url = location.origin + location.pathname + "#p-" + p.id;
+    try { await navigator.clipboard.writeText(url); toast("✅ اتنسخ اللينك"); } catch (e) { toast(url); }
+  };
+  $("#pdOv").classList.add("show"); $("#cartOv").classList.remove("show"); lock();
 }
 
-function showCat(id){
-  if(id!=="all" && !categories.some(c=>c.id===id)) id = "all";
-  activeCat = id;
-  document.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", b.dataset.cat===id));
-  const chips = $("chips"), on = chips.querySelector('[aria-pressed="true"]');
-  if(on && chips.scrollWidth > chips.clientWidth)
-    chips.scrollLeft += (on.getBoundingClientRect().left + on.offsetWidth/2) - (chips.getBoundingClientRect().left + chips.clientWidth/2);
-  const list = id==="all" ? products : products.filter(p=>p.cats.includes(id));
-  grid.innerHTML = list.length ? list.map(card).join("")
-    : `<div class="empty"><b>منتجات ${catName(id)} جاية قريب 👀</b>تابعنا عشان تعرف أول ما تنزل</div>`;
-  grid.querySelectorAll(".prod").forEach((el,i)=> el.style.animationDelay = (i*70)+"ms");
+/* ---------- cart drawer ---------- */
+let step = "cart";
+function renderCart(){
+  const db = $("#db"), df = $("#df");
+  if (step === "done") return;
+  if (!cart.length) {
+    $("#dTitle").textContent = "🛒 السلة";
+    db.innerHTML = `<div class="empty"><div style="font-size:40px">🛒</div>السلة فاضية<br><a class="btn" href="#products" data-close style="margin-top:14px">تسوّق دلوقتي</a></div>`;
+    df.innerHTML = ""; return;
+  }
+  const lines = cart.map((l, i) => { const p = byId(l.id); return `
+    <div class="line">
+      <img src="${p.imgs[0]}" alt="">
+      <div>
+        <div class="nm">${p.name}</div>
+        ${l.note ? `<div class="nt">🎨 ${esc(l.note)}</div>` : ""}
+        <div class="qty" style="margin-top:6px"><button data-dec="${i}">−</button><span>${l.qty}</span><button data-inc="${i}">+</button></div>
+        <button class="rm" data-rm="${i}">شيل من السلة</button>
+      </div>
+      <div class="pr">${fmt(p.price * l.qty)}</div>
+    </div>`; }).join("");
+  if (step === "cart") {
+    $("#dTitle").textContent = "🛒 السلة";
+    db.innerHTML = lines;
+    df.innerHTML = `
+      <div class="sumrow"><span>المجموع</span><b>${fmt(subtotal())}</b></div>
+      <div class="mini">مصاريف الشحن بتتحسب حسب المحافظة في الخطوة الجاية.</div>
+      <button class="btn" id="toCheckout">كمّل الطلب ←</button>
+      <a class="btn ghost" href="#products" data-close>كمّل تسوّق</a>`;
+  } else if (step === "checkout") {
+    $("#dTitle").textContent = "📦 بيانات التوصيل";
+    db.innerHTML = `
+      <form class="co" id="coForm" novalidate>
+        <label for="fName">الاسم بالكامل</label><input class="field" id="fName" autocomplete="name" placeholder="مثال: محمد أحمد">
+        <label for="fPhone">رقم الموبايل</label><input class="field" id="fPhone" inputmode="tel" dir="ltr" placeholder="01xxxxxxxxx" autocomplete="tel">
+        <label for="fGov">المحافظة</label><select class="field" id="fGov"><option value="">اختار المحافظة</option>${GOVS.map(g => `<option>${g}</option>`).join("")}</select>
+        <label for="fAddr">العنوان بالتفصيل</label><textarea class="field" id="fAddr" rows="2" placeholder="المنطقة، الشارع، رقم العمارة، علامة مميزة"></textarea>
+        <label for="fNotes">ملاحظات (اختياري)</label><input class="field" id="fNotes" placeholder="مثال: الاتصال بعد الساعة 5">
+      </form>
+      <details style="margin-top:14px"><summary class="mini" style="cursor:pointer">مراجعة المنتجات (${cart.reduce((s, l) => s + l.qty, 0)})</summary>${lines}</details>`;
+    df.innerHTML = `
+      <div class="sumrow"><span>المجموع</span><b>${fmt(subtotal())}</b></div>
+      <div class="sumrow"><span>الشحن</span><b id="shipFee">اختار المحافظة</b></div>
+      <div class="sumrow t"><span>الإجمالي</span><b id="grand">${fmt(subtotal())}</b></div>
+      <div class="mini">💵 الدفع عند الاستلام · 👀 عاين قبل ما تدفع</div>
+      <div class="err" id="err"></div>
+      <button class="btn" id="confirm">تأكيد الطلب</button>
+      <button class="btn ghost" id="back">رجوع للسلة</button>`;
+    $("#fGov").onchange = () => { const f = feeFor($("#fGov").value); $("#shipFee").textContent = f ? fmt(f) : "اختار المحافظة"; $("#grand").textContent = fmt(subtotal() + (f || 0)); };
+  }
 }
-
-function goCat(id){
-  showCat(id);
-  history.replaceState(null, "", id==="all" ? location.pathname : "#" + id);
-  $("products").scrollIntoView({behavior:"smooth"});
-}
-
-$("chips").addEventListener("click", e => { const b = e.target.closest(".chip"); if(b){ showCat(b.dataset.cat); history.replaceState(null,"", b.dataset.cat==="all" ? location.pathname : "#"+b.dataset.cat); }});
-$("catsGrid").addEventListener("click", e => { const b = e.target.closest(".cat"); if(b) goCat(b.dataset.cat); });
-$("footCats").addEventListener("click", e => { const a = e.target.closest("a[data-cat]"); if(a){ e.preventDefault(); goCat(a.dataset.cat); }});
-
-/* لينك مباشر لقسم، مثلًا: redcard-eg.github.io/#kitchen */
-const startHash = location.hash.slice(1);
-showCat(categories.some(c=>c.id===startHash) ? startHash : "all");
-if(categories.some(c=>c.id===startHash)) setTimeout(()=> $("products").scrollIntoView(), 50);
-
-/* حركة الظهور مع السكرول */
-const reveals = document.querySelectorAll(".reveal");
-if("IntersectionObserver" in window){
-  const io = new IntersectionObserver(es => es.forEach(en => { if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }}), {threshold:.12});
-  reveals.forEach(el => io.observe(el));
-} else reveals.forEach(el => el.classList.add("in"));
-setTimeout(() => reveals.forEach(el => el.classList.add("in")), 2500);
-
-/* الطلب */
-const sel = $("fGov");
-sel.innerHTML = `<option value="">اختار المحافظة</option>` + govs.map(g=>`<option>${g}</option>`).join("");
-
-let cur = null, qty = 1;
-const ov = $("ov"), form = $("form"), done = $("done");
-
-function render(){
-  $("q").textContent = qty;
-  $("sum").innerHTML = `<img src="${esc(cur.imgs[0])}" alt=""><div><b>${esc(cur.name)}</b>${fmt(cur.price)} للقطعة</div>`;
-  $("tot").textContent = fmt(cur.price * qty);
-}
-function openOrder(id){
-  cur = products.find(p=>p.id===id); qty = 1;
-  form.style.display = "block"; done.style.display = "none";
-  $("err").textContent = "";
-  render(); ov.classList.add("show");
-  document.body.style.overflow = "hidden";
-}
-function closeOrder(){ ov.classList.remove("show"); document.body.style.overflow = ""; }
-
-grid.addEventListener("click", e => {
-  const b = e.target.closest("button[data-id]"); if(b) return openOrder(b.dataset.id);
-  const t = e.target.closest(".thumbs img");
-  if(t){ const c = t.closest(".prod"); c.querySelector("img.main").src = t.getAttribute("src");
-    c.querySelectorAll(".thumbs img").forEach(x=>x.classList.toggle("on", x===t)); }
-});
-$("plus").onclick = () => { if(qty<10){qty++;render();} };
-$("minus").onclick = () => { if(qty>1){qty--;render();} };
-$("cancel").onclick = closeOrder;
-$("close").onclick = closeOrder;
-ov.addEventListener("click", e => { if(e.target===ov) closeOrder(); });
-document.addEventListener("keydown", e => { if(e.key==="Escape" && ov.classList.contains("show")) closeOrder(); });
-
-form.addEventListener("submit", e => {
-  e.preventDefault();
-  const name = $("fName").value.trim(), phone = $("fPhone").value.trim().replace(/\s/g,""), gov = $("fGov").value, addr = $("fAddr").value.trim();
-  const err = $("err");
-  if(!name){ err.textContent = "اكتب اسمك من فضلك"; return; }
-  if(!/^(\+?20)?0?1[0125]\d{8}$/.test(phone)){ err.textContent = "رقم الموبايل مش صحيح، اكتبه كده: 01xxxxxxxxx"; return; }
-  if(!gov){ err.textContent = "اختار المحافظة"; return; }
-  if(addr.length < 6){ err.textContent = "اكتب العنوان بالتفصيل"; return; }
+function submitOrder(){
+  const name = $("#fName").value.trim(), phone = $("#fPhone").value.trim().replace(/\s|-/g, ""), gov = $("#fGov").value, addr = $("#fAddr").value.trim(), notes = $("#fNotes").value.trim();
+  const err = $("#err");
+  if (!name) return err.textContent = "اكتب اسمك من فضلك";
+  if (!/^(\+?20)?0?1[0125]\d{8}$/.test(phone)) return err.textContent = "رقم الموبايل مش صحيح، اكتبه كده: 01xxxxxxxxx";
+  if (!gov) return err.textContent = "اختار المحافظة";
+  if (addr.length < 6) return err.textContent = "اكتب العنوان بالتفصيل";
+  const fee = feeFor(gov), sub = subtotal();
+  const items = cart.map((l, i) => { const p = byId(l.id); return `${i + 1}) ${p.name} × ${l.qty} = ${p.price * l.qty} جنيه${l.note ? `\n   🎨 لون/مقاس خاص: ${l.note}` : ""}`; }).join("\n");
   const msg = `طلب جديد من متجر ريدكارد 🛒
-المنتج: ${cur.name}
-الكمية: ${qty}
-الإجمالي: ${cur.price*qty} جنيه (الدفع عند الاستلام)
+
+${items}
+
+المجموع: ${sub} جنيه
+الشحن (${gov}): ${fee} جنيه
+الإجمالي: ${sub + fee} جنيه (الدفع عند الاستلام)
 —
 الاسم: ${name}
 الموبايل: ${phone}
 المحافظة: ${gov}
-العنوان: ${addr}`;
-  $("waLink").href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
-  form.style.display = "none"; done.style.display = "block";
+العنوان: ${addr}${notes ? `\nملاحظات: ${notes}` : ""}`;
+  step = "done";
+  $("#dTitle").textContent = "✅ فاضل خطوة واحدة";
+  $("#db").innerHTML = `<div class="done"><div class="big">✅</div><h3>اضغط الزرار عشان طلبك يوصلنا</h3>
+    <p class="mini" style="margin:8px 0 16px">الطلب هيتفتح في واتساب جاهز، ابعته وهنكلمك نأكده.</p>
+    <a class="btn wa" id="waGo" href="${waLink(msg)}" target="_blank" rel="noopener" style="width:100%">ابعت الطلب على واتساب</a>
+    <p class="mini" style="margin-top:12px">لو الزرار مفتحش، ابعتلنا على واتساب: <span dir="ltr">+${WA}</span></p></div>`;
+  $("#df").innerHTML = `<a class="btn ghost" href="#products" data-close>رجوع للمتجر</a>`;
+  $("#waGo").addEventListener("click", () => { cart = []; save(); });
+}
+$("#cartOv").addEventListener("click", e => {
+  const t = e.target;
+  if (t === $("#cartOv")) return closeOverlays();
+  let i;
+  if ((i = t.dataset.inc) !== undefined) { cart[i].qty = Math.min(10, cart[i].qty + 1); save(); renderCart(); }
+  else if ((i = t.dataset.dec) !== undefined) { if (cart[i].qty > 1) cart[i].qty--; save(); renderCart(); }
+  else if ((i = t.dataset.rm) !== undefined) { cart.splice(i, 1); save(); renderCart(); }
+  else if (t.id === "toCheckout") { step = "checkout"; renderCart(); }
+  else if (t.id === "back") { step = "cart"; renderCart(); }
+  else if (t.id === "confirm") submitOrder();
 });
+function openCart(){ if (step === "done") step = "cart"; renderCart(); $("#cartOv").classList.add("show"); $("#pdOv").classList.remove("show"); lock(); }
+$("#cartBtn").onclick = () => location.hash = "cart";
+$("#cartClose").onclick = closeOverlays;
+
+/* ---------- routing (#p-id / #cart) ---------- */
+function closeOverlays(){
+  $("#pdOv").classList.remove("show"); $("#cartOv").classList.remove("show"); lock();
+  if (/^#(p-|cart)/.test(location.hash)) history.replaceState(null, "", location.pathname + location.search);
+}
+$("#pdOv").addEventListener("click", e => { if (e.target === $("#pdOv")) closeOverlays(); });
+document.addEventListener("click", e => { if (e.target.closest("[data-close]")) { const h = e.target.closest("a"); closeOverlays(); if (h && h.getAttribute("href") && h.getAttribute("href").startsWith("#") && h.getAttribute("href").length > 1) setTimeout(() => location.hash = h.getAttribute("href").slice(1), 0); e.preventDefault(); } });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeOverlays(); });
+function route(){
+  const h = location.hash;
+  if (h.startsWith("#p-")) openProduct(h.slice(3));
+  else if (h === "#cart") openCart();
+  else { $("#pdOv").classList.remove("show"); $("#cartOv").classList.remove("show"); lock(); }
+}
+window.addEventListener("hashchange", route);
+route();
 </script>
 </body>
 </html>
