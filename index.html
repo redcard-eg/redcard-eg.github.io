@@ -98,7 +98,7 @@
   .sec-title p{color:var(--muted);margin-top:4px}
 
   /* ---------- categories ---------- */
-  .cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+  .cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:16px}
   .cat{min-width:0;width:100%}
   .cat{position:relative;border-radius:var(--radius);padding:22px 20px;min-height:150px;overflow:hidden;cursor:pointer;border:0;text-align:right;font-family:inherit;color:var(--ink);display:flex;flex-direction:column;justify-content:flex-end;transition:transform .2s,box-shadow .2s}
   .cat:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
@@ -407,7 +407,7 @@ const WA = "201068613396";
 /* المنتجات والأقسام بتيجي من data.js، وبتتعدّل من صفحة الإدارة admin.html */
 const D = window.REDCARD_DATA || {categories:[], products:[]};
 const categories = D.categories || [];
-const products = (D.products || []).filter(p => !p.hidden && p.imgs && p.imgs.length)
+const products = (D.products || []).filter(p => !p.hidden && p.price > 0 && p.imgs && p.imgs.length)
   .map(p => ({cats:[], feats:[], specs:[], tag:"", ...p}));
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
