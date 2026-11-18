@@ -191,7 +191,8 @@ window.REDCARD_DATA = {
     {
       "id": "cloud",
       "name": "فواحة السحابة 2×1: مطر وإضاءة وريحة حلوة",
-      "price": 0,
+      "price": 1199,
+      "old": 1599,
       "tag": "الترند",
       "cats": [
         "decor",

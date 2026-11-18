@@ -421,7 +421,7 @@ function renderProducts(){
   $("plist").innerHTML = P.length ? P.map((p, i) => {
     const off = p.old > p.price ? Math.round((1 - p.price/p.old) * 100) : 0;
     const cats = (p.cats||[]).map(catName).filter(Boolean);
-    return `<div class="prow ${p.hidden ? "hidden" : ""}">
+    return `<div class="prow ${p.hidden || !(p.price > 0) ? "hidden" : ""}">
       <img src="${esc(p.imgs[0] ? imgSrc(p.imgs[0]) : "")}" alt="">
       <div class="info">
         <b>${esc(p.name)}</b>
@@ -429,6 +429,7 @@ function renderProducts(){
           <span class="price">${fmt(p.price)}</span>
           ${off ? `<span class="pill off">خصم ${off.toLocaleString("ar-EG")}٪</span>` : ""}
           ${p.hidden ? `<span class="pill hid">مخفي</span>` : ""}
+          ${!(p.price > 0) ? `<span class="pill hid">من غير سعر، مش ظاهر للزبون</span>` : ""}
           ${cats.map(c => `<span class="pill">${esc(c)}</span>`).join("")}
         </div>
       </div>
@@ -466,7 +467,10 @@ $("plist").addEventListener("click", e => {
   const b = e.target.closest("button[data-act]"); if(!b) return;
   const i = +b.dataset.i, P = S.data.products, act = b.dataset.act;
   if(act === "edit") return openProduct(i);
-  if(act === "toggle"){ P[i].hidden = !P[i].hidden; if(!P[i].hidden) delete P[i].hidden; }
+  if(act === "toggle"){
+    if(P[i].hidden && !(P[i].price > 0)){ toast("المنتج ده من غير سعر. اكتب السعر الأول، وبعدين شيل علامة \"مخفي\".", "err"); return openProduct(i); }
+    P[i].hidden = !P[i].hidden; if(!P[i].hidden) delete P[i].hidden;
+  }
   if(act === "up") move(P, i, -1);
   if(act === "down") move(P, i, 1);
   if(act === "del"){ if(!confirm(`متأكد إنك عاوز تحذف "${P[i].name}"؟`)) return; P.splice(i, 1); }
