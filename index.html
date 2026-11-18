@@ -3,182 +3,342 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ريدكارد | ديكورات وهدايا</title>
+<title>ريدكارد | كل اللي بيتك محتاجه في مكان واحد</title>
+<meta name="description" content="ريدكارد: ديكور وأدوات منزلية ومطبخ وهدايا. توصيل لكل محافظات مصر، والدفع عند الاستلام، وعاين قبل ما تدفع.">
+<meta property="og:title" content="ريدكارد | كل اللي بيتك محتاجه في مكان واحد">
+<meta property="og:description" content="توصيل لكل مصر — الدفع عند الاستلام — عاين قبل ما تدفع">
+<meta property="og:image" content="https://redcard-eg.github.io/img/lamp2.webp">
+<meta property="og:url" content="https://redcard-eg.github.io/">
+<meta name="theme-color" content="#1B1B1F">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='3' width='16' height='24' rx='3' fill='%23C8102E' transform='rotate(-10 16 16)'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 <style>
   :root{
-    --red:#C8102E; --red-dark:#9E0B23; --ink:#1B1B1F; --muted:#6B6B73;
-    --bg:#FBF8F5; --card:#FFFFFF; --line:#ECE6E0; --gold:#C9A25B; --green:#1F9D55;
+    --red:#C8102E; --red-dark:#9E0B23; --red-soft:#FDE8EB;
+    --ink:#1B1B1F; --ink-2:#26262C; --muted:#6B6B73;
+    --bg:#FBF8F5; --card:#FFFFFF; --line:#ECE6E0; --gold:#E2B969; --green:#1F9D55;
+    --shadow:0 18px 40px -18px rgba(27,27,31,.25);
+    --radius:22px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+  html{scroll-behavior:smooth}
+  body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
   a{color:inherit;text-decoration:none}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+  img{max-width:100%}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+  :focus-visible{outline:3px solid var(--gold);outline-offset:2px}
 
-  /* top bar */
-  .topbar{background:var(--ink);color:#fff;font-size:14px;text-align:center;padding:8px 12px}
-  .topbar b{color:#FFD7DD}
-  header{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
-  .nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-  .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:24px}
-  .logo .card{width:22px;height:30px;background:var(--red);border-radius:4px;transform:rotate(-10deg);box-shadow:0 4px 10px rgba(200,16,46,.35)}
+  /* ---------- top bar ---------- */
+  .topbar{background:var(--red);color:#fff;font-size:14px;font-weight:600;overflow:hidden;white-space:nowrap}
+  .topbar .track{display:inline-flex;padding:8px 0;animation:marquee 40s linear infinite}
+  .topbar span{display:inline-flex;align-items:center;gap:6px;padding-inline:24px}
+  @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(50%)}}
+
+  /* ---------- header ---------- */
+  header{background:rgba(255,255,255,.88);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:68px;gap:16px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:25px;letter-spacing:-.3px}
+  .logo .card{width:20px;height:28px;background:linear-gradient(145deg,#E5203F,var(--red-dark));border-radius:4px;transform:rotate(-10deg);box-shadow:0 5px 12px rgba(200,16,46,.4)}
   .logo span{color:var(--red)}
-  .nav-wa{display:flex;align-items:center;gap:8px;background:var(--green);color:#fff;padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px}
+  .links{display:flex;gap:26px;font-weight:700;font-size:15px;color:var(--muted)}
+  .links a:hover{color:var(--red)}
+  .nav-wa{display:flex;align-items:center;gap:8px;background:var(--green);color:#fff;padding:9px 16px;border-radius:999px;font-weight:700;font-size:14px;transition:.2s}
+  .nav-wa:hover{background:#17804A}
 
-  /* hero */
-  .hero{padding:56px 0 40px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
-  .eyebrow{display:inline-block;background:#FDE8EB;color:var(--red);font-weight:700;font-size:13px;padding:4px 12px;border-radius:999px;margin-bottom:14px}
-  .hero h1{font-size:44px;line-height:1.25;font-weight:800;margin-bottom:14px}
-  .hero h1 em{font-style:normal;color:var(--red)}
-  .hero p{color:var(--muted);font-size:18px;margin-bottom:26px;max-width:480px}
-  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:#fff;border:0;font-family:inherit;font-weight:700;font-size:16px;padding:13px 26px;border-radius:12px;cursor:pointer;transition:.2s}
-  .btn:hover{background:var(--red-dark)}
-  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
-  .hero-art{background:radial-gradient(circle at 50% 40%,#FFF4E0 0%,#F3E6D6 60%,#EADAC7 100%);border-radius:28px;aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
-  .hero-badge{position:absolute;top:18px;left:18px;background:var(--red);color:#fff;font-weight:800;padding:8px 14px;border-radius:12px;font-size:15px;transform:rotate(-4deg)}
+  /* ---------- buttons ---------- */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:var(--red);color:#fff;border:0;font-family:inherit;font-weight:800;font-size:16px;padding:13px 26px;border-radius:14px;cursor:pointer;transition:transform .15s,background .2s,box-shadow .2s;box-shadow:0 10px 22px -10px rgba(200,16,46,.7)}
+  .btn:hover{background:var(--red-dark);transform:translateY(-2px)}
+  .btn:active{transform:translateY(0)}
+  .btn.ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line);box-shadow:none}
+  .btn.ghost:hover{border-color:var(--ink);background:transparent}
+  .btn.light{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.25);box-shadow:none}
+  .btn.light:hover{background:rgba(255,255,255,.18)}
 
-  /* trust */
-  .trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:10px 0 50px}
-  .trust div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;text-align:center;font-weight:700;font-size:15px}
-  .trust small{display:block;color:var(--muted);font-weight:400;font-size:13px}
-  .trust .ic{font-size:22px;color:var(--red);display:block;margin-bottom:4px}
+  /* ---------- hero ---------- */
+  .hero-bg{background:
+      radial-gradient(600px 380px at 85% 10%,rgba(200,16,46,.55),transparent 70%),
+      radial-gradient(500px 360px at 10% 100%,rgba(226,185,105,.22),transparent 70%),
+      var(--ink);
+    color:#fff;position:relative;overflow:hidden}
+  .hero-bg::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.07) 1px,transparent 1px);background-size:22px 22px;pointer-events:none}
+  .hero{padding:64px 20px 72px;display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;position:relative;z-index:1}
+  .eyebrow{display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#FFD7DD;font-weight:700;font-size:13px;padding:5px 14px;border-radius:999px;margin-bottom:18px}
+  .hero h1{font-size:50px;line-height:1.22;font-weight:900;margin-bottom:16px;letter-spacing:-.5px}
+  .hero h1 em{font-style:normal;background:linear-gradient(90deg,#FF4D67,var(--gold));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .hero p{color:#C9C9D2;font-size:18px;margin-bottom:28px;max-width:500px}
+  .hero .ctas{display:flex;gap:12px;flex-wrap:wrap}
+  .hero-points{display:flex;gap:22px;margin-top:30px;flex-wrap:wrap;color:#DADAE2;font-size:14px;font-weight:600}
+  .hero-points span{display:flex;align-items:center;gap:6px}
+  .hero-points i{width:8px;height:8px;border-radius:50%;background:var(--gold);display:inline-block}
 
-  /* products */
-  .sec-title{display:flex;justify-content:space-between;align-items:end;margin-bottom:20px}
-  .sec-title h2{font-size:30px;font-weight:800}
-  .sec-title p{color:var(--muted)}
-  .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-bottom:60px}
-  .prod{background:var(--card);border:1px solid var(--line);border-radius:20px;overflow:hidden;display:flex;flex-direction:column;transition:.2s}
-  .prod:hover{transform:translateY(-4px);box-shadow:0 14px 30px rgba(0,0,0,.07)}
-  .prod .img{aspect-ratio:1/1;display:flex;align-items:center;justify-content:center;position:relative}
-  .prod .tag{position:absolute;top:12px;right:12px;background:var(--red);color:#fff;font-size:13px;font-weight:700;padding:3px 10px;border-radius:8px}
-  .prod .img img.main{width:100%;height:100%;object-fit:cover;display:block}
-  .thumbs{display:flex;gap:6px;padding:8px 10px 0;overflow-x:auto}
-  .thumbs img{width:52px;height:52px;object-fit:cover;border-radius:8px;border:2px solid transparent;cursor:pointer;flex:0 0 auto}
-  .thumbs img.on{border-color:var(--red)}
+  .collage{position:relative;aspect-ratio:1/1;max-width:500px;margin-inline:auto;width:100%}
+  .collage .main{position:absolute;inset:6% 4% 10% 16%;border-radius:30px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.6);border:4px solid rgba(255,255,255,.1)}
+  .collage img{width:100%;height:100%;object-fit:cover;display:block}
+  .collage .mini{position:absolute;width:36%;aspect-ratio:1/1;border-radius:22px;overflow:hidden;border:4px solid #fff;box-shadow:0 20px 40px -14px rgba(0,0,0,.55);animation:float 6s ease-in-out infinite}
+  .collage .m1{bottom:0;right:0;transform:rotate(6deg)}
+  .collage .m2{top:0;left:0;width:32%;transform:rotate(-7deg);animation-delay:-3s}
+  .collage .price-pill{position:absolute;left:4%;bottom:14%;background:#fff;color:var(--ink);border-radius:16px;padding:10px 16px;box-shadow:var(--shadow);font-weight:800;line-height:1.3;z-index:2}
+  .collage .price-pill small{display:block;color:var(--muted);font-weight:600;font-size:12px}
+  .collage .price-pill b{color:var(--red);font-size:20px}
+  @keyframes float{0%,100%{translate:0 0}50%{translate:0 -10px}}
+
+  /* ---------- trust ---------- */
+  .trust{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:-34px;position:relative;z-index:2}
+  .trust div{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px 14px;display:flex;align-items:center;gap:12px;font-weight:800;font-size:15px;box-shadow:var(--shadow)}
+  .trust .ic{width:44px;height:44px;flex:0 0 auto;border-radius:12px;background:var(--red-soft);display:flex;align-items:center;justify-content:center;font-size:21px}
+  .trust small{display:block;color:var(--muted);font-weight:500;font-size:13px}
+
+  /* ---------- section titles ---------- */
+  section.block{padding-top:70px}
+  .sec-title{text-align:center;margin-bottom:30px}
+  .sec-title .kick{color:var(--red);font-weight:800;font-size:14px;letter-spacing:.3px}
+  .sec-title h2{font-size:34px;font-weight:900;line-height:1.3}
+  .sec-title p{color:var(--muted);margin-top:4px}
+
+  /* ---------- categories ---------- */
+  .cats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+  .cat{min-width:0;width:100%}
+  .cat{position:relative;border-radius:var(--radius);padding:22px 20px;min-height:150px;overflow:hidden;cursor:pointer;border:0;text-align:right;font-family:inherit;color:var(--ink);display:flex;flex-direction:column;justify-content:flex-end;transition:transform .2s,box-shadow .2s}
+  .cat:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .cat .emo{position:absolute;top:14px;left:16px;font-size:46px;filter:drop-shadow(0 8px 10px rgba(0,0,0,.15));transition:transform .3s}
+  .cat:hover .emo{transform:scale(1.12) rotate(-8deg)}
+  .cat b{font-size:20px;font-weight:900}
+  .cat small{color:rgba(27,27,31,.65);font-weight:600;font-size:13px}
+  .cat .go{position:absolute;top:16px;right:18px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;font-weight:800}
+  .cat[data-cat="decor"]{background:linear-gradient(140deg,#FFF1DC,#F6D9B4)}
+  .cat[data-cat="home"]{background:linear-gradient(140deg,#EEF0FF,#D8DCFA)}
+  .cat[data-cat="kitchen"]{background:linear-gradient(140deg,#E9F7EF,#C9EBD7)}
+  .cat[data-cat="gifts"]{background:linear-gradient(140deg,#FFE6EA,#F9C3CC)}
+
+  /* ---------- filter chips ---------- */
+  .chips{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:28px;position:sticky;top:68px;z-index:10;padding:10px 0;background:linear-gradient(var(--bg) 75%,transparent)}
+  .chip{font-family:inherit;font-weight:700;font-size:15px;padding:9px 18px;border-radius:999px;border:1.5px solid var(--line);background:#fff;color:var(--ink);cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:6px}
+  .chip:hover{border-color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .chip .n{font-size:12px;background:var(--red-soft);color:var(--red);border-radius:999px;padding:0 8px;line-height:20px}
+  .chip[aria-pressed="true"] .n{background:var(--red);color:#fff}
+
+  /* ---------- products ---------- */
+  .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}
+  .prod{background:var(--card);border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s;animation:pop .45s ease both}
+  .prod:hover{transform:translateY(-6px);box-shadow:0 26px 50px -24px rgba(27,27,31,.35)}
+  @keyframes pop{from{opacity:0;transform:translateY(14px) scale(.98)}to{opacity:1;transform:none}}
+  .prod .img{aspect-ratio:1/1;position:relative;overflow:hidden;background:#F4EFEA}
+  .prod .img img.main{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s,opacity .25s}
+  .prod:hover .img img.main{transform:scale(1.05)}
+  .prod .tag{position:absolute;top:14px;right:14px;background:var(--ink);color:#fff;font-size:13px;font-weight:700;padding:4px 12px;border-radius:999px;z-index:1}
+  .prod .off{position:absolute;top:14px;left:14px;background:var(--red);color:#fff;font-size:14px;font-weight:900;padding:6px 10px;border-radius:12px;z-index:1;transform:rotate(-6deg);box-shadow:0 8px 16px -6px rgba(200,16,46,.7)}
+  .thumbs{display:flex;gap:6px;padding:10px 12px 0;overflow-x:auto;scrollbar-width:none}
+  .thumbs::-webkit-scrollbar{display:none}
+  .thumbs img{width:50px;height:50px;object-fit:cover;border-radius:10px;border:2px solid transparent;cursor:pointer;flex:0 0 auto;opacity:.65;transition:.2s}
+  .thumbs img:hover{opacity:1}
+  .thumbs img.on{border-color:var(--red);opacity:1}
+  .prod .body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:10px;flex:1}
+  .prod .cats-line{display:flex;gap:6px;flex-wrap:wrap}
+  .prod .cats-line span{font-size:12px;font-weight:700;color:var(--muted);background:var(--bg);border:1px solid var(--line);padding:1px 10px;border-radius:999px}
+  .prod h3{font-size:19px;font-weight:800;line-height:1.45}
+  .prod ul{list-style:none;color:var(--muted);font-size:14px;display:grid;gap:3px}
+  .prod ul li{display:flex;gap:6px}
+  .prod ul li::before{content:"✓";color:var(--green);font-weight:900}
   details.specs{font-size:14px;border-top:1px dashed var(--line);padding-top:8px}
-  details.specs summary{cursor:pointer;font-weight:700;color:var(--red)}
-  details.specs dl{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin-top:8px}
+  details.specs summary{cursor:pointer;font-weight:800;color:var(--red);list-style:none;display:flex;justify-content:space-between}
+  details.specs summary::-webkit-details-marker{display:none}
+  details.specs summary::after{content:"+";font-size:18px;line-height:1}
+  details.specs[open] summary::after{content:"−"}
+  details.specs dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin-top:8px}
   details.specs dt{color:var(--muted)}
   details.specs dd{font-weight:600}
-  .hero-art img{width:100%;height:100%;object-fit:cover}
-  .prod .body{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
-  .prod h3{font-size:19px;font-weight:700;line-height:1.4}
-  .prod ul{list-style:none;color:var(--muted);font-size:14px}
-  .prod ul li::before{content:"✓ ";color:var(--green);font-weight:700}
   .price{display:flex;align-items:baseline;gap:10px;margin-top:auto;padding-top:6px}
-  .price b{font-size:26px;color:var(--red);font-weight:800}
-  .price s{color:#A9A3A0}
+  .price b{font-size:28px;color:var(--red);font-weight:900}
+  .price s{color:#A9A3A0;font-size:15px}
   .prod .btn{width:100%}
+  .empty{grid-column:1/-1;text-align:center;background:#fff;border:1.5px dashed var(--line);border-radius:24px;padding:46px 20px;color:var(--muted)}
+  .empty b{display:block;color:var(--ink);font-size:20px;margin-bottom:4px}
 
-  /* how */
-  .how{background:#fff;border:1px solid var(--line);border-radius:24px;padding:32px;margin-bottom:60px}
-  .how h2{font-size:26px;font-weight:800;margin-bottom:20px;text-align:center}
-  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center}
-  .steps .n{width:44px;height:44px;border-radius:50%;background:#FDE8EB;color:var(--red);font-weight:800;font-size:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
-  .steps p{color:var(--muted);font-size:15px}
+  /* ---------- how ---------- */
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative}
+  .step{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 22px;text-align:center;position:relative}
+  .step .n{width:54px;height:54px;border-radius:16px;background:linear-gradient(145deg,#E5203F,var(--red-dark));color:#fff;font-weight:900;font-size:22px;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;transform:rotate(-6deg);box-shadow:0 10px 20px -8px rgba(200,16,46,.6)}
+  .step b{font-size:18px}
+  .step p{color:var(--muted);font-size:15px;margin-top:4px}
 
-  footer{background:var(--ink);color:#C9C9CF;padding:30px 0;text-align:center;font-size:14px}
-  footer .logo{justify-content:center;color:#fff;margin-bottom:8px}
+  /* ---------- CTA band ---------- */
+  .cta{margin:70px auto 0;background:radial-gradient(500px 260px at 15% 0%,rgba(255,255,255,.18),transparent 70%),linear-gradient(120deg,var(--red),var(--red-dark));color:#fff;border-radius:28px;padding:40px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap}
+  .cta h2{font-size:28px;font-weight:900;line-height:1.3}
+  .cta p{opacity:.9}
+  .cta .btn{background:#fff;color:var(--red);box-shadow:none}
+  .cta .btn:hover{background:#FFF1F3}
 
-  /* modal */
-  .ov{position:fixed;inset:0;background:rgba(20,15,15,.55);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
+  footer{background:var(--ink);color:#B9B9C2;padding:40px 0 30px;text-align:center;font-size:14px;margin-top:70px}
+  footer .logo{justify-content:center;color:#fff;margin-bottom:10px}
+  footer .fl{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin:12px 0 16px;font-weight:700;color:#fff}
+  footer .fl a:hover{color:#FF8FA0}
+  footer .copy{border-top:1px solid rgba(255,255,255,.08);padding-top:16px;margin-top:6px;font-size:13px;color:#8C8C96}
+
+  /* floating whatsapp */
+  .fab{position:fixed;bottom:20px;left:20px;width:58px;height:58px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center;box-shadow:0 12px 24px -8px rgba(31,157,85,.7);z-index:40;transition:transform .2s}
+  .fab:hover{transform:scale(1.08)}
+  .fab::before{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid var(--green);animation:ping 2.2s ease-out infinite}
+  @keyframes ping{from{transform:scale(1);opacity:.8}to{transform:scale(1.6);opacity:0}}
+
+  /* reveal on scroll */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s ease,transform .7s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* ---------- modal ---------- */
+  .ov{position:fixed;inset:0;background:rgba(20,15,15,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;padding:16px;z-index:50}
   .ov.show{display:flex}
-  .modal{background:#fff;border-radius:22px;max-width:440px;width:100%;padding:24px;max-height:92vh;overflow:auto}
-  .modal h3{font-size:21px;font-weight:800;margin-bottom:4px}
-  .modal .sum{background:var(--bg);border-radius:12px;padding:10px 14px;margin:12px 0 16px;font-size:15px}
-  .modal label{display:block;font-weight:600;font-size:14px;margin:10px 0 4px}
-  .modal input,.modal select,.modal textarea{width:100%;font-family:inherit;font-size:15px;padding:11px 12px;border:1.5px solid var(--line);border-radius:10px;background:#fff}
-  .modal input:focus,.modal select:focus,.modal textarea:focus{outline:none;border-color:var(--red)}
+  .modal{background:#fff;border-radius:24px;max-width:450px;width:100%;padding:24px;max-height:92vh;overflow:auto;animation:pop .3s ease both}
+  .modal h3{font-size:21px;font-weight:900;margin-bottom:4px}
+  .modal .sum{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:10px;margin:12px 0 14px;font-size:14px;display:flex;gap:12px;align-items:center}
+  .modal .sum img{width:60px;height:60px;border-radius:10px;object-fit:cover;flex:0 0 auto}
+  .modal .sum b{font-size:15px;line-height:1.4;display:block}
+  .modal label{display:block;font-weight:700;font-size:14px;margin:10px 0 4px}
+  .modal input,.modal select,.modal textarea{width:100%;font-family:inherit;font-size:15px;padding:11px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+  .modal input:focus,.modal select:focus,.modal textarea:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px var(--red-soft)}
   .qty{display:flex;align-items:center;gap:10px}
-  .qty button{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-size:20px;cursor:pointer}
-  .qty span{font-weight:800;font-size:18px;min-width:24px;text-align:center}
-  .total{display:flex;justify-content:space-between;font-weight:800;font-size:18px;margin:16px 0 4px}
+  .qty button{width:40px;height:40px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font-size:20px;cursor:pointer;font-family:inherit}
+  .qty button:hover{border-color:var(--ink)}
+  .qty span{font-weight:900;font-size:18px;min-width:24px;text-align:center}
+  .total{display:flex;justify-content:space-between;font-weight:900;font-size:19px;margin:16px 0 4px}
   .total b{color:var(--red)}
   .note{color:var(--muted);font-size:13px;margin-bottom:14px}
-  .err{color:var(--red);font-size:13px;min-height:18px}
+  .err{color:var(--red);font-size:13px;min-height:18px;font-weight:700}
   .row{display:flex;gap:10px;margin-top:6px}
   .row .btn{flex:1}
   .done{text-align:center;display:none}
-  .done .big{font-size:44px}
-  .wa-btn{background:var(--green)}
+  .done .big{font-size:48px}
+  .wa-btn{background:var(--green);box-shadow:0 10px 22px -10px rgba(31,157,85,.7)}
   .wa-btn:hover{background:#17804A}
 
-  @media (max-width:860px){
-    .hero{grid-template-columns:1fr;padding-top:32px}
-    .hero h1{font-size:32px}
+  @media (max-width:960px){
+    .cats{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid{grid-template-columns:repeat(2,minmax(0,1fr))}
     .trust{grid-template-columns:repeat(2,1fr)}
-    .grid{grid-template-columns:1fr}
-    .steps{grid-template-columns:1fr}
+  }
+  @media (max-width:760px){
+    .links{display:none}
     .nav-wa .txt{display:none}
+    .hero{grid-template-columns:1fr;padding:40px 16px 64px;gap:34px;text-align:center}
+    .hero p{margin-inline:auto}
+    .hero .ctas,.hero-points{justify-content:center}
+    .hero h1{font-size:34px}
+    .wrap{padding:0 16px}
+    .grid{grid-template-columns:minmax(0,1fr)}
+    .steps{grid-template-columns:1fr}
+    .sec-title h2{font-size:27px}
+    .cat{min-height:132px;padding:16px 14px}
+    .cat .emo{font-size:30px;top:12px;left:12px}
+    .cat .go{display:none}
+    .cat b{font-size:17px}
+    .cta{padding:30px 22px;text-align:center;justify-content:center}
+    .trust div{flex-direction:column;text-align:center;gap:6px;font-size:14px}
+    .chips{gap:8px;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;scrollbar-width:none;margin-inline:-16px;padding-inline:16px}
+    .chips::-webkit-scrollbar{display:none}
+    .chip{font-size:14px;padding:8px 14px;flex:0 0 auto}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{animation:none!important;transition:none!important}
+    html{scroll-behavior:auto}
+    .reveal{opacity:1;transform:none}
   }
 </style>
 </head>
 <body>
 
-<div class="topbar">🚚 توصيل لكل محافظات مصر — <b>الدفع عند الاستلام</b> — عاين قبل ما تدفع</div>
+<div class="topbar" aria-label="مميزات المتجر">
+  <div class="track" id="track">
+    <span>🚚 توصيل لكل محافظات مصر</span><span>💵 الدفع عند الاستلام</span><span>👀 عاين قبل ما تدفع</span><span>💬 خدمة عملاء على واتساب</span><span>🔥 عروض لفترة محدودة</span>
+  </div>
+</div>
 
 <header>
   <div class="wrap nav">
-    <a class="logo" href="#top"><i class="card"></i>ريد<span>كارد</span></a>
-    <a class="nav-wa" id="navWa" href="#" target="_blank" rel="noopener">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>
+    <a class="logo" href="#top" aria-label="ريدكارد"><i class="card"></i>ريد<span>كارد</span></a>
+    <nav class="links">
+      <a href="#cats">الأقسام</a>
+      <a href="#products">المنتجات</a>
+      <a href="#how">تطلب إزاي؟</a>
+    </nav>
+    <a class="nav-wa wa-link" href="#" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>
       <span class="txt">كلمنا واتساب</span>
     </a>
   </div>
 </header>
 
 <main id="top">
-  <section class="wrap hero">
-    <div>
-      <span class="eyebrow">✨ ديكورات وهدايا مختارة</span>
-      <h1>لمسة <em>تفرق</em> في بيتك<br>وهدية تفرّح اللي بتحبه</h1>
-      <p>منتجات ديكور وهدايا عملية بأسعار حلوة، بتوصلك لحد باب البيت، وتدفع لما تستلم.</p>
-      <a class="btn" href="#products">تسوّق دلوقتي ←</a>
-    </div>
-    <div class="hero-art">
-      <img src="img/lamp2.webp" alt="أباجورة كريستال بإضاءة دافية">
-      <div class="hero-badge">عرض هيفوتك!</div>
-      <svg viewBox="0 0 300 300" width="78%" aria-hidden="true" style="display:none">
-        <defs>
-          <radialGradient id="glow" cx="50%" cy="45%" r="50%"><stop offset="0" stop-color="#FFE6A8" stop-opacity=".95"/><stop offset="1" stop-color="#FFE6A8" stop-opacity="0"/></radialGradient>
-          <linearGradient id="crys" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset=".5" stop-color="#FFF3D6"/><stop offset="1" stop-color="#F4DDAE"/></linearGradient>
-        </defs>
-        <circle cx="150" cy="140" r="130" fill="url(#glow)"/>
-        <g>
-          <path d="M95 80 L135 70 L140 230 L90 230 Z" fill="url(#crys)" stroke="#E2C48A" stroke-width="2"/>
-          <path d="M95 80 L117 120 L135 70 M117 120 L90 160 M117 120 L140 170 M90 160 L115 200 L140 170 M115 200 L90 230 M115 200 L140 230" stroke="#E7CFA0" stroke-width="1.5" fill="none"/>
-          <path d="M165 70 L205 80 L210 230 L160 230 Z" fill="url(#crys)" stroke="#E2C48A" stroke-width="2"/>
-          <path d="M165 70 L183 120 L205 80 M183 120 L160 170 M183 120 L210 160 M160 170 L185 200 L210 160 M185 200 L160 230 M185 200 L210 230" stroke="#E7CFA0" stroke-width="1.5" fill="none"/>
-          <path d="M112 66 q-6 -14 4 -26 q-4 14 6 22" fill="#fff" opacity=".8"/>
-          <path d="M184 66 q-6 -14 4 -26 q-4 14 6 22" fill="#fff" opacity=".8"/>
-          <rect x="70" y="230" width="160" height="10" rx="5" fill="#CDB89E"/>
-        </g>
-      </svg>
-    </div>
-  </section>
+  <div class="hero-bg">
+    <section class="wrap hero">
+      <div>
+        <span class="eyebrow">✨ متجر ريدكارد</span>
+        <h1>كل اللي بيتك محتاجه<br><em>في مكان واحد</em></h1>
+        <p>ديكور، وأدوات منزلية، ومطبخ، وهدايا. منتجات مختارة بعناية بأسعار حلوة، بتوصلك لحد باب البيت، وتدفع لما تستلم.</p>
+        <div class="ctas">
+          <a class="btn" href="#products">تسوّق دلوقتي ←</a>
+          <a class="btn light" href="#cats">تصفح الأقسام</a>
+        </div>
+        <div class="hero-points">
+          <span><i></i>الدفع عند الاستلام</span>
+          <span><i></i>شحن لكل مصر</span>
+          <span><i></i>عاين قبل ما تدفع</span>
+        </div>
+      </div>
+      <div class="collage" aria-hidden="true">
+        <div class="main"><img src="img/lamp2.webp" alt=""></div>
+        <div class="mini m1"><img src="img/mug1.webp" alt=""></div>
+        <div class="mini m2"><img src="img/fan1.webp" alt=""></div>
+        <div class="price-pill"><small>عروض تبدأ من</small><b id="fromPrice"></b></div>
+      </div>
+    </section>
+  </div>
 
   <section class="wrap trust">
-    <div><span class="ic">💵</span>الدفع عند الاستلام<small>مفيش أي دفع مقدم</small></div>
-    <div><span class="ic">🚚</span>شحن لكل مصر<small>من 2 لـ5 أيام عمل</small></div>
-    <div><span class="ic">👀</span>عاين قبل ما تدفع<small>افتح واتأكد بنفسك</small></div>
-    <div><span class="ic">💬</span>خدمة على واتساب<small>بنرد بسرعة</small></div>
+    <div><span class="ic">💵</span><span>الدفع عند الاستلام<small>مفيش أي دفع مقدم</small></span></div>
+    <div><span class="ic">🚚</span><span>شحن لكل مصر<small>من 2 لـ5 أيام عمل</small></span></div>
+    <div><span class="ic">👀</span><span>عاين قبل ما تدفع<small>افتح واتأكد بنفسك</small></span></div>
+    <div><span class="ic">💬</span><span>خدمة على واتساب<small>بنرد بسرعة</small></span></div>
   </section>
 
-  <section class="wrap" id="products">
-    <div class="sec-title">
-      <div><h2>منتجاتنا</h2><p>الكمية محدودة، والعرض لفترة قصيرة</p></div>
+  <section class="wrap block" id="cats">
+    <div class="sec-title reveal">
+      <div class="kick">تسوّق حسب القسم</div>
+      <h2>اختار القسم اللي يناسبك</h2>
     </div>
+    <div class="cats" id="catsGrid"></div>
+  </section>
+
+  <section class="wrap block" id="products">
+    <div class="sec-title reveal">
+      <div class="kick">🔥 عروض لفترة محدودة</div>
+      <h2>منتجاتنا</h2>
+      <p>الكمية محدودة، والعرض لفترة قصيرة</p>
+    </div>
+    <div class="chips" id="chips" role="group" aria-label="فلترة حسب القسم"></div>
     <div class="grid" id="grid"></div>
   </section>
 
-  <section class="wrap how">
-    <h2>تطلب إزاي؟</h2>
+  <section class="wrap block" id="how">
+    <div class="sec-title reveal">
+      <div class="kick">سهلة جدًا</div>
+      <h2>تطلب إزاي؟</h2>
+    </div>
     <div class="steps">
-      <div><div class="n">1</div><b>اختار المنتج</b><p>اضغط "اطلب الآن" تحت المنتج اللي عاجبك</p></div>
-      <div><div class="n">2</div><b>اكتب بياناتك</b><p>الاسم والرقم والعنوان، والطلب يوصلنا على واتساب</p></div>
-      <div><div class="n">3</div><b>استلم وادفع</b><p>بنأكد معاك ونشحن، وتدفع وإنت بتستلم</p></div>
+      <div class="step reveal"><div class="n">1</div><b>اختار المنتج</b><p>اضغط "اطلب الآن" تحت المنتج اللي عاجبك</p></div>
+      <div class="step reveal"><div class="n">2</div><b>اكتب بياناتك</b><p>الاسم والرقم والعنوان، والطلب يوصلنا على واتساب</p></div>
+      <div class="step reveal"><div class="n">3</div><b>استلم وادفع</b><p>بنأكد معاك ونشحن، وتدفع وإنت بتستلم</p></div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="cta reveal">
+      <div>
+        <h2>عندك سؤال قبل ما تطلب؟</h2>
+        <p>كلمنا على واتساب، وهنرد عليك ونساعدك تختار.</p>
+      </div>
+      <a class="btn wa-link" href="#" target="_blank" rel="noopener">💬 كلمنا على واتساب</a>
     </div>
   </section>
 </main>
@@ -186,20 +346,26 @@
 <footer>
   <div class="wrap">
     <div class="logo"><i class="card"></i>ريد<span>كارد</span></div>
-    ديكورات وهدايا — توصيل لكل محافظات مصر<br>
+    كل اللي بيتك محتاجه في مكان واحد — توصيل لكل محافظات مصر
+    <div class="fl" id="footCats"></div>
     واتساب: <span dir="ltr">+20 106 861 3396</span>
+    <div class="copy">© <span id="yr"></span> ريدكارد RedCard</div>
   </div>
 </footer>
 
+<a class="fab wa-link" href="#" target="_blank" rel="noopener" aria-label="كلمنا على واتساب">
+  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.8-1.1-4.6-4-4.8-4.2-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 2c.1.2.1.4 0 .5l-.3.5-.4.4c-.1.2-.3.3-.1.6.2.3.8 1.3 1.7 2.1 1.2 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l1.9.9c.3.1.5.2.5.3.1.2.1.6-.1 1.1z"/></svg>
+</a>
+
 <!-- order modal -->
-<div class="ov" id="ov" role="dialog" aria-modal="true">
+<div class="ov" id="ov" role="dialog" aria-modal="true" aria-labelledby="mTitle">
   <div class="modal">
     <form id="form" novalidate>
-      <h3>تأكيد الطلب</h3>
+      <h3 id="mTitle">تأكيد الطلب</h3>
       <div class="sum" id="sum"></div>
 
       <label>الكمية</label>
-      <div class="qty"><button type="button" id="minus">−</button><span id="q">1</span><button type="button" id="plus">+</button></div>
+      <div class="qty"><button type="button" id="minus" aria-label="أقل">−</button><span id="q">1</span><button type="button" id="plus" aria-label="أكتر">+</button></div>
 
       <label for="fName">الاسم بالكامل</label>
       <input id="fName" autocomplete="name" placeholder="مثال: محمد أحمد">
@@ -236,25 +402,28 @@
 <script>
 const WA = "201068613396";
 
-const lampSVG = `<svg viewBox="0 0 200 200" width="70%"><defs><radialGradient id="g1" cx="50%" cy="45%" r="55%"><stop offset="0" stop-color="#FFE3A0"/><stop offset="1" stop-color="#FFE3A0" stop-opacity="0"/></radialGradient></defs><circle cx="100" cy="95" r="90" fill="url(#g1)"/><path d="M58 50 L88 44 L92 160 L54 160 Z" fill="#FFF7E6" stroke="#E2C48A" stroke-width="2"/><path d="M58 50 L74 80 L88 44 M74 80 L54 110 M74 80 L92 115 M54 110 L72 135 L92 115" stroke="#E7CFA0" fill="none"/><path d="M112 44 L142 50 L146 160 L108 160 Z" fill="#FFF7E6" stroke="#E2C48A" stroke-width="2"/><path d="M112 44 L126 80 L142 50 M126 80 L108 115 M126 80 L146 110 M108 115 L128 135 L146 110" stroke="#E7CFA0" fill="none"/><path d="M70 40 q-5 -12 3 -22 q-3 12 5 18" fill="#fff"/><path d="M124 40 q-5 -12 3 -22 q-3 12 5 18" fill="#fff"/><rect x="40" y="160" width="120" height="8" rx="4" fill="#CDB89E"/></svg>`;
+/* الأقسام: لإضافة قسم جديد، زوّد سطر هنا */
+const categories = [
+  {id:"decor",   name:"ديكور",          emo:"🛋️"},
+  {id:"home",    name:"أدوات منزلية",   emo:"🏠"},
+  {id:"kitchen", name:"مطبخ",           emo:"🍳"},
+  {id:"gifts",   name:"هدايا",          emo:"🎁"}
+];
 
-const mugSVG = `<svg viewBox="0 0 200 200" width="66%"><path d="M88 34 q-6 -12 2 -22 M108 34 q-6 -12 2 -22" stroke="#C9B6A0" stroke-width="3" fill="none" stroke-linecap="round"/><rect x="52" y="52" width="86" height="16" rx="6" fill="#C8955C"/><path d="M56 68 h78 v86 a14 14 0 0 1 -14 14 h-50 a14 14 0 0 1 -14 -14 z" fill="#EAF2F5" stroke="#B9C7CC" stroke-width="2"/><path d="M60 110 h70 v44 a10 10 0 0 1 -10 10 h-50 a10 10 0 0 1 -10 -10 z" fill="#D9B08C"/><path d="M60 110 h70 v10 h-70z" fill="#F2E3D2"/><path d="M134 88 h16 a14 14 0 0 1 14 14 v20 a14 14 0 0 1 -14 14 h-16" fill="none" stroke="#B07A45" stroke-width="10" stroke-linecap="round"/><line x1="95" y1="68" x2="95" y2="140" stroke="#9AA8AD" stroke-width="3"/><rect x="88" y="138" width="14" height="5" rx="2" fill="#9AA8AD"/></svg>`;
-
-const fanSVG = `<svg viewBox="0 0 200 200" width="70%"><path d="M50 150 A62 62 0 1 1 150 150" fill="none" stroke="#7C6CF0" stroke-width="10" stroke-linecap="round" opacity=".9"/><path d="M50 150 A62 62 0 1 1 150 150" fill="none" stroke="#C9C2FF" stroke-width="22" stroke-linecap="round" opacity=".35"/><circle cx="100" cy="102" r="40" fill="#F4F6F8" stroke="#D5DAE0" stroke-width="3"/><g fill="#B8C2CC"><ellipse cx="100" cy="84" rx="9" ry="18"/><ellipse cx="116" cy="108" rx="9" ry="18" transform="rotate(120 116 108)"/><ellipse cx="84" cy="108" rx="9" ry="18" transform="rotate(240 84 108)"/></g><circle cx="100" cy="102" r="7" fill="#8C97A3"/><rect x="70" y="160" width="60" height="10" rx="5" fill="#D5DAE0"/></svg>`;
-
+/* المنتجات: كل منتج ممكن يبقى في أكتر من قسم (cats) */
 const products = [
   {id:"lamp", name:"عرض قطعتين: أباجورة كريستال + فواحة ترطيب", price:850, old:1200, tag:"الأكثر طلبًا",
-   bg:"radial-gradient(circle at 50% 40%,#FFF4E0,#F1E2CF)", svg:lampSVG,
+   cats:["decor","gifts"],
    imgs:["img/lamp1.webp","img/lamp2.webp","img/lamp3.webp","img/lamp4.webp","img/lamp5.webp"],
    feats:["إضاءة متعددة الألوان بتدّي البيت جو فخم","فواحة بتعطّر وترطّب الجو، وتشغيلها هادي","بتشتغل USB، ومناسبة لأوضة النوم والمكتب والليفينج","هدية شيك لأي مناسبة"],
    specs:[["الكمية","قطعتين"],["الأبعاد","حوالي 18 × 10 × 10 سم"],["الوزن","حوالي 700 جم"],["اللون","متعدد الألوان"],["التشغيل","USB"],["بلد الصنع","الصين"]]},
   {id:"mug", name:"المج الكهربائي الترند: ودّع التحريك بالملعقة!", price:449, old:599, tag:"هدية مثالية",
-   bg:"radial-gradient(circle at 50% 40%,#F4F7F8,#E2EBEE)", svg:mugSVG,
+   cats:["kitchen","gifts"],
    imgs:["img/mug1.webp","img/mug2.webp","img/mug3.webp","img/mug4.webp","img/mug5.webp","img/mug6.webp"],
    feats:["بيقلّب أوتوماتيك بضغطة زرار واحدة","يخلط القهوة واللبن والبودرة من غير تكتيل","سعة 400 مل، بغطا ومقبض سهل الحمل","مناسب للبيت والمكتب"],
    specs:[["السعة","400 مل"],["الخامة","زجاج متين + بلاستيك آمن"],["الأبعاد","حوالي 10 × 10 سم"],["الاستخدام","قهوة، شوكولاتة سخنة، مشروبات بودرة"],["التنظيف","سهل، من غير ما تغمر الجزء الكهربائي في المية"]]},
   {id:"fan", name:"مروحة وأباجورة في جهاز واحد", price:599, old:799, tag:"2 في 1",
-   bg:"radial-gradient(circle at 50% 40%,#F1EFFF,#E3DFFA)", svg:fanSVG,
+   cats:["home"],
    imgs:["img/fan1.webp","img/fan2.webp","img/fan3.webp","img/fan4.webp","img/fan5.webp","img/fan6.webp"],
    feats:["هوا منعش وإضاءة LED ملونة في جهاز واحد","بتلف 180 درجة وتوجّه الهوا زي ما تحب","3 سرعات وصوتها هادي، مش هتزعجك وإنت نايم","بطارية بتتشحن USB، خفيفة وسهلة التنقل"],
    specs:[["السرعات","3 مستويات"],["البطارية","1800 مللي أمبير، شحن USB"],["زاوية الدوران","180 درجة"],["الإضاءة","LED محيطية ملونة"],["الأبعاد","23 × 26 × 25 سم"],["الوزن","1.25 كجم"],["الجهد","5 فولت"],["الخامة","بلاستيك قوي"]]}
@@ -263,61 +432,126 @@ const products = [
 const govs = ["القاهرة","الجيزة","الإسكندرية","القليوبية","الشرقية","الدقهلية","الغربية","المنوفية","البحيرة","كفر الشيخ","دمياط","بورسعيد","الإسماعيلية","السويس","الفيوم","بني سويف","المنيا","أسيوط","سوهاج","قنا","الأقصر","أسوان","البحر الأحمر","مطروح","شمال سيناء","جنوب سيناء","الوادي الجديد"];
 
 const fmt = n => n.toLocaleString("ar-EG") + " ج.م";
+const $ = id => document.getElementById(id);
+const catName = id => (categories.find(c=>c.id===id)||{}).name || "";
+const countIn = id => id==="all" ? products.length : products.filter(p=>p.cats.includes(id)).length;
+const countTxt = n => n===0 ? "قريبًا" : n===1 ? "منتج واحد" : n===2 ? "منتجين" : n<=10 ? `${n.toLocaleString("ar-EG")} منتجات` : `${n.toLocaleString("ar-EG")} منتج`;
 
-document.getElementById("navWa").href = "https://wa.me/" + WA + "?text=" + encodeURIComponent("السلام عليكم، عندي استفسار عن منتجات ريدكارد");
+/* روابط واتساب */
+const waGeneral = "https://wa.me/" + WA + "?text=" + encodeURIComponent("السلام عليكم، عندي استفسار عن منتجات ريدكارد");
+document.querySelectorAll(".wa-link").forEach(a => a.href = waGeneral);
 
-const grid = document.getElementById("grid");
-products.forEach(p => {
-  const el = document.createElement("article");
-  el.className = "prod";
-  el.innerHTML = `
-    <div class="img" style="background:${p.bg}"><span class="tag">${p.tag}</span>${p.imgs ? `<img class="main" src="${p.imgs[0]}" alt="${p.name}">` : p.svg}</div>
-    ${p.imgs ? `<div class="thumbs">${p.imgs.map((s,i)=>`<img src="${s}" class="${i?'':'on'}" alt="">`).join("")}</div>` : ""}
+/* شريط فوق بيتحرك: نكرر المحتوى عشان يبان متصل */
+const track = $("track"); track.innerHTML = track.innerHTML.repeat(4);
+
+$("fromPrice").textContent = fmt(Math.min(...products.map(p=>p.price)));
+$("yr").textContent = new Date().getFullYear();
+
+/* كروت الأقسام */
+$("catsGrid").innerHTML = categories.map(c => `
+  <button class="cat reveal" data-cat="${c.id}">
+    <span class="go">←</span><span class="emo">${c.emo}</span>
+    <b>${c.name}</b><small>${countTxt(countIn(c.id))}</small>
+  </button>`).join("");
+$("footCats").innerHTML = categories.map(c => `<a href="#products" data-cat="${c.id}">${c.name}</a>`).join("");
+
+/* أزرار الفلترة */
+$("chips").innerHTML = [{id:"all",name:"الكل",emo:"✨"}, ...categories].map(c =>
+  `<button class="chip" data-cat="${c.id}" aria-pressed="false">${c.emo} ${c.name} <span class="n">${countIn(c.id).toLocaleString("ar-EG")}</span></button>`).join("");
+
+const grid = $("grid");
+let activeCat = "all";
+
+function card(p){
+  const off = Math.round((1 - p.price / p.old) * 100);
+  return `<article class="prod">
+    <div class="img"><span class="tag">${p.tag}</span><span class="off">وفّر ${off.toLocaleString("ar-EG")}٪</span>
+      <img class="main" src="${p.imgs[0]}" alt="${p.name}" loading="lazy"></div>
+    <div class="thumbs">${p.imgs.map((s,i)=>`<img src="${s}" class="${i?'':'on'}" alt="" loading="lazy">`).join("")}</div>
     <div class="body">
+      <div class="cats-line">${p.cats.map(c=>`<span>${catName(c)}</span>`).join("")}</div>
       <h3>${p.name}</h3>
       <ul>${p.feats.map(f=>`<li>${f}</li>`).join("")}</ul>
       ${p.specs ? `<details class="specs"><summary>المواصفات</summary><dl>${p.specs.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl></details>` : ""}
       <div class="price"><b>${fmt(p.price)}</b><s>${fmt(p.old)}</s></div>
       <button class="btn" data-id="${p.id}">اطلب الآن</button>
-    </div>`;
-  grid.appendChild(el);
-});
+    </div>
+  </article>`;
+}
 
-const sel = document.getElementById("fGov");
+function showCat(id){
+  if(id!=="all" && !categories.some(c=>c.id===id)) id = "all";
+  activeCat = id;
+  document.querySelectorAll(".chip").forEach(b => b.setAttribute("aria-pressed", b.dataset.cat===id));
+  const chips = $("chips"), on = chips.querySelector('[aria-pressed="true"]');
+  if(on && chips.scrollWidth > chips.clientWidth)
+    chips.scrollLeft += (on.getBoundingClientRect().left + on.offsetWidth/2) - (chips.getBoundingClientRect().left + chips.clientWidth/2);
+  const list = id==="all" ? products : products.filter(p=>p.cats.includes(id));
+  grid.innerHTML = list.length ? list.map(card).join("")
+    : `<div class="empty"><b>منتجات ${catName(id)} جاية قريب 👀</b>تابعنا عشان تعرف أول ما تنزل</div>`;
+  grid.querySelectorAll(".prod").forEach((el,i)=> el.style.animationDelay = (i*70)+"ms");
+}
+
+function goCat(id){
+  showCat(id);
+  history.replaceState(null, "", id==="all" ? location.pathname : "#" + id);
+  $("products").scrollIntoView({behavior:"smooth"});
+}
+
+$("chips").addEventListener("click", e => { const b = e.target.closest(".chip"); if(b){ showCat(b.dataset.cat); history.replaceState(null,"", b.dataset.cat==="all" ? location.pathname : "#"+b.dataset.cat); }});
+$("catsGrid").addEventListener("click", e => { const b = e.target.closest(".cat"); if(b) goCat(b.dataset.cat); });
+$("footCats").addEventListener("click", e => { const a = e.target.closest("a[data-cat]"); if(a){ e.preventDefault(); goCat(a.dataset.cat); }});
+
+/* لينك مباشر لقسم، مثلًا: redcard-eg.github.io/#kitchen */
+const startHash = location.hash.slice(1);
+showCat(categories.some(c=>c.id===startHash) ? startHash : "all");
+if(categories.some(c=>c.id===startHash)) setTimeout(()=> $("products").scrollIntoView(), 50);
+
+/* حركة الظهور مع السكرول */
+const reveals = document.querySelectorAll(".reveal");
+if("IntersectionObserver" in window){
+  const io = new IntersectionObserver(es => es.forEach(en => { if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }}), {threshold:.12});
+  reveals.forEach(el => io.observe(el));
+} else reveals.forEach(el => el.classList.add("in"));
+
+/* الطلب */
+const sel = $("fGov");
 sel.innerHTML = `<option value="">اختار المحافظة</option>` + govs.map(g=>`<option>${g}</option>`).join("");
 
 let cur = null, qty = 1;
-const ov = document.getElementById("ov"), form = document.getElementById("form"), done = document.getElementById("done");
+const ov = $("ov"), form = $("form"), done = $("done");
 
 function render(){
-  document.getElementById("q").textContent = qty;
-  document.getElementById("sum").innerHTML = `<b>${cur.name}</b><br>${fmt(cur.price)} للقطعة`;
-  document.getElementById("tot").textContent = fmt(cur.price * qty);
+  $("q").textContent = qty;
+  $("sum").innerHTML = `<img src="${cur.imgs[0]}" alt=""><div><b>${cur.name}</b>${fmt(cur.price)} للقطعة</div>`;
+  $("tot").textContent = fmt(cur.price * qty);
 }
 function openOrder(id){
   cur = products.find(p=>p.id===id); qty = 1;
   form.style.display = "block"; done.style.display = "none";
-  document.getElementById("err").textContent = "";
+  $("err").textContent = "";
   render(); ov.classList.add("show");
+  document.body.style.overflow = "hidden";
 }
-function closeOrder(){ ov.classList.remove("show"); }
+function closeOrder(){ ov.classList.remove("show"); document.body.style.overflow = ""; }
 
 grid.addEventListener("click", e => {
   const b = e.target.closest("button[data-id]"); if(b) return openOrder(b.dataset.id);
   const t = e.target.closest(".thumbs img");
-  if(t){ const card = t.closest(".prod"); card.querySelector("img.main").src = t.getAttribute("src");
-    card.querySelectorAll(".thumbs img").forEach(x=>x.classList.toggle("on", x===t)); }
+  if(t){ const c = t.closest(".prod"); c.querySelector("img.main").src = t.getAttribute("src");
+    c.querySelectorAll(".thumbs img").forEach(x=>x.classList.toggle("on", x===t)); }
 });
-document.getElementById("plus").onclick = () => { if(qty<10){qty++;render();} };
-document.getElementById("minus").onclick = () => { if(qty>1){qty--;render();} };
-document.getElementById("cancel").onclick = closeOrder;
-document.getElementById("close").onclick = closeOrder;
+$("plus").onclick = () => { if(qty<10){qty++;render();} };
+$("minus").onclick = () => { if(qty>1){qty--;render();} };
+$("cancel").onclick = closeOrder;
+$("close").onclick = closeOrder;
 ov.addEventListener("click", e => { if(e.target===ov) closeOrder(); });
+document.addEventListener("keydown", e => { if(e.key==="Escape" && ov.classList.contains("show")) closeOrder(); });
 
 form.addEventListener("submit", e => {
   e.preventDefault();
-  const name = fName.value.trim(), phone = fPhone.value.trim().replace(/\s/g,""), gov = fGov.value, addr = fAddr.value.trim();
-  const err = document.getElementById("err");
+  const name = $("fName").value.trim(), phone = $("fPhone").value.trim().replace(/\s/g,""), gov = $("fGov").value, addr = $("fAddr").value.trim();
+  const err = $("err");
   if(!name){ err.textContent = "اكتب اسمك من فضلك"; return; }
   if(!/^(\+?20)?0?1[0125]\d{8}$/.test(phone)){ err.textContent = "رقم الموبايل مش صحيح، اكتبه كده: 01xxxxxxxxx"; return; }
   if(!gov){ err.textContent = "اختار المحافظة"; return; }
@@ -331,7 +565,7 @@ form.addEventListener("submit", e => {
 الموبايل: ${phone}
 المحافظة: ${gov}
 العنوان: ${addr}`;
-  document.getElementById("waLink").href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
+  $("waLink").href = "https://wa.me/" + WA + "?text=" + encodeURIComponent(msg);
   form.style.display = "none"; done.style.display = "block";
 });
 </script>
