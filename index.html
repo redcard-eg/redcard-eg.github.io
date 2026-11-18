@@ -91,8 +91,39 @@
   .stage .tag small{display:block;font-family:var(--body);font-size:12px;color:var(--ink-2)}
   .stage .tag b{font-size:22px;color:var(--red)}
 
+  /* top of page: 3 layouts (LAYOUT in config.js) */
+  .top{display:none}
+  body.L-compact .top.compact,body.L-shop .top.shop,body.L-banner .top.banner{display:block}
+  .top.compact{padding:30px 22px 6px;text-align:center}
+  .top.compact h1{font-size:clamp(26px,3.6vw,40px);font-weight:800;margin-bottom:6px}
+  .top.compact p{color:var(--ink-2);font-size:16px;margin:0 auto 14px;max-width:34em}
+  .pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+  .pills span{display:inline-flex;align-items:center;gap:6px;background:#fff;border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:14px;font-weight:500}
+  .top.shop{padding:14px 22px 0}
+  .top.shop .pills{justify-content:flex-start}
+  .top.banner{padding:18px 22px 0}
+  .bnr{position:relative;border-radius:var(--r-lg);overflow:hidden;height:clamp(170px,26vw,300px);background:var(--ink)}
+  .bnr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.55}
+  .bnr div{position:relative;height:100%;display:flex;flex-direction:column;justify-content:center;padding:0 clamp(20px,4vw,48px);color:#fff}
+  .bnr h1{font-size:clamp(24px,3.8vw,44px);font-weight:800;max-width:14em}
+  .bnr p{color:#F1E6EC;font-size:clamp(14px,1.6vw,17px);margin-top:6px}
+  .bnr .label{align-self:flex-start;margin-bottom:10px}
+  body.L-shop #products .head{margin-top:16px}
+  #products{padding-top:8px}
+  .confirm-note{margin-top:26px;background:rgba(233,180,76,.14);border:1.5px dashed rgba(233,180,76,.6);border-radius:var(--r-md);padding:14px 16px;color:#F3ECF0;font-size:15px}
+  .confirm-note b{color:var(--gold)}
+  .shipopts{display:grid;gap:8px;margin-top:4px}
+  .co label.shipopt{display:grid;margin:0;font-weight:400}
+  .shipopt{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;border:1.5px solid var(--line);border-radius:var(--r-sm);padding:12px 14px;background:#fff;cursor:pointer}
+  .shipopt:has(input:checked){border-color:var(--ink);box-shadow:inset 0 0 0 1px var(--ink)}
+  .shipopt input{accent-color:var(--red);width:18px;height:18px}
+  .shipopt b{display:block;font-size:15px}
+  .shipopt small{color:var(--ink-2);font-size:12.5px}
+  .shipopt em{font-style:normal;font-family:var(--display);font-weight:800;color:var(--red);white-space:nowrap}
+
   /* payment-safety band */
   .safe{background:var(--ink);color:#F3ECF0;border-radius:28px;padding:44px 44px 40px;margin:0 22px 72px}
+  @media (min-width:1224px){.safe{max-width:1136px;margin:0 auto 72px;box-sizing:content-box}}
   .safe-in{max-width:1136px;margin:0 auto}
   .safe h2{font-size:clamp(24px,3vw,34px);font-weight:800;margin-bottom:8px;color:#fff}
   .safe>.safe-in>p{color:#CFC3CC;max-width:42em;margin-bottom:30px}
@@ -118,7 +149,7 @@
 
   /* product grid */
   #products{scroll-margin-top:90px}
-  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px 22px;margin:26px 0 80px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:34px 22px;margin:22px 0 72px}
   .card{display:flex;flex-direction:column}
   .phw{position:relative}
   .card .ph{position:relative;aspect-ratio:4/5;border-radius:var(--r-md);overflow:hidden;background:var(--mist);display:block}
@@ -309,38 +340,17 @@
 </header>
 
 <main id="top">
-  <section class="wrap hero">
-    <div>
-      <span class="label">✋ معمولة بإيد، غرزة غرزة</span>
-      <h1>كروشيه يدفّيك<br>ويتعمل على مزاجك</h1>
-      <p class="lead">كوفيات وبوتات بيبي وجرابات معمولة بإيد بالكامل. القطع اللي هنا متاحة فورًا، ولو عاوز لون أو مقاس تاني نعملهولك مخصوص.</p>
-      <div class="cta">
-        <a class="btn" href="#products" data-go="handmade">شوف القطع المتاحة</a>
-        <a class="btn outline" href="#custom">اطلب بلونك</a>
-      </div>
-      <div class="assure">
-        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F9D55" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>ادفع لما تستلم</span>
-        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F9D55" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>عاين قدام المندوب</span>
-        <span><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1F9D55" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>شحن لكل مصر</span>
-      </div>
-    </div>
-    <div class="stage" aria-hidden="true">
-      <div class="main"><img id="heroMain" src="img/hm/red1.jpg" alt=""></div>
-      <div class="inset"><img id="heroInset" src="img/hm/purple2.jpg" alt=""></div>
-      <div class="tag"><small>قطع هاند ميد من</small><b id="heroFrom"></b></div>
-    </div>
+  <section class="top compact">
+    <h1>كروشيه شغل إيد، يتعمل على مزاجك</h1>
+    <p>كل القطع اللي تحت متاحة فورًا، ولو عاوز لون أو مقاس تاني نعملهولك مخصوص.</p>
+    <div class="pills"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F9D55" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>ادفع لما تستلم</span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F9D55" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>عاين قبل ما تدفع</span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F9D55" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>شحن لكل مصر</span></div>
   </section>
-
-  <section class="safe" aria-labelledby="safeT">
-    <div class="safe-in">
-      <h2 id="safeT">فلوسك مش بتخرج من إيدك غير لما تشوف القطعة</h2>
-      <p>مفيش دفع أونلاين ولا بيانات فيزا خالص. بتطلب، وبنكلمك نأكد، وتدفع للمندوب بعد ما تعاين بنفسك.</p>
-      <ol class="flow">
-        <li><div><b>اختار وابعت الطلب</b><p>ضيف القطع للسلة، والطلب بيوصلنا على واتساب.</p></div></li>
-        <li><div><b>نكلمك نأكد</b><p>نراجع معاك اللون والمقاس والعنوان قبل أي شحن.</p></div></li>
-        <li><div><b>افتح وعاين</b><p>المندوب بيستنى لحد ما تتأكد إن القطعة زي الصورة.</p></div></li>
-        <li class="pay"><div><b>ادفع وإنت مطمّن</b><p>لو مش زي ما اتفقنا، ترفضها ومش هتدفع تمنها.</p></div></li>
-      </ol>
+  <section class="wrap top shop">
+    <div class="pills"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F9D55" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>ادفع لما تستلم</span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F9D55" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>عاين قبل ما تدفع</span><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1F9D55" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>شحن لكل مصر</span></div>
+  </section>
+  <section class="wrap top banner">
+    <div class="bnr"><img id="bnrImg" src="img/hm/red1.jpg" alt="">
+      <div><span class="label">✋ معمولة بإيد، غرزة غرزة</span><h1>كروشيه يدفّيك ويتعمل على مزاجك</h1><p>متاح فورًا، وبالألوان والمقاسات اللي تحبها</p></div>
     </div>
   </section>
 
@@ -353,11 +363,25 @@
     <div class="grid" id="grid"></div>
   </section>
 
+  <section class="safe" aria-labelledby="safeT">
+    <div class="safe-in">
+      <h2 id="safeT">فلوسك مش بتخرج من إيدك غير لما تشوف القطعة</h2>
+      <p>مفيش دفع أونلاين ولا بيانات فيزا خالص. بتطلب، وبنكلمك نأكد، وتدفع للمندوب بعد ما تعاين بنفسك.</p>
+      <ol class="flow">
+        <li><div><b>اختار وابعت الطلب</b><p>ضيف القطع للسلة، والطلب بيوصلنا على واتساب.</p></div></li>
+        <li><div><b>نكلمك نأكد</b><p>نراجع معاك اللون والمقاس والعنوان قبل أي شحن.</p></div></li>
+        <li><div><b>افتح وعاين</b><p>المندوب بيستنى لحد ما تتأكد إن القطعة زي الصورة.</p></div></li>
+        <li class="pay"><div><b>ادفع وإنت مطمّن</b><p>لو مش زي ما اتفقنا، ترفضها ومش هتدفع تمنها.</p></div></li>
+      </ol>
+      <p class="confirm-note">ده للقطع الجاهزة. <b>القطعة اللي بتتعمل مخصوص ليك</b> (لون أو مقاس خاص) بنبدأ فيها بعد <b>دفعة تأكيد</b> بسيطة، والباقي بتدفعه لما تستلم.</p>
+    </div>
+  </section>
+
   <section class="wrap" id="custom" style="scroll-margin-top:90px">
     <div class="custom">
       <div>
         <h2>عاوز اللون اللي في دماغك؟</h2>
-        <p>أي قطعة هنا ممكن تتعمل بالألوان والمقاس اللي تحبه، أو ابعتلنا صورة موديل عاجبك ونقولك نقدر نعمله ولا لأ. السعر والمدة بنتفق عليهم على واتساب قبل ما نبدأ.</p>
+        <p>أي قطعة هنا ممكن تتعمل بالألوان والمقاس اللي تحبه، أو ابعتلنا صورة موديل عاجبك ونقولك نقدر نعمله ولا لأ. بنتفق على التفاصيل على واتساب، وبنبدأ فيها بعد دفعة تأكيد بنص سعرها، والباقي لما تستلم. التنفيذ بياخد <span class="cDays"></span>.</p>
         <a class="btn ink" id="customWa" href="#" target="_blank" rel="noopener">ابعت طلبك على واتساب</a>
       </div>
       <div class="yarns" aria-hidden="true">
@@ -375,7 +399,7 @@
       <p>ريدكارد متجر مصري لقطع الكروشيه شغل الإيد. الكوفية الواحدة بتتعمل غرزة غرزة، عشان كده كل قطعة ليها شخصيتها، ومش هتلاقيها في أي محل.</p>
       <p>وكمان بنختارلك شوية منتجات حلوة لبيتك، بنفس الطريقة: تطلب، وتعاين، وبعدين تدفع.</p>
       <div class="promise">
-        <div><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#241A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><p><b>مفيش دفع مقدم</b><span>كل الطلبات كاش عند الاستلام.</span></p></div>
+        <div><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#241A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 4.5 3.4 8.3 8 9 4.6-.7 8-4.5 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span><p><b>القطع الجاهزة من غير أي دفع مقدم</b><span>كاش عند الاستلام. والقطع المخصوصة بدفعة تأكيد بسيطة بس.</span></p></div>
         <div><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#241A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/></svg></span><p><b>الصور هي القطعة الحقيقية</b><span>القطع المتاحة متصورة زي ما هي، وتقدر تعاينها قبل ما تدفع.</span></p></div>
         <div><span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#241A2B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5.1A8 8 0 1 1 21 12z"/></svg></span><p><b>بنرد عليك بنفسنا</b><span>أي سؤال قبل أو بعد الطلب، كلمنا على واتساب.</span></p></div>
       </div>
@@ -385,7 +409,7 @@
   <section class="wrap info">
     <div class="panel" id="shipping">
       <h2>الشحن والتوصيل</h2>
-      <p>بنوصّل لكل محافظات مصر خلال <b id="shipTime"></b>. الشحن بيتحسب مرة واحدة على الأوردر كله:</p>
+      <p>بنشحن مع <b>البريد المصري</b> لكل محافظات مصر خلال <b id="shipTime"></b>. الشحن سعر واحد لكل مصر، وبيتحسب مرة واحدة على الأوردر كله:</p>
       <table class="ship" id="shipTable"></table>
     </div>
     <div class="panel" id="returns">
@@ -394,16 +418,16 @@
         <li><b>افتح الشحنة وعاينها قدام المندوب</b> قبل ما تدفع.</li>
         <li>لو القطعة مش مطابقة للصور أو فيها عيب، <b>ارفضها وقتها</b> ومش هتدفع تمنها.</li>
         <li>بعد ما تستلم وتدفع، <b>مفيش استرجاع ولا استبدال</b>، فعاين كويس الأول.</li>
-        <li><b>القطع المعمولة مخصوص ليك</b> (لون أو مقاس خاص) بنتفق على كل تفاصيلها على واتساب قبل ما نبدأ فيها.</li>
+        <li><b>القطع المعمولة مخصوص ليك</b> (لون أو مقاس خاص) بنتفق على تفاصيلها على واتساب، وبنبدأ فيها بعد دفعة تأكيد بنص سعرها. ولأنها معمولة على ذوقك، الدفعة دي مابترجعش لو اترفضت القطعة من غير عيب فيها.</li>
       </ul>
     </div>
   </section>
 
   <section class="wrap faq" id="faq">
     <h2>أسئلة بتتسأل كتير</h2>
-    <details><summary>بدفع إزاي؟</summary><p>كاش للمندوب وإنت بتستلم. مفيش أي دفع مقدم ولا بيانات فيزا.</p></details>
+    <details><summary>بدفع إزاي؟</summary><p>القطع الجاهزة: كاش للمندوب وإنت بتستلم، من غير أي دفع مقدم. القطع اللي بتتعمل مخصوص ليك: دفعة تأكيد بنص سعرها قبل ما نبدأ، والباقي عند الاستلام.</p></details>
     <details><summary>الأوردر بيوصل في قد إيه؟</summary><p id="faqTime"></p></details>
-    <details><summary>القطعة المعمولة بالطلب بتاخد قد إيه؟</summary><p>على حسب الموديل والمقاس، وبنقولك المدة بالظبط على واتساب قبل ما نبدأ.</p></details>
+    <details><summary>القطعة المعمولة بالطلب بتاخد قد إيه؟</summary><p>غالبًا <span class="cDays"></span> بعد دفعة التأكيد، وبعدها الشحن. وبنقولك المدة بالظبط على واتساب.</p></details>
     <details><summary>أقدر أطلب أكتر من حاجة في نفس الأوردر؟</summary><p>أيوه، ضيف كل اللي عاوزه للسلة، وهتدفع شحن مرة واحدة بس.</p></details>
     <details><summary>لو القطعة وصلت مش زي الصورة؟</summary><p>افتح الشحنة قدام المندوب. لو فيه أي مشكلة، ارفضها وقتها ومش هتدفع تمنها.</p></details>
     <details><summary>أتواصل معاكم إزاي؟</summary><p>على واتساب، من الزرار الأخضر اللي تحت في الصفحة.</p></details>
@@ -430,7 +454,7 @@
         <a href="#faq">أسئلة بتتسأل كتير</a>
         <a id="footWa" href="#" target="_blank" rel="noopener">واتساب: <span dir="ltr" id="waTxt"></span></a>
       </div>
-      <div class="pay-note"><b>الدفع عند الاستلام بس</b>مفيش دفع أونلاين. فلوسك بتتدفع للمندوب بعد ما تعاين القطعة.</div>
+      <div class="pay-note"><b>الدفع عند الاستلام</b>مفيش دفع أونلاين. القطع الجاهزة بتدفعها للمندوب بعد ما تعاينها، والقطع المخصوصة بدفعة تأكيد بسيطة.</div>
     </div>
     <div class="copy">© <span id="yr"></span> ريدكارد RedCard</div>
   </div>
@@ -468,8 +492,9 @@ PRODUCTS.sort((a, b) => (b.custom ? 1 : 0) - (a.custom ? 1 : 0));
 const $ = s => document.querySelector(s);
 const fmt = n => Number(n).toLocaleString("ar-EG") + " ج.م";
 const byId = id => PRODUCTS.find(p => p.id === id);
-const GOVS = SHIPPING_ZONES.flatMap(z => z.govs);
-const feeFor = g => (SHIPPING_ZONES.find(z => z.govs.includes(g)) || {}).fee;
+const shipBy = id => SHIPPING_OPTIONS.find(o => o.id === id);
+const confirmDue = () => Math.round(cart.filter(l => l.note).reduce((s, l) => s + byId(l.id).price * l.qty, 0) * CUSTOM_CONFIRM_SHARE);
+document.body.classList.add("L-" + (typeof LAYOUT === "string" ? LAYOUT : "compact"));
 const waLink = t => "https://wa.me/" + WA + "?text=" + encodeURIComponent(t);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const CHECK = `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1F9D55" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>`;
@@ -479,21 +504,18 @@ function lock(){ document.body.classList.toggle("lock", $("#pdOv").classList.con
 /* ---------- static bits ---------- */
 $("#shipTime").textContent = DELIVERY_TIME;
 $("#faqTime").textContent = "القطع المتاحة بتوصل " + DELIVERY_TIME + " من وقت تأكيد الطلب.";
-$("#shipTable").innerHTML = SHIPPING_ZONES.map(z => `<tr><td>${z.name}<small>${z.govs.join("، ")}</small></td><td>${fmt(z.fee)}</td></tr>`).join("");
+$("#shipTable").innerHTML = SHIPPING_OPTIONS.map(o => `<tr><td>${o.name}<small>${o.note}</small></td><td>${fmt(o.fee)}</td></tr>`).join("");
+document.querySelectorAll(".cDays").forEach(e => e.textContent = CUSTOM_DAYS);
 $("#waTxt").textContent = "+" + WA.slice(0,2) + " " + WA.slice(2);
 ["#footWa","#fab"].forEach(s => $(s).href = waLink("السلام عليكم، عندي استفسار عن منتجات ريدكارد"));
 $("#customWa").href = waLink("السلام عليكم، عاوز أطلب قطعة كروشيه بلون أو مقاس خاص:");
 $("#yr").textContent = new Date().getFullYear();
-(() => {  // hero: real handmade photos + lowest scarf price
+(() => {  // banner photo: a real handmade piece
   const hm = PRODUCTS.filter(p => p.custom);
   if (hm.length) {
-    const min = Math.min(...hm.map(p => p.price));
-    $("#heroFrom").textContent = fmt(min);
     const main = hm.find(p => p.id === "hm-red") || hm[0];
-    const inset = hm.find(p => p.id === "hm-purple" && p.imgs[1]) ;
-    $("#heroMain").src = main.imgs[0];
-    if (inset) $("#heroInset").src = inset.imgs[1];
-  } else $(".stage .tag").remove();
+    $("#bnrImg").src = main.imgs[0];
+  }
 })();
 
 /* ---------- grid + chips ---------- */
@@ -564,7 +586,7 @@ function openProduct(id){
       ${p.specs && p.specs.length ? `<dl>${p.specs.map(([k, v]) => v ? `<dt>${esc(k)}</dt><dd>${esc(v)}</dd>` : `<dd style="grid-column:1/-1">${esc(k)}</dd>`).join("")}</dl>` : ""}
       ${p.custom ? `<div class="customize"><b>عاوزها بلون أو مقاس تاني؟</b>
         <input class="field" id="pdNote" placeholder="مثال: نفس الموديل بلون كحلي، أو أطول شوية" style="margin-top:8px" aria-label="اللون أو المقاس اللي عاوزه">
-        <div class="mini" style="margin-top:6px">اختياري. القطع المخصوصة بنتفق على سعرها ومدتها على واتساب.</div></div>` : ""}
+        <div class="mini" style="margin-top:6px">اختياري. القطعة المخصوصة بتاخد ${CUSTOM_DAYS}، وبنبدأ فيها بعد دفعة تأكيد بنص سعرها.</div></div>` : ""}
       <div class="row"><div class="qty" aria-label="الكمية"><button id="pdPlus" aria-label="زوّد">+</button><span id="pdQ">١</span><button id="pdMinus" aria-label="قلّل">−</button></div></div>
       <div class="buy">
         <button class="btn" id="pdBuy">اطلب دلوقتي</button>
@@ -618,7 +640,7 @@ function renderCart(){
     db.innerHTML = lines;
     df.innerHTML = `
       <div class="sumrow"><span>المجموع</span><b>${fmt(subtotal())}</b></div>
-      <div class="mini">الشحن بيتحسب حسب المحافظة في الخطوة الجاية.</div>
+      <div class="mini">الشحن من ${fmt(Math.min(...SHIPPING_OPTIONS.map(o => o.fee)))} لأي مكان في مصر، وبتختاره في الخطوة الجاية.</div>
       <button class="btn" id="toCheckout">كمّل الطلب</button>
       <a class="btn outline" href="#products" data-close>كمّل تسوّق</a>`;
   } else if (step === "checkout") {
@@ -628,19 +650,28 @@ function renderCart(){
         <label for="fName">الاسم بالكامل</label><input class="field" id="fName" autocomplete="name" placeholder="مثال: محمد أحمد">
         <label for="fPhone">رقم الموبايل</label><input class="field" id="fPhone" inputmode="tel" dir="ltr" placeholder="01xxxxxxxxx" autocomplete="tel">
         <label for="fGov">المحافظة</label><select class="field" id="fGov"><option value="">اختار المحافظة</option>${GOVS.map(g => `<option>${g}</option>`).join("")}</select>
-        <label for="fAddr">العنوان بالتفصيل</label><textarea class="field" id="fAddr" rows="2" placeholder="المنطقة، الشارع، رقم العمارة، علامة مميزة"></textarea>
+        <label>طريقة الاستلام</label><div class="shipopts">${SHIPPING_OPTIONS.map((o, i) => `<label class="shipopt"><input type="radio" name="fShip" value="${o.id}"${i ? "" : " checked"}><span><b>${o.name}</b><small>${o.note}</small></span><em>${fmt(o.fee)}</em></label>`).join("")}</div>
+        <label for="fAddr" id="addrLbl">العنوان بالتفصيل</label><textarea class="field" id="fAddr" rows="2" placeholder="المنطقة، الشارع، رقم العمارة، علامة مميزة"></textarea>
         <label for="fNotes">ملاحظات (اختياري)</label><input class="field" id="fNotes" placeholder="مثال: الاتصال بعد الساعة 5">
       </form>
       <details style="margin-top:16px"><summary class="mini" style="cursor:pointer">مراجعة القطع (${cart.reduce((s, l) => s + l.qty, 0).toLocaleString("ar-EG")})</summary>${lines}</details>`;
     df.innerHTML = `
       <div class="sumrow"><span>المجموع</span><b>${fmt(subtotal())}</b></div>
-      <div class="sumrow"><span>الشحن</span><b id="shipFee">اختار المحافظة</b></div>
-      <div class="sumrow t"><span>الإجمالي</span><b id="grand">${fmt(subtotal())}</b></div>
+      <div class="sumrow"><span>الشحن</span><b id="shipFee"></b></div>
+      <div class="sumrow t"><span>الإجمالي</span><b id="grand"></b></div>
+      ${confirmDue() ? `<div class="mini" style="background:#FFF6E3;border:1.5px dashed #D9A43A;border-radius:10px;padding:8px 10px">فيه قطع مخصوصة في طلبك: هنبعتلك على واتساب تفاصيل <b>دفعة التأكيد (${fmt(confirmDue())})</b>، والباقي عند الاستلام.</div>` : ""}
       <div class="mini" style="display:flex;gap:6px;align-items:center">${CHECK} هتدفع للمندوب بعد ما تعاين</div>
       <div class="err" id="err" role="alert"></div>
       <button class="btn" id="confirm">ابعت الطلب</button>
       <button class="btn outline" id="back">رجوع للسلة</button>`;
-    $("#fGov").onchange = () => { const f = feeFor($("#fGov").value); $("#shipFee").textContent = f ? fmt(f) : "اختار المحافظة"; $("#grand").textContent = fmt(subtotal() + (f || 0)); };
+    const upd = () => {
+      const o = shipBy(document.querySelector("[name=fShip]:checked").value);
+      $("#shipFee").textContent = fmt(o.fee); $("#grand").textContent = fmt(subtotal() + o.fee);
+      const post = o.id === "post";
+      $("#addrLbl").textContent = post ? "المنطقة وأقرب مكتب بريد ليك" : "العنوان بالتفصيل";
+      $("#fAddr").placeholder = post ? "مثال: مدينة نصر، مكتب بريد الحي السابع" : "المنطقة، الشارع، رقم العمارة، علامة مميزة";
+    };
+    document.querySelectorAll("[name=fShip]").forEach(r => r.onchange = upd); upd();
   }
 }
 function submitOrder(){
@@ -648,22 +679,23 @@ function submitOrder(){
   const err = $("#err");
   if (!name) return err.textContent = "اكتب اسمك عشان المندوب يعرفك.";
   if (!/^(\+?20)?0?1[0125]\d{8}$/.test(phone)) return err.textContent = "رقم الموبايل لازم يبقى 11 رقم ويبدأ بـ 01.";
-  if (!gov) return err.textContent = "اختار المحافظة عشان نحسب الشحن.";
+  if (!gov) return err.textContent = "اختار المحافظة.";
   if (addr.length < 6) return err.textContent = "اكتب العنوان بالتفصيل: المنطقة والشارع ورقم العمارة.";
-  const fee = feeFor(gov), sub = subtotal();
+  const ship = shipBy(document.querySelector("[name=fShip]:checked").value), fee = ship.fee, sub = subtotal(), due = confirmDue();
   const items = cart.map((l, i) => { const p = byId(l.id); return `${i + 1}) ${p.name} × ${l.qty} = ${p.price * l.qty} جنيه${l.note ? `\n   🎨 لون/مقاس خاص: ${l.note}` : ""}`; }).join("\n");
   const msg = `طلب جديد من متجر ريدكارد 🛒
 
 ${items}
 
 المجموع: ${sub} جنيه
-الشحن (${gov}): ${fee} جنيه
-الإجمالي: ${sub + fee} جنيه (الدفع عند الاستلام)
+الشحن (${ship.name}): ${fee} جنيه
+الإجمالي: ${sub + fee} جنيه${due ? `
+🎨 فيه قطع مخصوصة: دفعة تأكيد ${due} جنيه قبل التنفيذ، والباقي ${sub + fee - due} جنيه عند الاستلام` : " (الدفع عند الاستلام)"}
 —
 الاسم: ${name}
 الموبايل: ${phone}
 المحافظة: ${gov}
-العنوان: ${addr}${notes ? `\nملاحظات: ${notes}` : ""}`;
+${ship.id === "post" ? "الاستلام من مكتب بريد: " : "العنوان: "}${addr}${notes ? `\nملاحظات: ${notes}` : ""}`;
   step = "done";
   $("#dTitle").textContent = "فاضل خطوة واحدة";
   $("#db").innerHTML = `<div class="done"><div class="ok"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#1F9D55" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
