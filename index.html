@@ -107,6 +107,7 @@
   .cat b{font-size:20px;font-weight:900}
   .cat small{color:rgba(27,27,31,.65);font-weight:600;font-size:13px}
   .cat .go{position:absolute;top:16px;right:18px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.7);display:flex;align-items:center;justify-content:center;font-weight:800}
+  .cat{background:linear-gradient(140deg,#FBF6F1,#EADFD3)}
   .cat[data-cat="decor"]{background:linear-gradient(140deg,#FFF1DC,#F6D9B4)}
   .cat[data-cat="home"]{background:linear-gradient(140deg,#EEF0FF,#D8DCFA)}
   .cat[data-cat="kitchen"]{background:linear-gradient(140deg,#E9F7EF,#C9EBD7)}
@@ -287,9 +288,9 @@
         </div>
       </div>
       <div class="collage" aria-hidden="true">
-        <div class="main"><img src="img/lamp2.webp" alt=""></div>
-        <div class="mini m1"><img src="img/mug1.webp" alt=""></div>
-        <div class="mini m2"><img src="img/fan1.webp" alt=""></div>
+        <div class="main"><img id="h0" alt=""></div>
+        <div class="mini m1"><img id="h1" alt=""></div>
+        <div class="mini m2"><img id="h2" alt=""></div>
         <div class="price-pill"><small>عروض تبدأ من</small><b id="fromPrice"></b></div>
       </div>
     </section>
@@ -399,35 +400,16 @@
   </div>
 </div>
 
+<script>document.write('<script src="data.js?t=' + Date.now() + '"><\/script>');</script>
 <script>
 const WA = "201068613396";
 
-/* الأقسام: لإضافة قسم جديد، زوّد سطر هنا */
-const categories = [
-  {id:"decor",   name:"ديكور",          emo:"🛋️"},
-  {id:"home",    name:"أدوات منزلية",   emo:"🏠"},
-  {id:"kitchen", name:"مطبخ",           emo:"🍳"},
-  {id:"gifts",   name:"هدايا",          emo:"🎁"}
-];
-
-/* المنتجات: كل منتج ممكن يبقى في أكتر من قسم (cats) */
-const products = [
-  {id:"lamp", name:"عرض قطعتين: أباجورة كريستال + فواحة ترطيب", price:850, old:1200, tag:"الأكثر طلبًا",
-   cats:["decor","gifts"],
-   imgs:["img/lamp1.webp","img/lamp2.webp","img/lamp3.webp","img/lamp4.webp","img/lamp5.webp"],
-   feats:["إضاءة متعددة الألوان بتدّي البيت جو فخم","فواحة بتعطّر وترطّب الجو، وتشغيلها هادي","بتشتغل USB، ومناسبة لأوضة النوم والمكتب والليفينج","هدية شيك لأي مناسبة"],
-   specs:[["الكمية","قطعتين"],["الأبعاد","حوالي 18 × 10 × 10 سم"],["الوزن","حوالي 700 جم"],["اللون","متعدد الألوان"],["التشغيل","USB"],["بلد الصنع","الصين"]]},
-  {id:"mug", name:"المج الكهربائي الترند: ودّع التحريك بالملعقة!", price:449, old:599, tag:"هدية مثالية",
-   cats:["kitchen","gifts"],
-   imgs:["img/mug1.webp","img/mug2.webp","img/mug3.webp","img/mug4.webp","img/mug5.webp","img/mug6.webp"],
-   feats:["بيقلّب أوتوماتيك بضغطة زرار واحدة","يخلط القهوة واللبن والبودرة من غير تكتيل","سعة 400 مل، بغطا ومقبض سهل الحمل","مناسب للبيت والمكتب"],
-   specs:[["السعة","400 مل"],["الخامة","زجاج متين + بلاستيك آمن"],["الأبعاد","حوالي 10 × 10 سم"],["الاستخدام","قهوة، شوكولاتة سخنة، مشروبات بودرة"],["التنظيف","سهل، من غير ما تغمر الجزء الكهربائي في المية"]]},
-  {id:"fan", name:"مروحة وأباجورة في جهاز واحد", price:599, old:799, tag:"2 في 1",
-   cats:["home"],
-   imgs:["img/fan1.webp","img/fan2.webp","img/fan3.webp","img/fan4.webp","img/fan5.webp","img/fan6.webp"],
-   feats:["هوا منعش وإضاءة LED ملونة في جهاز واحد","بتلف 180 درجة وتوجّه الهوا زي ما تحب","3 سرعات وصوتها هادي، مش هتزعجك وإنت نايم","بطارية بتتشحن USB، خفيفة وسهلة التنقل"],
-   specs:[["السرعات","3 مستويات"],["البطارية","1800 مللي أمبير، شحن USB"],["زاوية الدوران","180 درجة"],["الإضاءة","LED محيطية ملونة"],["الأبعاد","23 × 26 × 25 سم"],["الوزن","1.25 كجم"],["الجهد","5 فولت"],["الخامة","بلاستيك قوي"]]}
-];
+/* المنتجات والأقسام بتيجي من data.js، وبتتعدّل من صفحة الإدارة admin.html */
+const D = window.REDCARD_DATA || {categories:[], products:[]};
+const categories = D.categories || [];
+const products = (D.products || []).filter(p => !p.hidden && p.imgs && p.imgs.length)
+  .map(p => ({cats:[], feats:[], specs:[], tag:"", ...p}));
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
 const govs = ["القاهرة","الجيزة","الإسكندرية","القليوبية","الشرقية","الدقهلية","الغربية","المنوفية","البحيرة","كفر الشيخ","دمياط","بورسعيد","الإسماعيلية","السويس","الفيوم","بني سويف","المنيا","أسيوط","سوهاج","قنا","الأقصر","أسوان","البحر الأحمر","مطروح","شمال سيناء","جنوب سيناء","الوادي الجديد"];
 
@@ -444,37 +426,46 @@ document.querySelectorAll(".wa-link").forEach(a => a.href = waGeneral);
 /* شريط فوق بيتحرك: نكرر المحتوى عشان يبان متصل */
 const track = $("track"); track.innerHTML = track.innerHTML.repeat(4);
 
-$("fromPrice").textContent = fmt(Math.min(...products.map(p=>p.price)));
+/* صور أول الصفحة: من أول 3 منتجات (الكبيرة بتاخد تاني صورة لو موجودة) */
+[0,1,2].forEach(i => {
+  const p = products[i % Math.max(products.length,1)], el = $("h"+i);
+  if(!p){ el.parentNode.style.display = "none"; return; }
+  el.src = (i===0 && p.imgs[1]) ? p.imgs[1] : p.imgs[0];
+});
+if(products.length) $("fromPrice").textContent = fmt(Math.min(...products.map(p=>p.price)));
+else $("fromPrice").parentNode.style.display = "none";
 $("yr").textContent = new Date().getFullYear();
 
 /* كروت الأقسام */
 $("catsGrid").innerHTML = categories.map(c => `
-  <button class="cat reveal" data-cat="${c.id}">
-    <span class="go">←</span><span class="emo">${c.emo}</span>
-    <b>${c.name}</b><small>${countTxt(countIn(c.id))}</small>
+  <button class="cat reveal" data-cat="${esc(c.id)}" style="${c.color ? `background:linear-gradient(140deg,#fff,${esc(c.color)})` : ""}">
+    <span class="go">←</span><span class="emo">${esc(c.emo)}</span>
+    <b>${esc(c.name)}</b><small>${countTxt(countIn(c.id))}</small>
   </button>`).join("");
-$("footCats").innerHTML = categories.map(c => `<a href="#products" data-cat="${c.id}">${c.name}</a>`).join("");
+$("footCats").innerHTML = categories.map(c => `<a href="#products" data-cat="${esc(c.id)}">${esc(c.name)}</a>`).join("");
 
 /* أزرار الفلترة */
 $("chips").innerHTML = [{id:"all",name:"الكل",emo:"✨"}, ...categories].map(c =>
-  `<button class="chip" data-cat="${c.id}" aria-pressed="false">${c.emo} ${c.name} <span class="n">${countIn(c.id).toLocaleString("ar-EG")}</span></button>`).join("");
+  `<button class="chip" data-cat="${esc(c.id)}" aria-pressed="false">${esc(c.emo)} ${esc(c.name)} <span class="n">${countIn(c.id).toLocaleString("ar-EG")}</span></button>`).join("");
 
 const grid = $("grid");
 let activeCat = "all";
 
 function card(p){
-  const off = Math.round((1 - p.price / p.old) * 100);
+  const hasOff = p.old && p.old > p.price;
+  const off = hasOff ? Math.round((1 - p.price / p.old) * 100) : 0;
+  const cl = p.cats.filter(c => catName(c));
   return `<article class="prod">
-    <div class="img"><span class="tag">${p.tag}</span><span class="off">وفّر ${off.toLocaleString("ar-EG")}٪</span>
-      <img class="main" src="${p.imgs[0]}" alt="${p.name}" loading="lazy"></div>
-    <div class="thumbs">${p.imgs.map((s,i)=>`<img src="${s}" class="${i?'':'on'}" alt="" loading="lazy">`).join("")}</div>
+    <div class="img">${p.tag ? `<span class="tag">${esc(p.tag)}</span>` : ""}${off > 0 ? `<span class="off">وفّر ${off.toLocaleString("ar-EG")}٪</span>` : ""}
+      <img class="main" src="${esc(p.imgs[0])}" alt="${esc(p.name)}" loading="lazy"></div>
+    ${p.imgs.length > 1 ? `<div class="thumbs">${p.imgs.map((s,i)=>`<img src="${esc(s)}" class="${i?'':'on'}" alt="" loading="lazy">`).join("")}</div>` : ""}
     <div class="body">
-      <div class="cats-line">${p.cats.map(c=>`<span>${catName(c)}</span>`).join("")}</div>
-      <h3>${p.name}</h3>
-      <ul>${p.feats.map(f=>`<li>${f}</li>`).join("")}</ul>
-      ${p.specs ? `<details class="specs"><summary>المواصفات</summary><dl>${p.specs.map(([k,v])=>`<dt>${k}</dt><dd>${v}</dd>`).join("")}</dl></details>` : ""}
-      <div class="price"><b>${fmt(p.price)}</b><s>${fmt(p.old)}</s></div>
-      <button class="btn" data-id="${p.id}">اطلب الآن</button>
+      ${cl.length ? `<div class="cats-line">${cl.map(c=>`<span>${esc(catName(c))}</span>`).join("")}</div>` : ""}
+      <h3>${esc(p.name)}</h3>
+      ${p.feats.length ? `<ul>${p.feats.map(f=>`<li>${esc(f)}</li>`).join("")}</ul>` : ""}
+      ${p.specs.length ? `<details class="specs"><summary>المواصفات</summary><dl>${p.specs.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join("")}</dl></details>` : ""}
+      <div class="price"><b>${fmt(p.price)}</b>${hasOff ? `<s>${fmt(p.old)}</s>` : ""}</div>
+      <button class="btn" data-id="${esc(p.id)}">اطلب الآن</button>
     </div>
   </article>`;
 }
@@ -513,6 +504,7 @@ if("IntersectionObserver" in window){
   const io = new IntersectionObserver(es => es.forEach(en => { if(en.isIntersecting){ en.target.classList.add("in"); io.unobserve(en.target); }}), {threshold:.12});
   reveals.forEach(el => io.observe(el));
 } else reveals.forEach(el => el.classList.add("in"));
+setTimeout(() => reveals.forEach(el => el.classList.add("in")), 2500);
 
 /* الطلب */
 const sel = $("fGov");
@@ -523,7 +515,7 @@ const ov = $("ov"), form = $("form"), done = $("done");
 
 function render(){
   $("q").textContent = qty;
-  $("sum").innerHTML = `<img src="${cur.imgs[0]}" alt=""><div><b>${cur.name}</b>${fmt(cur.price)} للقطعة</div>`;
+  $("sum").innerHTML = `<img src="${esc(cur.imgs[0])}" alt=""><div><b>${esc(cur.name)}</b>${fmt(cur.price)} للقطعة</div>`;
   $("tot").textContent = fmt(cur.price * qty);
 }
 function openOrder(id){

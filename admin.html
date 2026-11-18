@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>إدارة ريدكارد</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='8' y='3' width='16' height='24' rx='3' fill='%23C8102E' transform='rotate(-10 16 16)'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{--red:#C8102E;--red-dark:#9E0B23;--red-soft:#FDE8EB;--ink:#1B1B1F;--muted:#6B6B73;--bg:#F6F3F0;--line:#E6DFD8;--green:#1F9D55;--amber:#B7791F}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Cairo',system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;padding-bottom:90px}
+  button,input,select,textarea{font-family:inherit;font-size:15px;color:inherit}
+  .wrap{max-width:980px;margin:0 auto;padding:0 16px}
+  a{color:var(--red)}
+
+  header{background:var(--ink);color:#fff;position:sticky;top:0;z-index:20}
+  .hd{display:flex;align-items:center;justify-content:space-between;gap:10px;height:62px}
+  .logo{display:flex;align-items:center;gap:9px;font-weight:900;font-size:20px}
+  .logo .card{width:16px;height:22px;background:var(--red);border-radius:3px;transform:rotate(-10deg)}
+  .logo small{font-weight:600;color:#B9B9C2;font-size:13px}
+  .hd-actions{display:flex;gap:8px;align-items:center}
+  .hd a.site{color:#fff;font-size:14px;font-weight:700;text-decoration:none;opacity:.85}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:var(--red);color:#fff;border:0;font-weight:800;padding:10px 18px;border-radius:12px;cursor:pointer;transition:.15s;text-decoration:none;white-space:nowrap}
+  .btn:hover{background:var(--red-dark)}
+  .btn:disabled{opacity:.45;cursor:not-allowed}
+  .btn.ghost{background:#fff;color:var(--ink);border:1.5px solid var(--line)}
+  .btn.ghost:hover{border-color:var(--ink)}
+  .btn.green{background:var(--green)}
+  .btn.green:hover{background:#17804A}
+  .btn.sm{padding:6px 12px;font-size:14px;border-radius:10px}
+  .icon-btn{width:36px;height:36px;border-radius:10px;border:1.5px solid var(--line);background:#fff;cursor:pointer;font-size:16px;display:inline-flex;align-items:center;justify-content:center}
+  .icon-btn:hover{border-color:var(--ink)}
+  .icon-btn.danger:hover{border-color:var(--red);color:var(--red)}
+  .icon-btn:disabled{opacity:.3;cursor:default;border-color:var(--line)}
+
+  .panel{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;margin-top:18px}
+  h2{font-size:22px;font-weight:900;margin-bottom:6px}
+  .muted{color:var(--muted);font-size:14px}
+  ol.how{padding-inline-start:22px;margin:12px 0;display:grid;gap:6px}
+  ol.how code{background:var(--bg);padding:1px 6px;border-radius:6px;direction:ltr;display:inline-block}
+
+  label.f{display:block;font-weight:700;font-size:14px;margin:14px 0 5px}
+  label.f small{font-weight:500;color:var(--muted)}
+  .in{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:12px;background:#fff}
+  .in:focus{outline:none;border-color:var(--red);box-shadow:0 0 0 4px var(--red-soft)}
+  textarea.in{resize:vertical;min-height:90px}
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:0 14px}
+  .grid3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0 14px}
+
+  .tabs{display:flex;gap:8px;margin-top:18px}
+  .tab{flex:0 0 auto;padding:9px 20px;border-radius:999px;border:1.5px solid var(--line);background:#fff;font-weight:800;cursor:pointer}
+  .tab[aria-selected="true"]{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .bar{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:18px 0 10px;flex-wrap:wrap}
+
+  .plist{display:grid;gap:10px}
+  .prow{background:#fff;border:1px solid var(--line);border-radius:16px;padding:10px;display:flex;gap:12px;align-items:center}
+  .prow.hidden{opacity:.55}
+  .prow img{width:72px;height:72px;border-radius:12px;object-fit:cover;flex:0 0 auto;background:var(--bg)}
+  .prow .info{flex:1;min-width:0}
+  .prow b{display:block;font-size:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .prow .meta{font-size:13px;color:var(--muted);display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+  .prow .price{color:var(--red);font-weight:900;font-size:15px}
+  .pill{font-size:12px;font-weight:700;background:var(--bg);border:1px solid var(--line);border-radius:999px;padding:0 9px}
+  .pill.off{background:var(--red-soft);color:var(--red);border-color:transparent}
+  .pill.hid{background:#FFF4E0;color:var(--amber);border-color:transparent}
+  .prow .acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+  .empty{text-align:center;padding:40px 16px;color:var(--muted);background:#fff;border:1.5px dashed var(--line);border-radius:16px}
+
+  .crow{background:#fff;border:1px solid var(--line);border-radius:16px;padding:12px;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+  .crow .emo{font-size:28px;width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center}
+  .crow .info{flex:1;min-width:140px}
+  .crow b{font-size:17px}
+  .crow code{direction:ltr;display:inline-block;font-size:12px;background:var(--bg);padding:0 6px;border-radius:6px}
+
+  /* sheet */
+  .ov{position:fixed;inset:0;background:rgba(20,15,15,.55);display:none;align-items:flex-start;justify-content:center;padding:24px 12px;z-index:50;overflow:auto}
+  .ov.show{display:flex}
+  .sheet{background:#fff;border-radius:22px;width:100%;max-width:720px;padding:22px}
+  .sheet-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+  .sheet-ft{display:flex;gap:10px;margin-top:22px;position:sticky;bottom:-22px;background:#fff;padding:12px 0 4px;border-top:1px solid var(--line)}
+  .sheet-ft .btn{flex:1}
+
+  .imgs{display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:10px}
+  .im{position:relative;border-radius:14px;overflow:hidden;border:2px solid var(--line);aspect-ratio:1/1;background:var(--bg)}
+  .im.main{border-color:var(--red)}
+  .im img{width:100%;height:100%;object-fit:cover;display:block}
+  .im .lbl{position:absolute;top:6px;right:6px;background:var(--red);color:#fff;font-size:11px;font-weight:800;padding:1px 8px;border-radius:999px}
+  .im .new{position:absolute;top:6px;left:6px;background:var(--green);color:#fff;font-size:11px;font-weight:800;padding:1px 8px;border-radius:999px}
+  .im .ctr{position:absolute;bottom:0;inset-inline:0;display:flex;justify-content:space-between;padding:5px;background:linear-gradient(transparent,rgba(0,0,0,.55))}
+  .im .ctr button{width:28px;height:28px;border-radius:8px;border:0;background:rgba(255,255,255,.92);cursor:pointer;font-size:13px;font-weight:800}
+  .drop{border:2px dashed var(--line);border-radius:14px;aspect-ratio:1/1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;color:var(--muted);font-weight:700;font-size:13px;text-align:center;padding:6px;background:#FCFAF8}
+  .drop:hover,.drop.over{border-color:var(--red);color:var(--red)}
+  .drop span{font-size:30px;line-height:1}
+
+  .checks{display:flex;flex-wrap:wrap;gap:8px}
+  .checks label{display:inline-flex;gap:6px;align-items:center;border:1.5px solid var(--line);border-radius:999px;padding:6px 14px;cursor:pointer;font-weight:700;font-size:14px;user-select:none}
+  .checks input{accent-color:var(--red)}
+  .checks label:has(input:checked){border-color:var(--red);background:var(--red-soft);color:var(--red)}
+
+  .preview{margin-top:12px;background:var(--bg);border-radius:12px;padding:10px 14px;font-weight:700;font-size:15px}
+  .preview b{color:var(--red);font-size:19px}
+  .preview s{color:#A9A3A0;font-weight:500}
+  .emos{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  .emos button{width:38px;height:38px;border-radius:10px;border:1.5px solid var(--line);background:#fff;font-size:20px;cursor:pointer}
+  .emos button:hover{border-color:var(--red)}
+  .swatches{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+  .swatches button{width:34px;height:34px;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);cursor:pointer;font-size:12px}
+  .swatches button.on{box-shadow:0 0 0 3px var(--ink)}
+
+  /* publish bar */
+  .pub{position:fixed;bottom:0;inset-inline:0;background:#fff;border-top:1px solid var(--line);box-shadow:0 -10px 30px -12px rgba(0,0,0,.18);z-index:30;transform:translateY(110%);transition:transform .25s}
+  .pub.show{transform:none}
+  .pub .wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-top:12px;padding-bottom:12px}
+  .pub .msg{font-weight:800}
+  .pub .msg small{display:block;color:var(--muted);font-weight:500;font-size:13px}
+
+  .toast{position:fixed;top:76px;left:50%;transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 18px;border-radius:12px;font-weight:700;z-index:60;display:none;max-width:92vw;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .toast.err{background:var(--red)}
+  .toast.ok{background:var(--green)}
+  .err-line{color:var(--red);font-weight:700;font-size:14px;min-height:20px;margin-top:8px}
+  .hidden-el{display:none!important}
+
+  @media (max-width:640px){
+    .grid2,.grid3{grid-template-columns:1fr}
+    .prow{flex-wrap:wrap}
+    .prow .acts{width:100%;justify-content:flex-start}
+    .hd a.site{display:none}
+    .sheet{padding:16px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap hd">
+    <div class="logo"><i class="card"></i>ريدكارد <small>لوحة الإدارة</small></div>
+    <div class="hd-actions">
+      <a class="site" href="https://redcard-eg.github.io/" target="_blank" rel="noopener">فتح الموقع ↗</a>
+      <button class="btn ghost sm hidden-el" id="logout" type="button">خروج</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- أول مرة: ربط GitHub -->
+  <section class="panel hidden-el" id="setup">
+    <h2>🔑 ربط الأداة بالموقع (مرة واحدة بس)</h2>
+    <p class="muted">الأداة محتاجة "مفتاح" من GitHub عشان تقدر ترفع المنتجات والصور على الموقع. المفتاح بيتحفظ على الجهاز ده بس، ومحدش غيرك بيشوفه.</p>
+    <ol class="how">
+      <li>ادخل على <b>github.com</b> بحساب <b>redcard-eg</b>.</li>
+      <li>افتح الرابط ده: <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">إنشاء مفتاح جديد ↗</a></li>
+      <li>في <b>Token name</b> اكتب: <code>redcard-admin</code>، وفي <b>Expiration</b> اختار أطول مدة متاحة.</li>
+      <li>في <b>Repository access</b> اختار <b>Only select repositories</b>، وبعدين اختار <code>redcard-eg.github.io</code>.</li>
+      <li>في <b>Permissions</b> افتح <b>Repository permissions</b>، ولاقي <b>Contents</b>، وخليها <b>Read and write</b>.</li>
+      <li>انزل تحت ودوس <b>Generate token</b>، وانسخ المفتاح (بيبدأ بـ<code>github_pat_</code>) وحطه هنا.</li>
+    </ol>
+    <label class="f" for="tokenIn">المفتاح</label>
+    <input class="in" id="tokenIn" dir="ltr" placeholder="github_pat_..." autocomplete="off">
+    <div class="err-line" id="setupErr"></div>
+    <button class="btn" id="connect" type="button">اتصل</button>
+  </section>
+
+  <div id="app" class="hidden-el">
+    <div class="tabs" role="tablist">
+      <button class="tab" role="tab" data-tab="products" aria-selected="true">📦 المنتجات</button>
+      <button class="tab" role="tab" data-tab="cats" aria-selected="false">🗂️ الأقسام</button>
+    </div>
+
+    <section id="tab-products">
+      <div class="bar">
+        <div class="muted" id="pCount"></div>
+        <button class="btn" id="addProduct" type="button">+ منتج جديد</button>
+      </div>
+      <div class="plist" id="plist"></div>
+    </section>
+
+    <section id="tab-cats" class="hidden-el">
+      <div class="bar">
+        <div class="muted">الأقسام بتظهر في الموقع بنفس الترتيب ده.</div>
+        <button class="btn" id="addCat" type="button">+ قسم جديد</button>
+      </div>
+      <div class="plist" id="clist"></div>
+    </section>
+  </div>
+
+  <div class="panel hidden-el" id="loading"><b>⏳ بيحمّل المنتجات من الموقع...</b></div>
+</main>
+
+<!-- شريط النشر -->
+<div class="pub" id="pub">
+  <div class="wrap">
+    <div class="msg" id="pubMsg">عندك تعديلات لسه ماتنشرتش<small>مش هتظهر للزبون غير لما تدوس "انشر"</small></div>
+    <div style="display:flex;gap:8px">
+      <button class="btn ghost" id="discard" type="button">تراجع</button>
+      <button class="btn green" id="publish" type="button">🚀 انشر على الموقع</button>
+    </div>
+  </div>
+</div>
+
+<!-- محرر المنتج -->
+<div class="ov" id="pOv">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="pTitle">
+    <div class="sheet-hd"><h2 id="pTitle">منتج جديد</h2><button class="icon-btn" type="button" data-close>✕</button></div>
+
+    <label class="f">الصور <small>(أول صورة هي اللي بتظهر في الكارت. اسحب صور هنا أو دوس على المربع)</small></label>
+    <div class="imgs" id="pImgs"></div>
+    <input type="file" id="pFile" accept="image/*" multiple hidden>
+
+    <label class="f" for="pName">اسم المنتج</label>
+    <input class="in" id="pName" placeholder="مثال: مج كهربائي بيقلّب لوحده">
+
+    <div class="grid3">
+      <div>
+        <label class="f" for="pOld">السعر قبل الخصم <small>(اختياري)</small></label>
+        <input class="in" id="pOld" type="number" inputmode="numeric" min="0" placeholder="599">
+      </div>
+      <div>
+        <label class="f" for="pDisc">نسبة الخصم ٪ <small>(اختياري)</small></label>
+        <input class="in" id="pDisc" type="number" inputmode="numeric" min="0" max="95" placeholder="25">
+      </div>
+      <div>
+        <label class="f" for="pPrice">السعر النهائي</label>
+        <input class="in" id="pPrice" type="number" inputmode="numeric" min="1" placeholder="449">
+      </div>
+    </div>
+    <div class="preview" id="pPreview"></div>
+
+    <label class="f">الأقسام <small>(ممكن تختار أكتر من قسم)</small></label>
+    <div class="checks" id="pCats"></div>
+
+    <label class="f" for="pTag">العلامة اللي على الصورة <small>(اختياري، زي "الأكثر طلبًا")</small></label>
+    <input class="in" id="pTag" list="tagList" placeholder="الأكثر طلبًا">
+    <datalist id="tagList"><option>الأكثر طلبًا</option><option>جديد</option><option>هدية مثالية</option><option>عرض خاص</option><option>الكمية محدودة</option><option>2 في 1</option></datalist>
+
+    <label class="f" for="pFeats">المميزات <small>(كل ميزة في سطر لوحدها)</small></label>
+    <textarea class="in" id="pFeats" placeholder="بيقلّب أوتوماتيك بضغطة زرار&#10;سعة 400 مل"></textarea>
+
+    <label class="f" for="pSpecs">المواصفات <small>(كل سطر: الاسم : القيمة)</small></label>
+    <textarea class="in" id="pSpecs" placeholder="السعة : 400 مل&#10;الخامة : زجاج"></textarea>
+
+    <div class="checks" style="margin-top:14px"><label><input type="checkbox" id="pHidden"> مخفي (مش هيظهر للزبون)</label></div>
+
+    <div class="err-line" id="pErr"></div>
+    <div class="sheet-ft">
+      <button class="btn" id="pSave" type="button">حفظ المنتج</button>
+      <button class="btn ghost" type="button" data-close>إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- محرر القسم -->
+<div class="ov" id="cOv">
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="cTitle" style="max-width:520px">
+    <div class="sheet-hd"><h2 id="cTitle">قسم جديد</h2><button class="icon-btn" type="button" data-close>✕</button></div>
+
+    <label class="f" for="cName">اسم القسم</label>
+    <input class="in" id="cName" placeholder="مثال: إكسسوارات موبايل">
+
+    <label class="f" for="cEmo">الأيقونة <small>(اختار واحدة أو اكتب أي إيموجي)</small></label>
+    <input class="in" id="cEmo" style="font-size:22px;width:90px;text-align:center" maxlength="8">
+    <div class="emos" id="emos"></div>
+
+    <label class="f">لون الكارت</label>
+    <div class="swatches" id="swatches"></div>
+
+    <label class="f" for="cId">اسم اللينك بالإنجليزي <small>(اختياري، للإعلانات. مثال: phone ← redcard-eg.github.io/#phone)</small></label>
+    <input class="in" id="cId" dir="ltr" placeholder="phone">
+
+    <div class="err-line" id="cErr"></div>
+    <div class="sheet-ft">
+      <button class="btn" id="cSave" type="button">حفظ القسم</button>
+      <button class="btn ghost" type="button" data-close>إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!-- نسخة احتياطية محلية من البيانات (لو data.js لسه مش على GitHub) -->
+<script src="data.js" onerror="void 0"></script>
+<script>
+const OWNER = "redcard-eg", REPO = "redcard-eg.github.io", BRANCH = "main";
+const API = `https://api.github.com/repos/${OWNER}/${REPO}`;
+const RAW = `https://raw.githubusercontent.com/${OWNER}/${REPO}/${BRANCH}/`;
+const TOKEN_KEY = "redcard_admin_token";
+
+const $ = id => document.getElementById(id);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = n => Number(n).toLocaleString("ar-EG") + " ج.م";
+const uid = (p) => p + Date.now().toString(36) + Math.random().toString(36).slice(2,5);
+
+const S = {
+  token: "", data: {categories:[], products:[]}, sha: null,
+  pending: {},   // مسار الصورة ← base64 (صور جديدة لسه ماترفعتش)
+  local: {},     // مسار الصورة ← رابط معاينة على الجهاز
+  dirty: false, busy: false
+};
+
+/* ---------- أدوات صغيرة ---------- */
+function store(k, v){ try{ v===undefined ? localStorage.removeItem(k) : localStorage.setItem(k, v); }catch(e){} }
+function read(k){ try{ return localStorage.getItem(k) || ""; }catch(e){ return ""; } }
+let toastT;
+function toast(msg, kind=""){ const t = $("toast"); t.textContent = msg; t.className = "toast " + kind; t.style.display = "block"; clearTimeout(toastT); toastT = setTimeout(()=> t.style.display = "none", kind==="err" ? 6000 : 3000); }
+function show(el, on){ el.classList.toggle("hidden-el", !on); }
+function imgSrc(path){ return S.local[path] || (RAW + path); }
+
+function b64FromText(str){
+  const bytes = new TextEncoder().encode(str); let bin = "";
+  for(let i=0;i<bytes.length;i+=0x8000) bin += String.fromCharCode.apply(null, bytes.subarray(i, i+0x8000));
+  return btoa(bin);
+}
+function textFromB64(b64){
+  const bin = atob(b64.replace(/\s/g,""));
+  return new TextDecoder().decode(Uint8Array.from(bin, c => c.charCodeAt(0)));
+}
+function blobToB64(blob){ return new Promise((res, rej) => { const r = new FileReader(); r.onload = () => res(String(r.result).split(",")[1]); r.onerror = rej; r.readAsDataURL(blob); }); }
+
+/* تصغير الصورة قبل الرفع: أقصى مقاس 1200 بكسل، بصيغة webp */
+async function shrink(file){
+  const url = URL.createObjectURL(file);
+  const img = await new Promise((res, rej) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => rej(new Error("الصورة دي مش مدعومة")); i.src = url; });
+  const max = 1200, k = Math.min(1, max / Math.max(img.naturalWidth, img.naturalHeight));
+  const c = document.createElement("canvas");
+  c.width = Math.round(img.naturalWidth * k); c.height = Math.round(img.naturalHeight * k);
+  const ctx = c.getContext("2d"); ctx.fillStyle = "#fff"; ctx.fillRect(0,0,c.width,c.height); ctx.drawImage(img, 0, 0, c.width, c.height);
+  URL.revokeObjectURL(url);
+  let blob = await new Promise(r => c.toBlob(r, "image/webp", .85));
+  let ext = "webp";
+  if(!blob || blob.type !== "image/webp"){ blob = await new Promise(r => c.toBlob(r, "image/jpeg", .85)); ext = "jpg"; }
+  return {blob, ext};
+}
+
+/* ---------- GitHub ---------- */
+async function gh(path, opts={}){
+  const r = await fetch(API + path, {
+    ...opts, cache: "no-store",
+    headers: {"Authorization": "Bearer " + S.token, "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", ...(opts.body ? {"Content-Type":"application/json"} : {})}
+  });
+  let body = null; try{ body = await r.json(); }catch(e){}
+  if(!r.ok){ const e = new Error((body && body.message) || ("HTTP " + r.status)); e.status = r.status; throw e; }
+  return body;
+}
+const encPath = p => p.split("/").map(encodeURIComponent).join("/");
+function putFile(path, b64, message, sha){
+  return gh(`/contents/${encPath(path)}`, {method:"PUT", body: JSON.stringify({message, content:b64, branch:BRANCH, ...(sha ? {sha} : {})})});
+}
+
+async function connect(token){
+  S.token = token;
+  const repo = await gh("");
+  if(!repo.permissions || !repo.permissions.push) throw Object.assign(new Error("المفتاح ده مالوش صلاحية كتابة"), {status:403});
+}
+
+async function loadData(){
+  show($("loading"), true); show($("app"), false);
+  try{
+    const f = await gh(`/contents/data.js?ref=${BRANCH}`);
+    S.data = parseData(textFromB64(f.content)); S.sha = f.sha;
+  }catch(e){
+    if(e.status !== 404) throw e;
+    // أول مرة: data.js لسه مش على GitHub، فنبدأ من النسخة اللي على الجهاز
+    S.data = JSON.parse(JSON.stringify(window.REDCARD_DATA || {categories:[], products:[]})); S.sha = null;
+    toast("ملف المنتجات لسه مش على الموقع. هيتعمل أول ما تدوس \"انشر\".");
+  }
+  S.data.categories ||= []; S.data.products ||= [];
+  S.pending = {}; setDirty(false);
+  show($("loading"), false); show($("app"), true);
+  render();
+}
+function parseData(txt){ return JSON.parse(txt.slice(txt.indexOf("{"), txt.lastIndexOf("}") + 1)); }
+function serialize(){ return "window.REDCARD_DATA = " + JSON.stringify(S.data, null, 2) + ";\n"; }
+
+/* ---------- النشر ---------- */
+function setDirty(on){
+  S.dirty = on;
+  $("pub").classList.toggle("show", on);
+  const n = Object.keys(S.pending).length;
+  $("pubMsg").innerHTML = `عندك تعديلات لسه ماتنشرتش${n ? ` (${n.toLocaleString("ar-EG")} صورة جديدة)` : ""}<small>مش هتظهر للزبون غير لما تدوس "انشر"</small>`;
+}
+
+async function publish(){
+  if(S.busy) return;
+  S.busy = true; $("publish").disabled = true; $("discard").disabled = true;
+  try{
+    const used = new Set(S.data.products.flatMap(p => p.imgs));
+    const ups = Object.keys(S.pending).filter(p => used.has(p));
+    for(let i=0;i<ups.length;i++){
+      $("pubMsg").innerHTML = `بيرفع الصور... ${(i+1).toLocaleString("ar-EG")} من ${ups.length.toLocaleString("ar-EG")}<small>ماتقفلش الصفحة</small>`;
+      await putFile(ups[i], S.pending[ups[i]], "إضافة صورة منتج");
+      delete S.pending[ups[i]];
+    }
+    $("pubMsg").innerHTML = `بيحفظ المنتجات...<small>ماتقفلش الصفحة</small>`;
+    const res = await putFile("data.js", b64FromText(serialize()), "تحديث المنتجات والأقسام", S.sha);
+    S.sha = res.content.sha;
+    S.pending = {};
+    setDirty(false);
+    toast("✅ اتنشر! التعديل هيظهر على الموقع خلال دقيقة أو اتنين.", "ok");
+  }catch(e){
+    setDirty(true);
+    if(e.status === 409 || e.status === 422) toast("فيه تعديل اتعمل من جهاز تاني. دوس \"تراجع\" عشان تحمّل آخر نسخة، وبعدين عدّل تاني.", "err");
+    else if(e.status === 401) toast("المفتاح انتهى أو اتلغى. دوس \"خروج\" وحط مفتاح جديد.", "err");
+    else toast("النشر فشل: " + e.message + ". اتأكد من النت وجرّب تاني.", "err");
+  }finally{
+    S.busy = false; $("publish").disabled = false; $("discard").disabled = false;
+  }
+}
+
+/* ---------- العرض ---------- */
+const catName = id => (S.data.categories.find(c => c.id === id) || {}).name;
+
+function render(){ renderProducts(); renderCats(); }
+
+function renderProducts(){
+  const P = S.data.products;
+  $("pCount").textContent = P.length ? `${P.length.toLocaleString("ar-EG")} منتج، منهم ${P.filter(p=>!p.hidden).length.toLocaleString("ar-EG")} ظاهر للزبون` : "";
+  $("plist").innerHTML = P.length ? P.map((p, i) => {
+    const off = p.old > p.price ? Math.round((1 - p.price/p.old) * 100) : 0;
+    const cats = (p.cats||[]).map(catName).filter(Boolean);
+    return `<div class="prow ${p.hidden ? "hidden" : ""}">
+      <img src="${esc(p.imgs[0] ? imgSrc(p.imgs[0]) : "")}" alt="">
+      <div class="info">
+        <b>${esc(p.name)}</b>
+        <div class="meta">
+          <span class="price">${fmt(p.price)}</span>
+          ${off ? `<span class="pill off">خصم ${off.toLocaleString("ar-EG")}٪</span>` : ""}
+          ${p.hidden ? `<span class="pill hid">مخفي</span>` : ""}
+          ${cats.map(c => `<span class="pill">${esc(c)}</span>`).join("")}
+        </div>
+      </div>
+      <div class="acts">
+        <button class="btn sm ghost" data-act="edit" data-i="${i}">✏️ تعديل</button>
+        <button class="icon-btn" data-act="toggle" data-i="${i}" title="${p.hidden ? "إظهار" : "إخفاء"}">${p.hidden ? "👁️" : "🙈"}</button>
+        <button class="icon-btn" data-act="up" data-i="${i}" title="لفوق" ${i===0 ? "disabled" : ""}>↑</button>
+        <button class="icon-btn" data-act="down" data-i="${i}" title="لتحت" ${i===P.length-1 ? "disabled" : ""}>↓</button>
+        <button class="icon-btn danger" data-act="del" data-i="${i}" title="حذف">🗑️</button>
+      </div>
+    </div>`;
+  }).join("") : `<div class="empty"><b>مفيش منتجات لسه</b><br>دوس "+ منتج جديد" عشان تضيف أول منتج.</div>`;
+}
+
+function renderCats(){
+  const C = S.data.categories;
+  $("clist").innerHTML = C.length ? C.map((c, i) => {
+    const n = S.data.products.filter(p => (p.cats||[]).includes(c.id)).length;
+    return `<div class="crow">
+      <span class="emo" style="background:${esc(c.color || "#F6F0EA")}">${esc(c.emo || "🏷️")}</span>
+      <div class="info"><b>${esc(c.name)}</b><div class="muted">${n.toLocaleString("ar-EG")} منتج · لينك: <code>#${esc(c.id)}</code></div></div>
+      <div class="acts" style="display:flex;gap:6px">
+        <button class="btn sm ghost" data-act="cedit" data-i="${i}">✏️ تعديل</button>
+        <button class="icon-btn" data-act="cup" data-i="${i}" ${i===0 ? "disabled" : ""}>↑</button>
+        <button class="icon-btn" data-act="cdown" data-i="${i}" ${i===C.length-1 ? "disabled" : ""}>↓</button>
+        <button class="icon-btn danger" data-act="cdel" data-i="${i}">🗑️</button>
+      </div>
+    </div>`;
+  }).join("") : `<div class="empty"><b>مفيش أقسام</b><br>دوس "+ قسم جديد".</div>`;
+}
+
+function move(arr, i, d){ const j = i + d; if(j < 0 || j >= arr.length) return; [arr[i], arr[j]] = [arr[j], arr[i]]; }
+
+$("plist").addEventListener("click", e => {
+  const b = e.target.closest("button[data-act]"); if(!b) return;
+  const i = +b.dataset.i, P = S.data.products, act = b.dataset.act;
+  if(act === "edit") return openProduct(i);
+  if(act === "toggle"){ P[i].hidden = !P[i].hidden; if(!P[i].hidden) delete P[i].hidden; }
+  if(act === "up") move(P, i, -1);
+  if(act === "down") move(P, i, 1);
+  if(act === "del"){ if(!confirm(`متأكد إنك عاوز تحذف "${P[i].name}"؟`)) return; P.splice(i, 1); }
+  setDirty(true); render();
+});
+
+$("clist").addEventListener("click", e => {
+  const b = e.target.closest("button[data-act]"); if(!b) return;
+  const i = +b.dataset.i, C = S.data.categories, act = b.dataset.act;
+  if(act === "cedit") return openCat(i);
+  if(act === "cup") move(C, i, -1);
+  if(act === "cdown") move(C, i, 1);
+  if(act === "cdel"){
+    const n = S.data.products.filter(p => (p.cats||[]).includes(C[i].id)).length;
+    if(!confirm(`متأكد إنك عاوز تحذف قسم "${C[i].name}"؟` + (n ? `\nالمنتجات اللي فيه (${n}) مش هتتمسح، هتتشال من القسم ده بس.` : ""))) return;
+    const id = C[i].id; C.splice(i, 1);
+    S.data.products.forEach(p => p.cats = (p.cats||[]).filter(c => c !== id));
+  }
+  setDirty(true); render();
+});
+
+document.querySelectorAll(".tab").forEach(t => t.onclick = () => {
+  document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected", x === t));
+  show($("tab-products"), t.dataset.tab === "products");
+  show($("tab-cats"), t.dataset.tab === "cats");
+});
+
+/* ---------- محرر المنتج ---------- */
+let edit = null; // {i, imgs:[...]}
+
+function openProduct(i){
+  const p = i === null ? {name:"", price:"", old:"", tag:"", cats:[], imgs:[], feats:[], specs:[]} : S.data.products[i];
+  edit = {i, imgs: [...(p.imgs||[])]};
+  $("pTitle").textContent = i === null ? "منتج جديد" : "تعديل المنتج";
+  $("pName").value = p.name || "";
+  $("pPrice").value = p.price || "";
+  $("pOld").value = p.old && p.old > p.price ? p.old : "";
+  $("pDisc").value = p.old > p.price ? Math.round((1 - p.price/p.old) * 100) : "";
+  $("pTag").value = p.tag || "";
+  $("pFeats").value = (p.feats||[]).join("\n");
+  $("pSpecs").value = (p.specs||[]).map(([k,v]) => `${k} : ${v}`).join("\n");
+  $("pHidden").checked = !!p.hidden;
+  $("pCats").innerHTML = S.data.categories.length ? S.data.categories.map(c =>
+    `<label><input type="checkbox" value="${esc(c.id)}" ${(p.cats||[]).includes(c.id) ? "checked" : ""}> ${esc(c.emo||"")} ${esc(c.name)}</label>`).join("")
+    : `<span class="muted">مفيش أقسام. ضيف قسم الأول من تبويب "الأقسام".</span>`;
+  $("pErr").textContent = "";
+  renderImgs(); preview();
+  $("pOv").classList.add("show"); document.body.style.overflow = "hidden";
+}
+
+function renderImgs(){
+  $("pImgs").innerHTML = edit.imgs.map((src, i) => `
+    <div class="im ${i===0 ? "main" : ""}">
+      <img src="${esc(imgSrc(src))}" alt="">
+      ${i===0 ? `<span class="lbl">الرئيسية</span>` : ""}
+      ${S.pending[src] ? `<span class="new">جديدة</span>` : ""}
+      <div class="ctr">
+        <button type="button" data-im="first" data-i="${i}" title="خليها الرئيسية">★</button>
+        <span style="display:flex;gap:4px">
+          <button type="button" data-im="right" data-i="${i}" title="قدّم">→</button>
+          <button type="button" data-im="left" data-i="${i}" title="أخّر">←</button>
+        </span>
+        <button type="button" data-im="del" data-i="${i}" title="شيل الصورة">✕</button>
+      </div>
+    </div>`).join("") +
+    `<div class="drop" id="drop" role="button" tabindex="0"><span>＋</span>ضيف صور</div>`;
+}
+
+$("pImgs").addEventListener("click", e => {
+  if(e.target.closest("#drop")) return $("pFile").click();
+  const b = e.target.closest("button[data-im]"); if(!b) return;
+  const i = +b.dataset.i, A = edit.imgs;
+  if(b.dataset.im === "first") A.unshift(A.splice(i, 1)[0]);
+  if(b.dataset.im === "right") move(A, i, -1);
+  if(b.dataset.im === "left") move(A, i, 1);
+  if(b.dataset.im === "del") A.splice(i, 1);
+  renderImgs();
+});
+$("pImgs").addEventListener("keydown", e => { if(e.target.id === "drop" && (e.key === "Enter" || e.key === " ")){ e.preventDefault(); $("pFile").click(); }});
+["dragover","dragenter"].forEach(ev => $("pImgs").addEventListener(ev, e => { e.preventDefault(); const d = $("drop"); if(d) d.classList.add("over"); }));
+$("pImgs").addEventListener("dragleave", () => { const d = $("drop"); if(d) d.classList.remove("over"); });
+$("pImgs").addEventListener("drop", e => { e.preventDefault(); addFiles(e.dataTransfer.files); });
+$("pFile").addEventListener("change", e => { addFiles(e.target.files); e.target.value = ""; });
+
+async function addFiles(files){
+  const list = [...files].filter(f => f.type.startsWith("image/"));
+  if(!list.length) return;
+  const d = $("drop"); if(d) d.innerHTML = "<span>⏳</span>بيجهّز الصور...";
+  for(const f of list){
+    try{
+      const {blob, ext} = await shrink(f);
+      const path = `img/${uid("p")}.${ext}`;
+      S.pending[path] = await blobToB64(blob);
+      S.local[path] = URL.createObjectURL(blob);
+      edit.imgs.push(path);
+    }catch(err){ toast(`مقدرتش أقرا الصورة "${f.name}"`, "err"); }
+  }
+  renderImgs();
+}
+
+/* السعر والخصم */
+function num(id){ const v = parseFloat($(id).value); return isFinite(v) && v > 0 ? v : 0; }
+function preview(){
+  const price = num("pPrice"), old = num("pOld");
+  if(!price){ $("pPreview").innerHTML = `<span class="muted">اكتب السعر النهائي، أو السعر قبل الخصم ونسبة الخصم.</span>`; return; }
+  const off = old > price ? Math.round((1 - price/old) * 100) : 0;
+  $("pPreview").innerHTML = `الزبون هيشوف: <b>${fmt(price)}</b> ${off ? `<s>${fmt(old)}</s> · وفّر ${off.toLocaleString("ar-EG")}٪` : ""}`;
+}
+$("pOld").addEventListener("input", () => { const old = num("pOld"), d = num("pDisc"); if(old && d) $("pPrice").value = Math.round(old * (1 - d/100)); else if(old && num("pPrice")) $("pDisc").value = Math.max(0, Math.round((1 - num("pPrice")/old) * 100)) || ""; preview(); });
+$("pDisc").addEventListener("input", () => { const old = num("pOld"), d = num("pDisc"); if(old && d) $("pPrice").value = Math.round(old * (1 - Math.min(d,95)/100)); preview(); });
+$("pPrice").addEventListener("input", () => { const old = num("pOld"), pr = num("pPrice"); if(old && pr) $("pDisc").value = old > pr ? Math.round((1 - pr/old) * 100) : ""; preview(); });
+
+$("pSave").onclick = () => {
+  const err = $("pErr"), name = $("pName").value.trim(), price = Math.round(num("pPrice")), old = Math.round(num("pOld"));
+  if(!edit.imgs.length) return err.textContent = "ضيف صورة واحدة على الأقل";
+  if(!name) return err.textContent = "اكتب اسم المنتج";
+  if(!price) return err.textContent = "اكتب السعر النهائي";
+  if(old && old <= price) return err.textContent = "السعر قبل الخصم لازم يبقى أكبر من السعر النهائي (أو امسحه)";
+  const base = edit.i === null ? {id: uid("p")} : S.data.products[edit.i];
+  const p = {
+    id: base.id, name, price, ...(old ? {old} : {}),
+    tag: $("pTag").value.trim(),
+    cats: [...$("pCats").querySelectorAll("input:checked")].map(x => x.value),
+    imgs: [...edit.imgs],
+    feats: $("pFeats").value.split("\n").map(s => s.trim()).filter(Boolean),
+    specs: $("pSpecs").value.split("\n").map(s => s.trim()).filter(Boolean).map(s => {
+      const k = s.search(/[:：]/); return k > 0 ? [s.slice(0,k).trim(), s.slice(k+1).trim()] : [s, ""];
+    }),
+    ...($("pHidden").checked ? {hidden:true} : {})
+  };
+  if(edit.i === null) S.data.products.unshift(p); else S.data.products[edit.i] = p;
+  closeSheets(); setDirty(true); render();
+  toast("اتحفظ ✔️ دوس \"انشر\" تحت عشان يظهر على الموقع");
+};
+
+/* ---------- محرر القسم ---------- */
+const EMOS = ["🛋️","🏠","🍳","🎁","💡","🧹","🛏️","🪴","👗","👜","💄","🧴","📱","🎧","⌚","🧸","👶","⚽","🚗","🐾","🧰","✏️","☕","✨"];
+const COLORS = ["","#F6D9B4","#D8DCFA","#C9EBD7","#F9C3CC","#FBE7A1","#CDEBF5","#E5D4F7","#FFD6BF","#E3E3E3"];
+let cEdit = null, cColor = "";
+
+function openCat(i){
+  const c = i === null ? {name:"", emo:"🏷️", id:"", color:""} : S.data.categories[i];
+  cEdit = i;
+  $("cTitle").textContent = i === null ? "قسم جديد" : "تعديل القسم";
+  $("cName").value = c.name; $("cEmo").value = c.emo || ""; $("cId").value = c.id || "";
+  $("cId").disabled = i !== null && ["decor","home","kitchen","gifts"].includes(c.id);
+  cColor = c.color || "";
+  $("emos").innerHTML = EMOS.map(e => `<button type="button">${e}</button>`).join("");
+  renderSwatches(); $("cErr").textContent = "";
+  $("cOv").classList.add("show"); document.body.style.overflow = "hidden";
+}
+function renderSwatches(){
+  $("swatches").innerHTML = COLORS.map(c => `<button type="button" data-c="${c}" class="${c === cColor ? "on" : ""}" style="background:${c || "#fff"}" title="${c ? "" : "اللون الافتراضي"}">${c ? "" : "∅"}</button>`).join("");
+}
+$("emos").addEventListener("click", e => { const b = e.target.closest("button"); if(b) $("cEmo").value = b.textContent; });
+$("swatches").addEventListener("click", e => { const b = e.target.closest("button"); if(b){ cColor = b.dataset.c; renderSwatches(); }});
+
+$("cSave").onclick = () => {
+  const C = S.data.categories, err = $("cErr");
+  const name = $("cName").value.trim(), emo = $("cEmo").value.trim() || "🏷️";
+  let id = $("cId").value.trim().toLowerCase().replace(/\s+/g, "-");
+  if(!name) return err.textContent = "اكتب اسم القسم";
+  if(id && !/^[a-z0-9-]+$/.test(id)) return err.textContent = "اسم اللينك لازم يبقى حروف إنجليزي صغيرة أو أرقام بس";
+  const oldId = cEdit === null ? null : C[cEdit].id;
+  if(!id) id = oldId || uid("c");
+  if(C.some((c, k) => c.id === id && k !== cEdit)) return err.textContent = "اسم اللينك ده مستخدم في قسم تاني";
+  const c = {id, name, emo, ...(cColor ? {color: cColor} : {})};
+  if(cEdit === null) C.push(c);
+  else {
+    C[cEdit] = c;
+    if(oldId !== id) S.data.products.forEach(p => p.cats = (p.cats||[]).map(x => x === oldId ? id : x));
+  }
+  closeSheets(); setDirty(true); render();
+  toast("اتحفظ ✔️ دوس \"انشر\" تحت عشان يظهر على الموقع");
+};
+
+/* ---------- عام ---------- */
+function closeSheets(){ document.querySelectorAll(".ov").forEach(o => o.classList.remove("show")); document.body.style.overflow = ""; }
+document.querySelectorAll("[data-close]").forEach(b => b.onclick = closeSheets);
+document.querySelectorAll(".ov").forEach(o => o.addEventListener("click", e => { if(e.target === o) closeSheets(); }));
+document.addEventListener("keydown", e => { if(e.key === "Escape") closeSheets(); });
+
+$("addProduct").onclick = () => openProduct(null);
+$("addCat").onclick = () => openCat(null);
+$("publish").onclick = publish;
+$("discard").onclick = () => { if(confirm("هتلغي كل التعديلات اللي مانشرتهاش. متأكد؟")) loadData().catch(fail); };
+$("logout").onclick = () => {
+  if(S.dirty && !confirm("عندك تعديلات مانشرتهاش، هتضيع. متأكد؟")) return;
+  store(TOKEN_KEY); S.token = ""; S.dirty = false; location.reload();
+};
+window.addEventListener("beforeunload", e => { if(S.dirty){ e.preventDefault(); e.returnValue = ""; } });
+
+function fail(e){
+  show($("loading"), false);
+  if(e.status === 401){ store(TOKEN_KEY); showSetup("المفتاح ده مش شغال أو انتهى. اعمل مفتاح جديد."); }
+  else toast("حصلت مشكلة: " + e.message, "err");
+}
+function showSetup(msg){ show($("setup"), true); show($("app"), false); show($("logout"), false); $("setupErr").textContent = msg || ""; }
+
+$("connect").onclick = async () => {
+  const t = $("tokenIn").value.trim();
+  if(!t) return $("setupErr").textContent = "حط المفتاح الأول";
+  $("connect").disabled = true; $("setupErr").textContent = "";
+  try{
+    await connect(t); store(TOKEN_KEY, t);
+    show($("setup"), false); show($("logout"), true);
+    await loadData();
+  }catch(e){
+    $("setupErr").textContent = e.status === 401 ? "المفتاح غلط. اتأكد إنك نسخته كله."
+      : e.status === 404 || e.status === 403 ? "المفتاح مالوش صلاحية على redcard-eg.github.io. راجع الخطوات 4 و5."
+      : "مقدرتش أتصل: " + e.message;
+  }finally{ $("connect").disabled = false; }
+};
+
+(async function start(){
+  const t = read(TOKEN_KEY);
+  if(!t) return showSetup();
+  S.token = t; show($("logout"), true);
+  try{ await loadData(); }catch(e){ fail(e); }
+})();
+</script>
+</body>
+</html>
