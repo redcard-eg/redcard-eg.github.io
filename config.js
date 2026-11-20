@@ -3,6 +3,12 @@
 /* رقم الواتساب اللي الطلبات بتوصل عليه (كود الدولة من غير +) */
 const WA = "201068613396";
 
+/* true = الطلبات والرسايل على واتساب ، false = الطلبات بتوصل على الإيميل والرسايل على ماسنجر */
+const USE_WHATSAPP = false;
+const ORDER_EMAIL = "redcard.eg@gmail.com";                 /* الطلبات بتوصل هنا لما الواتساب مقفول */
+const MESSENGER = "https://m.me/61596650491708";             /* رسايل صفحة الفيس */
+const INSTAGRAM = "https://ig.me/m/redcard.eg";              /* رسايل الإنستجرام */
+
 /* شكل أول الصفحة: "compact" أو "shop" أو "banner" */
 const LAYOUT = "banner";
 
